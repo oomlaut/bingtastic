@@ -87,7 +87,7 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 		</section
 
 		<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
-		<script>window.jQuery || document.write('<script src="bower_components/jquery/jquery.min.js"><\/script>')</script>
+		<script>window.jQuery || document.write('<script src="packages/jquery/jquery.min.js"><\/script>')</script>
 
 		<script>
 			(function($){
