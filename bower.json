@@ -4,7 +4,8 @@
   "main": "index.html",
   "dependencies": {
       "jquery": "latest",
-      "twitter": "latest"
+      "twitter": "latest",
+      "font-awesome": "latest"
   },
   "ignore": [
     "**/.*",
