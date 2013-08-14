@@ -2,6 +2,10 @@
   "name": "bing",
   "version": "0.0.1",
   "main": "index.html",
+  "dependencies": {
+      "jquery": "latest",
+      "twitter": "latest"
+  },
   "ignore": [
     "**/.*",
     "node_modules",
