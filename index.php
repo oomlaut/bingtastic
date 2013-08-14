@@ -15,22 +15,23 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
+	<head lang="en">
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>it's bingtastic!</title>
 		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-<!--        <link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/main.css">
-		<script src="js/vendor/modernizr-2.6.2.min.js"></script>
-		-->
+		<link rel="stylesheet/less" type="text/css" href="packages/twitter/less/bootstrap.less" />
+		<link rel="stylesheet/less" type="text/css" href="packages/twitter/less/responsive.less" />
+		<script src="packages/twitter/assets/js/html5shiv.js"></script>
+		<script src="packages/less/dist/less-1.4.2.min.js"></script>
 		<style type="text/css">
 			#phrase-heading{
-				margin:1em 0 .5em;
+				margin-top:1em;
+				margin-bottom:.5em;
 			}
 			#phrase-heading:hover{
 				cursor:pointer;
@@ -53,38 +54,63 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 			}
 		</style>
 	</head>
-	<body>
+	<body class="container">
 		<!--[if lt IE 7]>
 			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->
-		<form action="/" method="get">
+		<hgroup class="row">
+			<h1 class="span11 offset1">it's bingtastic!</h1>
+		</hgroup>
+		<form action="/" method="get" class="form-horizontal row">
 			<fieldset>
-				<p><label for="bings">Bings:</label><input name="bings" id="bings" type="number" value="<?php echo $bings; ?>" title="Number of Bings to perform" required autofocus> <button id="update" type="submit">update</button></p>
-				<p><label for="min">Minimum Delay:</label><input name="min" id="min" type="number" value="<?php echo $min; ?>" title="minimum delay" required></p>
-				<p><label for="max">Maximum Delay:</label><input name="max" id="max" type="number" value="<?php echo $max; ?>" title="maximum delay" required></p>
-				<p><button id="bingMe" type="button">bingMe</button> <button id="stop" type="button">stop</button></p>
+				<div class="control-group">
+					<label for="bings" class="control-label" >Bings:</label>
+					<div class="controls">
+						<input name="bings" id="bings" class="input-mini" type="number" value="<?php echo $bings; ?>" title="Number of Bings to perform" required autofocus>
+						<button id="update" class="btn btn-danger" type="submit">update</button>
+					</div>
+				</div>
+				<div class="control-group">
+					<label for="min" class="control-label" >Minimum Delay:</label>
+					<div class="controls">
+						<input name="min" id="min" class="input-mini" type="number" value="<?php echo $min; ?>" title="minimum delay" required>
+					</div>
+				</div>
+				<div class="control-group">
+					<label for="max" class="control-label" >Maximum Delay:</label>
+					<div class="controls">
+						<input name="max" id="max" class="input-mini" type="number" value="<?php echo $max; ?>" title="maximum delay" required>
+					</div>
+				</div>
+				<div class="control-group">
+					<div class="controls">
+						<button id="bingMe" class="btn btn-large btn-primary" type="button">bing me!</button>
+						<button id="stop" class="btn btn-large" type="button">stop</button>
+					</div>
+				</div>
 			</fieldset>
 		</form>
 
-		<p id="timer"></p>
-
-		<h3 id="phrase-heading">Phraselist</h3>
-		<section id="phraselist">
-		<?php
-			$counter = 0;
-			while($counter < $bings){
-				$counter += 1;
-				$phrase = "";
-				for ($i = 0; $i <= rand(1,6); $i++){
-					if($i != 0){ $phrase .= "+"; }
-					$phrase .= str_replace(array("\n", "\r"), '', $words[rand(0, $possibilities - 1)])	;
+		<section class="row">
+			<p id="timer" class="span4 offset4"></p>
+			<h3 id="phrase-heading" class="span11 offset1">Phraselist</h3>
+			<div id="phraselist" class="span10 offset1">
+			<?php
+				$counter = 0;
+				while($counter < $bings){
+					$counter += 1;
+					$phrase = "";
+					for ($i = 0; $i <= rand(1,5); $i++){
+						if($i != 0){ $phrase .= "+"; }
+						$phrase .= str_replace(array("\n", "\r"), '', $words[rand(0, $possibilities - 1)])	;
+					}
+					?>
+					<a href="<?php echo $prefix.$phrase; ?>" data-index="<?php echo $counter; ?>"><?php echo preg_replace('/\+/', ' ', $phrase); ?></a>
+					<?
 				}
-				?>
-				<a href="<?php echo $prefix.$phrase; ?>" data-index="<?php echo $counter; ?>"><?php echo preg_replace('/\+/', ' ', $phrase); ?></a>
-				<?
-			}
-		?>
-		</section
+			?>
+			</div>
+		</section>
 
 		<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
 		<script>window.jQuery || document.write('<script src="packages/jquery/jquery.min.js"><\/script>')</script>

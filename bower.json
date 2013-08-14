@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "main": "index.html",
   "dependencies": {
-      "jquery": "latest",
-      "twitter": "latest",
-      "font-awesome": "latest"
+      "jquery": "2.0.3",
+      "twitter": "2.3.2",
+      "less": "1.4.2",
+      "font-awesome": "3.2.1"
   },
   "ignore": [
     "**/.*",
