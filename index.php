@@ -71,7 +71,9 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 		</form>
 
 		<section class="row">
-			<p id="timer" class="span4 offset4"></p>
+			<div id="timer" class="span4 offset4">
+				<div id="statusbar" class="ui-progressbar"><div class="progress-label"></div></div>
+			</div>
 			<h3 id="phrase-heading" class="span11 offset1">Phraselist</h3>
 			<div id="phraselist" class="span10 offset1">
 			<?php
