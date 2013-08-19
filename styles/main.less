@@ -1,6 +1,7 @@
 
 @import "../packages/twitter/less/bootstrap";
 @import "../packages/twitter/less/responsive";
+@import "../packages/font-awesome/less/font-awesome";
 @import "../packages/font-awesome/less/bootstrap";
 
 #phrase-heading{
@@ -26,6 +27,20 @@
 		&.visited{
 			border-color:hsl(0,75%, 50%);
 			backround-color:hsl(0,75%,85%);
+		}
+	}
+}
+
+#login{
+	padding-top:1.5em;
+	color:@grayLight;
+	&.active{
+		color:inherit;
+		a{
+			background-color:#3b579d;
+			background-image:none;
+			position:relative;
+			margin-top:-.25em;
 		}
 	}
 }

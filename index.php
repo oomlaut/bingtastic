@@ -21,17 +21,25 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 		<title>it's bingtastic!</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="robots" content="noindex, nofollow">
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="icon" href="/icons/favicon.png" />
+		<link rel="apple-touch-icon" href="/icons/57.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="/icons/72.png" />
+		<link rel="apple-touch-icon" sizes="144x144" href="/icons/114.png" />
 		<link rel="stylesheet" href="styles/main.css">
 	</head>
 	<body class="container">
 		<!--[if lt IE 7]>
 			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->
+		<div id="fb-root"></div>
 		<hgroup class="row">
-			<h1 class="span11 offset1">it's bingtastic!</h1>
+			<h1 class="span8 offset1">it's bingtastic!</h1>
+			<div id="login" class="span3"></div>
 		</hgroup>
+
 		<form action="/" method="get" class="form-horizontal row">
 			<fieldset>
 				<div class="control-group">
@@ -88,111 +96,13 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 
 		<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
-		<script>
-			(function($){
-				"use strict";
+		<!--
+		<script>window.jQuery || document.write('<script src="scripts/jquery-validate.min.js"><\/script>')</script>
+		-->
 
-				var $phraselist = $("#phraselist").hide();
-				$("#phrase-heading").on("click", function(){
-					if($phraselist.hasClass("active")){
-						$phraselist.removeClass("active").slideUp();
-					} else {
-						$phraselist.addClass("active").slideDown();
-					}
-				});
-
-				$(window).on("load", function(){
-					var timer;
-					var $timer = $("#timer").hide();
-					var $bings = $("a", $phraselist);
-					var $count = $("#bings");
-					var $minTime = $("#min");
-					var $maxTime = $("#max");
-
-					$("#bings, #min, #max").on("change", function(){
-						console.log($(this).val());
-						if($(this).val() < 0 ){
-							$(this).val(0);
-						}
-					});
-
-					// var status;
-					// var $status = $("<div>", {
-					//  id: "status"
-					// }).bind("reset", function(){
-					//  $(this).css({width: 0});
-					//  window.clearInterval(status);
-					// }).on("update", function(e, float){
-					//  // console.log(float);
-					//  float = float * 100;
-					//  $(this).css({width: float + "%"});
-					// }).hide().appendTo("body");
-
-					function getRandom(int){
-						return Math.ceil((Math.random() * int));
-					}
-
-					function getInt(str){
-						return parseInt(str, 10) * 1;
-					}
-
-					function bingMe() {
-						var count = getInt($count.val()) - 1;
-						//refactor
-						// window.clearInterval(status);
-						// var progress = 0;
-						// status = window.setInterval(function(){
-						//  progress = progress + 50;
-						//  $status.trigger("update", progress/time);
-						// }, 50);
-
-
-						window.open($bings.eq(count).addClass("visited").attr("href"), "_newtab");
-
-						$count.val(count);
-
-						if(count === 0){
-							$timer.text("all done.");
-							$stop.trigger("click");
-						} else {
-							var min = getInt($minTime.val());
-							var max = getInt($maxTime.val());
-							var seconds = ( getRandom(max - min)  + min );
-							var time = ( seconds * 1000 );
-
-							$timer.text(seconds + " seconds until the next Bing...");
-							timer = window.setTimeout(bingMe, time);
-						}
-					}
-
-					var $start = $("#bingMe").on("click", function(e){
-						e.preventDefault();
-						// $status.show();
-						$timer.show();
-						$(this).add('input[type="number"], #update').attr({disabled: "disabled"});
-						bingMe();
-					});
-
-					var $stop = $("#stop").on("click", function(e){
-						e.preventDefault();
-						window.clearTimeout(timer);
-						// $status.trigger("reset").hide();
-						$timer.hide();
-						$start.add('input[disabled], #update').removeAttr('disabled');
-					});
-				});
-			})(jQuery);
-		</script>
+		<script src="scripts/main.min.js"></script>
 
 		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		  ga('create', 'UA-1575455-10', 'paulgueller.com');
-		  ga('send', 'pageview');
-
 		</script>
 	</body>
 </html>
