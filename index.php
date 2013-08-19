@@ -21,38 +21,9 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 		<title>it's bingtastic!</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-		<link rel="stylesheet/less" type="text/css" href="packages/twitter/less/bootstrap.less" />
-		<link rel="stylesheet/less" type="text/css" href="packages/twitter/less/responsive.less" />
+		<link rel="stylesheet" href="styles/main.css">
 		<script src="packages/twitter/assets/js/html5shiv.js"></script>
-		<script src="packages/less/dist/less-1.4.2.min.js"></script>
-		<style type="text/css">
-			#phrase-heading{
-				margin-top:1em;
-				margin-bottom:.5em;
-			}
-			#phrase-heading:hover{
-				cursor:pointer;
-				text-decoration:underline;
-			}
-			#phraselist a{
-				display:inline-block;
-				padding:.25em .5em;
-				margin-left:.25em;
-				margin-bottom:.25em;
-				border:1px solid #efefef;
-				text-decoration:none;
-			}
-			#phraselist a:hover{
-				background-color:#efefef;
-			}
-			#phraselist a.visited{
-				border-color:hsl(0,75%, 50%);
-				backround-color:hsl(0,75%,85%);
-			}
-		</style>
 	</head>
 	<body class="container">
 		<!--[if lt IE 7]>
@@ -105,7 +76,7 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 						$phrase .= str_replace(array("\n", "\r"), '', $words[rand(0, $possibilities - 1)])	;
 					}
 					?>
-					<a href="<?php echo $prefix.$phrase; ?>" data-index="<?php echo $counter; ?>"><?php echo preg_replace('/\+/', ' ', $phrase); ?></a>
+					<a href="<?php echo $prefix.$phrase; ?>" data-index="<?php echo $counter; ?>" target="_blank"><?php echo preg_replace('/\+/', ' ', $phrase); ?></a>
 					<?
 				}
 			?>
@@ -114,6 +85,8 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 
 		<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
 		<script>window.jQuery || document.write('<script src="packages/jquery/jquery.min.js"><\/script>')</script>
+
+		<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
 		<script>
 			(function($){

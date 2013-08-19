@@ -1,0 +1,31 @@
+
+@import "../packages/twitter/less/bootstrap";
+@import "../packages/twitter/less/responsive";
+@import "../packages/font-awesome/less/bootstrap";
+
+#phrase-heading{
+	margin-top:1em;
+	margin-bottom:.5em;
+	&:hover{
+		text-decoration:underline;
+		cursor:help;
+	}
+}
+#phraselist{
+	a{
+		display:inline-block;
+		padding:.25em .5em;
+		margin-left:.25em;
+		margin-bottom:.25em;
+		border:1px solid #efefef;
+		text-decoration:none;
+		&:hover{
+			background-color:#efefef;
+		}
+		&:visited,
+		&.visited{
+			border-color:hsl(0,75%, 50%);
+			backround-color:hsl(0,75%,85%);
+		}
+	}
+}
