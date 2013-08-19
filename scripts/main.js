@@ -56,7 +56,7 @@
 
 			window.clearInterval(status);
 			$statusbar.progressbar({ value: 0 });
-			//window.open($bings.eq(count).addClass("visited").attr("href"), "_newtab");
+			window.open($bings.eq(count).addClass("visited").attr("href"), "_newtab");
 
 			$count.val(count);
 
