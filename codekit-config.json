@@ -2,6 +2,15 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8317",
   "files" : {
+    "\/packages\/font-awesome\/src\/_includes\/icons.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/icons.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/packages\/twitter\/js\/bootstrap-alert.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -12,15 +21,6 @@
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/packages\/twitter\/js\/bootstrap-alert.min.js",
       "fileType" : 64
-    },
-    "\/packages\/font-awesome\/src\/_includes\/icons.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/icons.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/font-awesome-ie7.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -63,14 +63,14 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/sprites.less" : {
+    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/responsive.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/sprites.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/sprites.css",
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/responsive.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/responsive.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "strictImports" : 1,
       "ignoreWasSetByUser" : 0,
       "shouldRunBless" : 1,
@@ -80,14 +80,14 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/responsive.less" : {
+    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/sprites.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/responsive.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/responsive.css",
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/sprites.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/sprites.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "strictImports" : 1,
       "ignoreWasSetByUser" : 0,
       "shouldRunBless" : 1,
@@ -148,15 +148,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/index.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/index.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/packages\/twitter\/js\/bootstrap-collapse.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -184,6 +175,15 @@
       "outputStyle" : 2,
       "fileType" : 1,
       "debugStyle" : 0
+    },
+    "\/index.php" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/index.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/packages\/twitter\/less\/navbar.less" : {
       "ieCompatibility" : 1,
@@ -283,6 +283,28 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+    "\/icons\/72.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/icons\/72.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/icons\/72.png",
+      "initialSize" : 9573,
+      "fileType" : 8192
+    },
+    "\/packages\/jquery\/jquery.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/jquery\/jquery.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/packages\/jquery\/jquery.min.min.js",
+      "fileType" : 64
+    },
     "\/packages\/font-awesome\/scss\/_icons.scss" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -294,28 +316,6 @@
       "outputAbbreviatedPath" : "\/packages\/font-awesome\/styles\/_icons.css",
       "fileType" : 4,
       "debugStyle" : 1
-    },
-    "\/packages\/font-awesome\/src\/assets\/img\/glyphicons-halflings.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/img\/glyphicons-halflings.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/img\/glyphicons-halflings.png",
-      "initialSize" : 12799,
-      "fileType" : 8192
-    },
-    "\/icons\/72.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/icons\/72.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/icons\/72.png",
-      "initialSize" : 9573,
-      "fileType" : 8192
     },
     "\/packages\/twitter\/less\/hero-unit.less" : {
       "ieCompatibility" : 1,
@@ -334,16 +334,16 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/jquery\/jquery.min.js" : {
+    "\/packages\/font-awesome\/src\/assets\/img\/glyphicons-halflings.png" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/jquery\/jquery.min.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/packages\/jquery\/jquery.min.min.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/img\/glyphicons-halflings.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/img\/glyphicons-halflings.png",
+      "initialSize" : 12799,
+      "fileType" : 8192
     },
     "\/packages\/twitter\/less\/tables.less" : {
       "ieCompatibility" : 1,
@@ -469,6 +469,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/packages\/font-awesome\/src\/_includes\/examples\/bordered-pulled.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/examples\/bordered-pulled.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/packages\/font-awesome\/src\/assets\/less\/lazy.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/lazy.less",
@@ -486,14 +495,16 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/src\/_includes\/examples\/bordered-pulled.html" : {
+    "\/scripts\/main.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/examples\/bordered-pulled.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/scripts\/main.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/scripts\/main.min.js",
+      "fileType" : 64
     },
     "\/packages\/twitter\/less\/alerts.less" : {
       "ieCompatibility" : 1,
@@ -524,16 +535,22 @@
       "fileType" : 4,
       "debugStyle" : 1
     },
-    "\/scripts\/main.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
+    "\/packages\/twitter\/less\/breadcrumbs.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/breadcrumbs.less",
+      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/breadcrumbs.css",
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/scripts\/main.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/scripts\/main.min.js",
-      "fileType" : 64
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 1,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 1,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 2,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/packages\/font-awesome\/src\/_includes\/whats-new.html" : {
       "ignoreWasSetByUser" : 0,
@@ -560,23 +577,6 @@
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/utilities.less",
       "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/utilities.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 1,
-      "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 1,
-      "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 2,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
-    "\/packages\/twitter\/less\/breadcrumbs.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/breadcrumbs.less",
-      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/breadcrumbs.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -727,6 +727,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/packages\/font-awesome\/src\/_includes\/ads\/carbon-light-horizontal.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/ads\/carbon-light-horizontal.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/packages\/font-awesome\/less\/icons.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/packages\/font-awesome\/less\/icons.less",
@@ -744,14 +753,17 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/src\/_includes\/ads\/carbon-light-horizontal.html" : {
+    "\/packages\/font-awesome\/scss\/_extras.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/ads\/carbon-light-horizontal.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/scss\/_extras.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/styles\/_extras.css",
+      "fileType" : 4,
+      "debugStyle" : 1
     },
     "\/packages\/font-awesome\/src\/assets\/js\/ZeroClipboard-1.1.7.min.js" : {
       "ignoreWasSetByUser" : 1,
@@ -763,23 +775,6 @@
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/js\/ZeroClipboard-1.1.7.min.min.js",
       "fileType" : 64
-    },
-    "\/packages\/twitter\/less\/utilities.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/utilities.less",
-      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/utilities.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 1,
-      "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 1,
-      "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 2,
-      "fileType" : 1,
-      "debugStyle" : 0
     },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/thumbnails.less" : {
       "ieCompatibility" : 1,
@@ -852,10 +847,10 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/twitter\/less\/reset.less" : {
+    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/forms.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/reset.less",
-      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/reset.css",
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/forms.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/forms.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -869,10 +864,10 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/forms.less" : {
+    "\/packages\/twitter\/less\/utilities.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/forms.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/forms.css",
+      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/utilities.less",
+      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/utilities.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -954,17 +949,22 @@
       "fileType" : 4,
       "debugStyle" : 1
     },
-    "\/packages\/font-awesome\/scss\/_extras.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
+    "\/packages\/twitter\/less\/reset.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/reset.less",
+      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/reset.css",
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/scss\/_extras.scss",
-      "outputStyle" : 0,
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 1,
+      "ignoreWasSetByUser" : 0,
       "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/styles\/_extras.css",
-      "fileType" : 4,
-      "debugStyle" : 1
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 2,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/responsive-768px-979px.less" : {
       "ieCompatibility" : 1,
@@ -983,6 +983,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/packages\/font-awesome\/src\/_includes\/jumbotron-slider.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/jumbotron-slider.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/packages\/jquery\/jquery-migrate.min.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -993,15 +1002,6 @@
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/packages\/jquery\/jquery-migrate.min.min.js",
       "fileType" : 64
-    },
-    "\/packages\/font-awesome\/src\/_includes\/examples\/navigation.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/examples\/navigation.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/packages\/jquery\/jquery-migrate.js" : {
       "ignoreWasSetByUser" : 1,
@@ -1014,12 +1014,12 @@
       "outputAbbreviatedPath" : "\/packages\/jquery\/jquery-migrate.min.js",
       "fileType" : 64
     },
-    "\/packages\/font-awesome\/src\/_includes\/jumbotron-slider.html" : {
+    "\/packages\/font-awesome\/src\/_includes\/examples\/navigation.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/jumbotron-slider.html",
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/examples\/navigation.html",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -1032,10 +1032,10 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/mixins.less" : {
+    "\/packages\/font-awesome\/less\/mixins.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/mixins.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/mixins.css",
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/less\/mixins.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/less\/mixins.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -1066,10 +1066,10 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/less\/mixins.less" : {
+    "\/packages\/font-awesome\/src\/assets\/less\/responsive-navbar.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/less\/mixins.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/less\/mixins.css",
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/responsive-navbar.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/responsive-navbar.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -1083,10 +1083,10 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/src\/assets\/less\/responsive-navbar.less" : {
+    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/mixins.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/responsive-navbar.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/responsive-navbar.css",
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/mixins.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/mixins.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -1282,15 +1282,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/channel.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/channel.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/navs.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/navs.less",
@@ -1318,6 +1309,15 @@
       "syntaxCheckerStyle" : 1,
       "outputAbbreviatedPath" : "\/scripts\/social.min.js",
       "fileType" : 64
+    },
+    "\/channel.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/channel.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/variables.less" : {
       "ieCompatibility" : 1,
@@ -1355,6 +1355,23 @@
       "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/get-started.html",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
+    },
+    "\/packages\/font-awesome\/src\/assets\/font-awesome\/less\/font-awesome-ie7.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/less\/font-awesome-ie7.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/less\/font-awesome-ie7.css",
+      "outputPathIsSetByUser" : 0,
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 0,
+      "strictImports" : 1,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 1,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 2,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/responsive-navbar.less" : {
       "ieCompatibility" : 1,
@@ -1410,22 +1427,14 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/src\/assets\/font-awesome\/less\/font-awesome-ie7.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/less\/font-awesome-ie7.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/less\/font-awesome-ie7.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 0,
-      "strictImports" : 1,
+    "\/packages\/font-awesome\/src\/assets\/css\/prettify.css" : {
       "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 1,
+      "ignore" : 0,
       "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 2,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/css\/prettify.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/packages\/font-awesome\/src\/_includes\/examples\/rotated-flipped.html" : {
       "ignoreWasSetByUser" : 0,
@@ -1445,31 +1454,25 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/packages\/font-awesome\/src\/assets\/css\/prettify.css" : {
+    "\/packages\/font-awesome\/src\/_includes\/icons\/video-player.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/css\/prettify.css",
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/icons\/video-player.html",
       "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "fileType" : 2048
     },
-    "\/packages\/twitter\/less\/popovers.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/popovers.less",
-      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/popovers.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 1,
+    "\/packages\/font-awesome\/src\/assets\/img\/contribution-sample.png" : {
       "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 1,
+      "ignore" : 0,
       "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 2,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/img\/contribution-sample.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/img\/contribution-sample.png",
+      "initialSize" : 2441,
+      "fileType" : 8192
     },
     "\/packages\/twitter\/less\/responsive.less" : {
       "ieCompatibility" : 1,
@@ -1488,15 +1491,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/src\/_includes\/icons\/video-player.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/icons\/video-player.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/responsive-utilities.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/responsive-utilities.less",
@@ -1514,10 +1508,27 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/twitter\/less\/responsive-767px-max.less" : {
+    "\/packages\/twitter\/less\/popovers.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/responsive-767px-max.less",
-      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/responsive-767px-max.css",
+      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/popovers.less",
+      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/popovers.css",
+      "outputPathIsSetByUser" : 0,
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 1,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 1,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 2,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
+    "\/packages\/font-awesome\/less\/variables.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/less\/variables.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/less\/variables.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -1559,21 +1570,10 @@
       "outputAbbreviatedPath" : "\/packages\/twitter\/js\/bootstrap-modal.min.js",
       "fileType" : 64
     },
-    "\/packages\/font-awesome\/src\/assets\/img\/contribution-sample.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/img\/contribution-sample.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/img\/contribution-sample.png",
-      "initialSize" : 2441,
-      "fileType" : 8192
-    },
-    "\/packages\/font-awesome\/less\/variables.less" : {
+    "\/packages\/twitter\/less\/responsive-767px-max.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/less\/variables.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/less\/variables.css",
+      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/responsive-767px-max.less",
+      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/responsive-767px-max.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -1608,23 +1608,14 @@
       "fileType" : 4,
       "debugStyle" : 1
     },
-    "\/packages\/font-awesome\/css\/font-awesome-ie7.min.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/css\/font-awesome-ie7.min.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
-    "\/packages\/font-awesome\/src\/_includes\/license-code.less" : {
+    "\/packages\/twitter\/less\/variables.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/license-code.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/license-code.css",
+      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/variables.less",
+      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/variables.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "strictImports" : 1,
       "ignoreWasSetByUser" : 0,
       "shouldRunBless" : 1,
@@ -1634,18 +1625,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/_core.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/_core.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/styles\/_core.css",
-      "fileType" : 4,
-      "debugStyle" : 1
-    },
     "\/packages\/font-awesome\/less\/path.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/packages\/font-awesome\/less\/path.less",
@@ -1654,6 +1633,23 @@
       "strictUnits" : 0,
       "relativeURLS" : 0,
       "ignore" : 1,
+      "strictImports" : 1,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 1,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 2,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
+    "\/packages\/font-awesome\/src\/_includes\/license-code.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/license-code.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/license-code.css",
+      "outputPathIsSetByUser" : 0,
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 0,
       "strictImports" : 1,
       "ignoreWasSetByUser" : 0,
       "shouldRunBless" : 1,
@@ -1680,22 +1676,14 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/twitter\/less\/variables.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/variables.less",
-      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/variables.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 1,
+    "\/packages\/font-awesome\/css\/font-awesome-ie7.min.css" : {
       "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 1,
+      "ignore" : 0,
       "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 2,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/css\/font-awesome-ie7.min.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/packages\/font-awesome\/src\/assets\/less\/responsive-1200px-min.less" : {
       "ieCompatibility" : 1,
@@ -1713,6 +1701,18 @@
       "outputStyle" : 2,
       "fileType" : 1,
       "debugStyle" : 0
+    },
+    "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/_core.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/_core.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/styles\/_core.css",
+      "fileType" : 4,
+      "debugStyle" : 1
     },
     "\/packages\/font-awesome\/src\/assets\/font-awesome\/less\/font-awesome.less" : {
       "ieCompatibility" : 1,
@@ -1899,10 +1899,19 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/dropdowns.less" : {
+    "\/packages\/font-awesome\/src\/cheatsheet.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/cheatsheet.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/packages\/twitter\/less\/sprites.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/dropdowns.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/dropdowns.css",
+      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/sprites.less",
+      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/sprites.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -1915,15 +1924,6 @@
       "outputStyle" : 2,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/packages\/font-awesome\/src\/cheatsheet.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/cheatsheet.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/styles\/main.less" : {
       "ieCompatibility" : 1,
@@ -1942,10 +1942,10 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/twitter\/less\/sprites.less" : {
+    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/dropdowns.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/sprites.less",
-      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/sprites.css",
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/dropdowns.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/dropdowns.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -1997,14 +1997,22 @@
       "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/js\/bootstrap-2.3.1.min.min.js",
       "fileType" : 64
     },
-    "\/packages\/font-awesome\/css\/font-awesome.min.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
+    "\/packages\/font-awesome\/less\/extras.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/less\/extras.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/less\/extras.css",
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/css\/font-awesome.min.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 1,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 1,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 2,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/packages\/font-awesome\/src\/assets\/js\/site.js" : {
       "ignoreWasSetByUser" : 1,
@@ -2047,22 +2055,14 @@
       "fileType" : 4,
       "debugStyle" : 1
     },
-    "\/packages\/font-awesome\/less\/extras.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/less\/extras.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/less\/extras.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 1,
+    "\/packages\/font-awesome\/css\/font-awesome.min.css" : {
       "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 1,
+      "ignore" : 0,
       "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 2,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/css\/font-awesome.min.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/packages\/font-awesome\/src\/community.html" : {
       "ignoreWasSetByUser" : 0,
@@ -2135,10 +2135,10 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/less\/font-awesome.less" : {
+    "\/packages\/twitter\/less\/media.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/less\/font-awesome.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/less\/font-awesome.css",
+      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/media.less",
+      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/media.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -2152,10 +2152,10 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/twitter\/less\/media.less" : {
+    "\/packages\/font-awesome\/less\/font-awesome.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/media.less",
-      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/media.css",
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/less\/font-awesome.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/less\/font-awesome.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -2280,6 +2280,17 @@
       "initialSize" : 8777,
       "fileType" : 8192
     },
+    "\/packages\/twitter\/js\/bootstrap-tab.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/twitter\/js\/bootstrap-tab.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/packages\/twitter\/js\/bootstrap-tab.min.js",
+      "fileType" : 64
+    },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/accordion.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/accordion.less",
@@ -2297,17 +2308,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/twitter\/js\/bootstrap-tab.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/twitter\/js\/bootstrap-tab.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/packages\/twitter\/js\/bootstrap-tab.min.js",
-      "fileType" : 64
-    },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/responsive-767px-max.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/responsive-767px-max.less",
@@ -2324,18 +2324,6 @@
       "outputStyle" : 2,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/_path.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/_path.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/styles\/_path.css",
-      "fileType" : 4,
-      "debugStyle" : 1
     },
     "\/packages\/font-awesome\/scss\/_core.scss" : {
       "ignoreWasSetByUser" : 0,
@@ -2366,6 +2354,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/packages\/font-awesome\/css\/font-awesome-ie7.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/css\/font-awesome-ie7.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/tooltip.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/tooltip.less",
@@ -2383,14 +2380,17 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/css\/font-awesome-ie7.css" : {
+    "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/_path.scss" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/css\/font-awesome-ie7.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/_path.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/styles\/_path.css",
+      "fileType" : 4,
+      "debugStyle" : 1
     },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/carousel.less" : {
       "ieCompatibility" : 1,
@@ -2487,6 +2487,15 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+    "\/packages\/font-awesome\/src\/_includes\/tell-me-thanks.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/tell-me-thanks.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/packages\/twitter\/less\/mixins.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/packages\/twitter\/less\/mixins.less",
@@ -2503,15 +2512,6 @@
       "outputStyle" : 2,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/packages\/font-awesome\/src\/_includes\/tell-me-thanks.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/tell-me-thanks.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/layouts.less" : {
       "ieCompatibility" : 1,
@@ -2590,10 +2590,10 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/packages\/twitter\/less\/type.less" : {
+    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/buttons.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/type.less",
-      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/type.css",
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/buttons.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/buttons.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -2617,15 +2617,6 @@
       "outputAbbreviatedPath" : "\/icons\/57.png",
       "initialSize" : 6636,
       "fileType" : 8192
-    },
-    "\/packages\/font-awesome\/src\/_includes\/why.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/why.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/progress-bars.less" : {
       "ieCompatibility" : 1,
@@ -2661,6 +2652,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/packages\/font-awesome\/src\/_includes\/why.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/why.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/packages\/font-awesome\/src\/assets\/js\/bootstrap-222.min.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -2672,10 +2672,10 @@
       "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/js\/bootstrap-222.min.min.js",
       "fileType" : 64
     },
-    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/buttons.less" : {
+    "\/packages\/twitter\/less\/type.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/buttons.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/buttons.css",
+      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/type.less",
+      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/type.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -2715,10 +2715,10 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/scaffolding.less" : {
+    "\/packages\/twitter\/less\/code.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/scaffolding.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/scaffolding.css",
+      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/code.less",
+      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/code.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -2743,23 +2743,6 @@
       "outputAbbreviatedPath" : "\/packages\/jquery\/jquery.min.js",
       "fileType" : 64
     },
-    "\/packages\/font-awesome\/src\/assets\/less\/sticky-footer.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/sticky-footer.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/sticky-footer.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 1,
-      "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 1,
-      "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 2,
-      "fileType" : 1,
-      "debugStyle" : 0
-    },
     "\/packages\/font-awesome\/src\/_includes\/navbar.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -2769,10 +2752,21 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/packages\/twitter\/less\/code.less" : {
+    "\/packages\/twitter\/js\/bootstrap-affix.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/twitter\/js\/bootstrap-affix.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 1,
+      "outputAbbreviatedPath" : "\/packages\/twitter\/js\/bootstrap-affix.min.js",
+      "fileType" : 64
+    },
+    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/scaffolding.less" : {
       "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/twitter\/less\/code.less",
-      "outputAbbreviatedPath" : "\/packages\/twitter\/less\/code.css",
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/scaffolding.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/scaffolding.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -2803,16 +2797,22 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/packages\/twitter\/js\/bootstrap-affix.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
+    "\/packages\/font-awesome\/src\/assets\/less\/sticky-footer.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/sticky-footer.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/sticky-footer.css",
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/twitter\/js\/bootstrap-affix.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 1,
-      "outputAbbreviatedPath" : "\/packages\/twitter\/js\/bootstrap-affix.min.js",
-      "fileType" : 64
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 1,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 1,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 2,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/packages\/font-awesome\/src\/_includes\/stripe-social.html" : {
       "ignoreWasSetByUser" : 0,
@@ -3002,6 +3002,18 @@
       "initialSize" : 114822,
       "fileType" : 4096
     },
+    "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/_mixins.scss" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/_mixins.scss",
+      "outputStyle" : 0,
+      "shouldRunBless" : 1,
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/styles\/_mixins.css",
+      "fileType" : 4,
+      "debugStyle" : 1
+    },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/bootstrap.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/bootstrap.less",
@@ -3018,18 +3030,6 @@
       "outputStyle" : 2,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/_mixins.scss" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/scss\/_mixins.scss",
-      "outputStyle" : 0,
-      "shouldRunBless" : 1,
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/font-awesome\/styles\/_mixins.css",
-      "fileType" : 4,
-      "debugStyle" : 1
     },
     "\/packages\/twitter\/less\/close.less" : {
       "ieCompatibility" : 1,
@@ -3076,6 +3076,32 @@
       "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/js\/backbone.min.min.js",
       "fileType" : 64
     },
+    "\/styles\/main.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/styles\/main.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
+    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/tables.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/tables.less",
+      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/tables.css",
+      "outputPathIsSetByUser" : 0,
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 1,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 1,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 2,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
     "\/packages\/twitter\/less\/progress-bars.less" : {
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/packages\/twitter\/less\/progress-bars.less",
@@ -3092,24 +3118,6 @@
       "outputStyle" : 2,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/styles\/main.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/styles\/main.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
-    "\/packages\/font-awesome\/src\/_includes\/cheatsheet.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/cheatsheet.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/reset.less" : {
       "ieCompatibility" : 1,
@@ -3137,22 +3145,14 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/tables.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/tables.less",
-      "outputAbbreviatedPath" : "\/packages\/font-awesome\/src\/assets\/less\/bootstrap-2.3.2\/tables.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 1,
+    "\/packages\/font-awesome\/src\/_includes\/cheatsheet.html" : {
       "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 1,
+      "ignore" : 0,
       "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 2,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/packages\/font-awesome\/src\/_includes\/cheatsheet.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/packages\/font-awesome\/src\/_includes\/icons\/text-editor.html" : {
       "ignoreWasSetByUser" : 0,
