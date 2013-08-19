@@ -23,7 +23,6 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 		<link rel="stylesheet" href="styles/main.css">
-		<script src="packages/twitter/assets/js/html5shiv.js"></script>
 	</head>
 	<body class="container">
 		<!--[if lt IE 7]>
@@ -108,6 +107,13 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 					var $count = $("#bings");
 					var $minTime = $("#min");
 					var $maxTime = $("#max");
+
+					$("#bings, #min, #max").on("change", function(){
+						console.log($(this).val());
+						if($(this).val() < 0 ){
+							$(this).val(0);
+						}
+					});
 
 					// var status;
 					// var $status = $("<div>", {
