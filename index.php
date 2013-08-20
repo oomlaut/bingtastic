@@ -36,11 +36,12 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 		<![endif]-->
 		<div id="fb-root"></div>
 		<hgroup class="row">
-			<h1 class="span8 offset1">it's bingtastic!</h1>
+			<h1 class="span8 offset1">bingtastic!</h1>
 			<div id="login" class="span3"></div>
 		</hgroup>
-
-		<form action="/" method="get" class="form-horizontal row">
+		<section class="row">
+		<form action="/" method="get" class="form-horizontal span6">
+			<h2 class="offset1">Automate Searches</h2>
 			<fieldset>
 				<div class="control-group">
 					<label for="bings" class="control-label" >Bings:</label>
@@ -69,6 +70,13 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 				</div>
 			</fieldset>
 		</form>
+		<div class="span5 offset1">
+			<h2>Get rewarded for &ldquo;using&rdquo; Bing</h2>
+			<p><a href="http://go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5">Sign up</a> and start earning points that you can turn into Amazon gift cards, Starbucks, Hulu Plus or Redbox rentals.</p>
+			<h3>Search Daily</h3>
+			<p>Earn between 15 and 30+ points every day and <a href="http://www.bing.com/rewards/redeem/all">redeem them for one of many great offers</a>, or even donate them to a charity. </p>
+		</div>
+		</section>
 
 		<section class="row">
 			<div id="timer" class="span4 offset4">
