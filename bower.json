@@ -1,13 +1,15 @@
 {
-  "name": "bing",
-  "version": "0.0.1",
-  "main": "index.html",
-  "dependencies": {
-      "jquery":       "2.0.3",
-      "jquery-ui":    "1.10.3",
-      "twitter":      "2.3.2",
-      "font-awesome": "3.2.1"
-  },
+  "name": "bingtastic",
+  "version": "1.0.0",
+  "description": "Search automation for maximizing your Bing Rewards potential.",
+  "authors": [
+    "Paul Gueller <paul.gueller@7summitsagency.com>",
+    "Ivan Eisenberg <ivan.eisenberg@7summitsagency.com>"
+  ],
+  "main": "index.php",
+  "license": "MIT",
+  "homepage": "http://bingtastic.projects.paulgueller.com",
+  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,5 +17,11 @@
     "packages",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+      "jquery":       "2.0.3",
+      "jquery-ui":    "1.10.3",
+      "twitter":      "2.3.2",
+      "font-awesome": "3.2.1"
+  }
 }
