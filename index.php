@@ -8,6 +8,8 @@ if(file_exists($filename)){
 $bings = (isset($_GET["bings"])) ? $_GET["bings"] : 30 ;
 $min = (isset($_GET["min"])) ? $_GET["min"] : 5 ;
 $max = (isset($_GET["max"])) ? $_GET["max"] : 15 ;
+$minwords = 2;
+$maxwords = 4;
 $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 
 ?><!DOCTYPE html>
@@ -36,12 +38,23 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 		<![endif]-->
 		<div id="fb-root"></div>
 		<hgroup class="row">
-			<h1 class="span8 offset1">bingtastic!</h1>
+			<h1 class="span8">bingtastic!</h1>
 			<div id="login" class="span3"></div>
 		</hgroup>
 		<section class="row">
-		<form action="/" method="get" class="form-horizontal span6">
-			<h2 class="offset1">Automate Searches</h2>
+
+		<div class="span6">
+			<h2>Get Rewarded for &ldquo;Using&rdquo; <a href="http://go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5">bing</a></h2>
+			<p><a href="http://go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5">Sign up</a> and start earning points that you can turn into contest entries, Amazon or Starbucks gift cards, Hulu Plus subscription, or Redbox rentals. </p>
+			<h3>&ldquo;But, I Like <abbr title='Does it rhyme with "Moogle"?'>[Other Search Engine]</abbr> Better&hellip;&rdquo;</abbr></h3>
+			<p>That&rsquo;s where <em>bingtastic</em> comes in. Make sure you are logged in to Facebook, then use the fields provided to automate your bing queries.</p>
+			<p>We&rsquo;ll generate as many <?php echo $minwords; ?>-<?php echo $maxwords; ?> word phrases as you need, then open up a new tab next door to help you get those precious, precious points.</p>
+			<h3>Search Daily</h3>
+			<p>Earn from 15 to more than 30 points every day and <a href="http://www.bing.com/rewards/redeem/all">redeem them for one of many great offers</a>, or even donate them to a charity.</p>
+		</div>
+
+		<form action="/" method="get" class="form-horizontal span5 offset1 row">
+			<h2>Automate Searches</h2>
 			<fieldset>
 				<div class="control-group">
 					<label for="bings" class="control-label" >Bings:</label>
@@ -69,27 +82,23 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 					</div>
 				</div>
 			</fieldset>
+
+			<div id="timer" >
+				<div id="statusbar" class="ui-progressbar"><div class="progress-label"></div></div>
+			</div>
 		</form>
-		<div class="span5 offset1">
-			<h2>Get rewarded for &ldquo;using&rdquo; Bing</h2>
-			<p><a href="http://go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5">Sign up</a> and start earning points that you can turn into Amazon gift cards, Starbucks, Hulu Plus or Redbox rentals.</p>
-			<h3>Search Daily</h3>
-			<p>Earn between 15 and 30+ points every day and <a href="http://www.bing.com/rewards/redeem/all">redeem them for one of many great offers</a>, or even donate them to a charity. </p>
-		</div>
+
 		</section>
 
 		<section class="row">
-			<div id="timer" class="span4 offset4">
-				<div id="statusbar" class="ui-progressbar"><div class="progress-label"></div></div>
-			</div>
-			<h3 id="phrase-heading" class="span11 offset1">Phraselist</h3>
-			<div id="phraselist" class="span10 offset1">
+			<h3 id="phrase-heading" class="span12">Phraselist (<?php echo $bings; ?>)</h3>
+			<div id="phraselist" class="span12">
 			<?php
 				$counter = 0;
 				while($counter < $bings){
 					$counter += 1;
 					$phrase = "";
-					for ($i = 0; $i <= rand(1,5); $i++){
+					for ($i = 0; $i < rand($minwords,$maxwords); $i++){
 						if($i != 0){ $phrase .= "+"; }
 						$phrase .= str_replace(array("\n", "\r"), '', $words[rand(0, $possibilities - 1)])	;
 					}

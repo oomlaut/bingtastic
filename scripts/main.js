@@ -9,11 +9,8 @@
 
 	var $phraselist = $("#phraselist").hide();
 	$("#phrase-heading").on("click", function(){
-		if($phraselist.hasClass("active")){
-			$phraselist.removeClass("active").slideUp();
-		} else {
-			$phraselist.addClass("active").slideDown();
-		}
+		$(this).toggleClass("active");
+		$phraselist.toggleClass("active").slideToggle();
 	});
 
 	var $statusbar = $("#statusbar").progressbar({ max: 100 });
@@ -29,7 +26,7 @@
 		var $maxTime = $("#max");
 
 		$("#bings, #min, #max").on("change", function(){
-			console.log($(this).val());
+			// console.log($(this).val());
 			if($(this).val() < 0 ){
 				$(this).val(0);
 			}
@@ -44,7 +41,7 @@
 		}
 
 		function bingMe() {
-			console.log("bingme");
+			// console.log("bingme");
 			var count = getInt($count.val()) - 1;
 			//refactor
 			// window.clearInterval(status);
