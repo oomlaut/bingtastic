@@ -68,7 +68,7 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 						</div>
 					</div>
 
-					<p class="heading toggle-control">Change intervals</p>
+					<p class="heading toggle-control">Change delay interval</p>
 					<div id="intervals" class="toggle">
 						<div class="control-group">
 							<label for="delay" class="control-label" >Delay:</label>
