@@ -3,6 +3,8 @@ $filename = "wordlist.csv";
 if(file_exists($filename)){
 	$words = explode("\n", file_get_contents($filename, true));
 	$possibilities = count($words);
+} else {
+	die("$filename does not exist.");
 }
 
 $bings = (isset($_GET["bings"])) ? $_GET["bings"] : 30 ;

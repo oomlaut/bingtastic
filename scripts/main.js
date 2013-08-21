@@ -8,10 +8,12 @@
 
 
 	var $phraselist = $("#phraselist").hide();
+
 	$("#phrase-heading").on("click", function(){
 		$(this).toggleClass("active");
 		$phraselist.toggleClass("active").slideToggle();
-	});
+		$("i.icon", $(this)).toggleClass("icon icon-expand-alt").toggleClass("icon icon-collapse-alt")
+	}).prepend($("<i>", {"class": "icon icon-expand-alt"}));
 
 	var $statusbar = $("#statusbar").progressbar({ max: 100 });
 
