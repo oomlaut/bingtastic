@@ -1,8 +1,10 @@
 //@codekit-prepend "social.js";
 //@codekit-prepend "../packages/jquery-ui/ui/minified/jquery.ui.core.min.js"
 //@codekit-prepend "../packages/jquery-ui/ui/minified/jquery.ui.widget.min.js"
+//@codekit-prepend "../packages/jquery-ui/ui/minified/jquery.ui.mouse.min.js"
 //@codekit-prepend "../packages/jquery-ui/ui/minified/jquery.ui.progressbar.min.js"
-//
+//@codekit-prepend "../packages/jquery-ui/ui/minified/jquery.ui.slider.min.js"
+
 (function($){
 	"use strict";
 
@@ -13,6 +15,25 @@
 		$("i.icon", $(this)).toggleClass("icon icon-expand-alt").toggleClass("icon icon-collapse-alt");
 	}).prepend($("<i>", {"class": "icon icon-expand-alt"}));
 
+	var $range = $("#delay");
+
+	var $slider = $( "#slider-range" ).slider({
+		range: true,
+		animate: true,
+		min: $range.attr("data-min") * 1,
+		max: $range.attr("data-max") * 1,
+		values: [ 5, 15 ],
+		slide: function( event, ui ) {
+			$range.val( ui.values[ 0 ] + " - " + ui.values[ 1 ] ).data({
+				min: ui.values[ 0 ],
+				max: ui.values[ 1 ]
+			});
+		}
+	});
+	$range.data({
+		min: $slider.slider( "values", 0 ),
+		max: $slider.slider( "values", 1 )
+	});
 
 	var status = false;
 	var $container = $("#automate");
@@ -39,8 +60,7 @@
 		var timer = false;
 		var $bings = $("#phraselist a");
 		var $count = $("#bings");
-		var $minTime = $("#min");
-		var $maxTime = $("#max");
+		var $delay = $("#delay");
 
 		$("#bings, #min, #max").on("change", function(){
 			var $this = $(this);
@@ -81,8 +101,8 @@
 				$timer.text("all done.");
 				$stop.trigger("click");
 			} else {
-				var min = getInt($minTime.val());
-				var max = getInt($maxTime.val());
+				var min = getInt($delay.data("min"));
+				var max = getInt($delay.data("max"));
 				var seconds = ( getRandom(max - min)  + min );
 				var time = ( seconds * 1000 );
 

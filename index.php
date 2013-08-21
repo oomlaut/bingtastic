@@ -7,9 +7,8 @@ if(file_exists($filename)){
 	die("$filename does not exist.");
 }
 
-$bings = (isset($_GET["bings"])) ? $_GET["bings"] : 30 ;
-$min = (isset($_GET["min"])) ? $_GET["min"] : 5 ;
-$max = (isset($_GET["max"])) ? $_GET["max"] : 15 ;
+$bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30 ;
+
 $minwords = 2;
 $maxwords = 4;
 $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
@@ -65,22 +64,22 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 					<div class="control-group">
 						<label for="bings" class="control-label" >Bings:</label>
 						<div class="controls">
-							<input name="bings" id="bings" class="input-mini" type="number" data-default="<?php echo $bings; ?>" value="<?php echo $bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
+							<input name="bings" id="bings" class="input-mini" type="number" step="1" min="" data-default="<?php echo $bings; ?>" value="<?php echo $bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
 						</div>
 					</div>
 
 					<p class="heading toggle-control">Change intervals</p>
 					<div id="intervals" class="toggle">
 						<div class="control-group">
-							<label for="min" class="control-label" >Minimum Delay:</label>
+							<label for="delay" class="control-label" >Delay:</label>
 							<div class="controls">
-								<input name="min" id="min" class="input-mini" type="number" data-default="<?php echo $min; ?>" value="<?php echo $min; ?>" title="minimum delay" required>
+								<div class="input-append">
+									<input id="delay" class="input-mini" type="text" data-min="1" data-max="30" value="5 - 15" title="minimum delay" required readonly>
+									<span class="add-on">seconds</span>
+								</div>
 							</div>
-						</div>
-						<div class="control-group">
-							<label for="max" class="control-label" >Maximum Delay:</label>
 							<div class="controls">
-								<input name="max" id="max" class="input-mini" type="number" data-default="<?php echo $max; ?>" value="<?php echo $max; ?>" title="maximum delay" required>
+								<div id="slider-range"></div>
 							</div>
 						</div>
 					</div>
