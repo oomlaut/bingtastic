@@ -36,8 +36,7 @@
 	});
 
 	var status = false;
-	var $container = $("#automate");
-	var $timer = $("<div>", {id: "timer"}).appendTo($container).hide();
+	var $timer = $("<div>", {id: "timer"}).hide();
 	var $statusbar = $("<div>", {id: "statusbar"})
 		.append($("<div>", {"class": "progress-label"}))
 		.on("update", function(e, data){
@@ -53,8 +52,8 @@
 			window.clearInterval(status);
 			$(this).progressbar({ value: 0 });
 		})
-		.appendTo($timer)
 		.progressbar({ max: 100 });
+	$("#standard").before($timer);
 
 	$(window).on("load", function(){
 		var timer = false;
