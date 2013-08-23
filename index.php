@@ -1,17 +1,83 @@
 <?php
-$filename = "wordlist.csv";
-if(file_exists($filename)){
-	$words = explode("\n", file_get_contents($filename, true));
-	$possibilities = count($words);
-} else {
-	die("$filename does not exist.");
+
+class BingMe{
+	private $filename = "wordlist.csv";
+	private $bings = 0;
+	private $words = array();
+	private $minwords;
+	private $maxwords;
+	private $possibilities = 0;
+	private $prefixes = array(
+		"http://www.bing.com/search?setmkt=en-US&q=",
+		"http://www.bing.com/images/search?q=",
+		"http://www.bing.com/videos/search?q=",
+		// "http://www.bing.com/maps/default.aspx?mkt=en&q=",
+		"http://www.bing.com/news/search?q=",
+		//"http://www.bing.com/events/search?q=",
+		//"http://www.bing.com/friendsphotos/search?q="
+		"http://www.bing.com/explore?q="
+	);
+	private $sepChar = '+';
+
+	public function __construct($bings, $min = 1, $max = 6){
+
+		if(file_exists($this->filename)){
+			$this->words = explode("\n", file_get_contents($this->filename, true));
+			$this->possibilities = count($this->words);
+			$this->bings = $bings;
+			$this->minwords = $min;
+			$this->maxwords = $max;
+		} else {
+			die("$filename does not exist.");
+		}
+
+	}
+
+	public function __toString(){
+		$counter = 0;
+		$string = '';
+		while($counter < $this->bings){
+			$counter += 1;
+			$phrase = $this->newPhrase();
+			$string .= '<a href="' . $phrase["prefix"] . $phrase["query"] . '" data-index="' . $counter . '" target="_blank">' . $phrase["text"] . '</a>';
+		}
+		return $string;
+	}
+
+	public function __get($name){
+	    if (isset($this->$name)) {
+	        return $this->$name;
+	    }
+	    return null;
+	}
+
+	private function getPrefix(){
+		$index = rand(0, count($this->prefixes) - 1);
+		return $this->prefixes[$index];
+	}
+
+	private function getPhrase(){
+		$phrase = "";
+		for ($i = 0; $i < rand($this->minwords,$this->maxwords); $i++){
+			if($i != 0){
+				$phrase .= $this->sepChar;
+			}
+			$phrase .= str_replace(array("\n", "\r"), '', $this->words[rand(0, $this->possibilities - 1)])	;
+		}
+		return $phrase;
+	}
+
+	private function newPhrase(){
+		$phrase = $this->getPhrase();
+		return array(
+			"prefix" => $this->getPrefix(),
+			"query" => $phrase,
+			"text" => preg_replace('/\\' . $this->sepChar . '/', ' ', $phrase)
+		);
+	}
 }
 
-$bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30 ;
-
-$minwords = 2;
-$maxwords = 4;
-$prefix = "http://www.bing.com/search?setmkt=en-US&q=";
+$bingMe = new BingMe((isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30 , 2, 4);
 
 ?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -52,7 +118,7 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 
 				<h3>&ldquo;But, I Like <abbr title='Does it rhyme with "Moogle"?'>[Other Search Engine]</abbr> Better&hellip;&rdquo;</abbr></h3>
 				<p>That&rsquo;s where <em>bingtastic</em> comes in. Make sure you are logged in to Facebook, then use the fields provided to automate your bing queries.</p>
-				<p>We&rsquo;ll generate as many <?php echo $minwords; ?>-<?php echo $maxwords; ?> word phrases as you need, then open up a new tab next door to help you get those precious, precious points.</p>
+				<p>We&rsquo;ll generate as many <?php echo $bingMe->minwords; ?>-<?php echo $bingMe->maxwords; ?> word phrases as you need, then open up a new tab next door to help you get those precious, precious points.</p>
 
 				<h3>Search Daily</h3>
 				<p>Earn from 15 to more than 30 points every day and <a href="http://www.bing.com/rewards/redeem/all">redeem them for one of many great offers</a>, or even donate them to a charity.</p>
@@ -64,7 +130,7 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 					<div class="control-group">
 						<label for="bings" class="control-label" >Bings:</label>
 						<div class="controls">
-							<input name="bings" id="bings" class="input-mini" type="number" step="1" min="" data-default="<?php echo $bings; ?>" value="<?php echo $bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
+							<input name="bings" id="bings" class="input-mini" type="number" step="1" min="" data-default="<?php echo $bingMe->bings; ?>" value="<?php echo $bingMe->bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
 						</div>
 					</div>
 
@@ -103,22 +169,9 @@ $prefix = "http://www.bing.com/search?setmkt=en-US&q=";
 		</section>
 
 		<section class="row">
-			<h3 id="phrase-heading" class="span12 toggle-control">Phraselist (<?php echo $bings; ?>)</h3>
+			<h3 id="phrase-heading" class="span12 toggle-control">Phraselist (<?php echo $bingMe->bings; ?>)</h3>
 			<div id="phraselist" class="span12 toggle">
-			<?php
-				$counter = 0;
-				while($counter < $bings){
-					$counter += 1;
-					$phrase = "";
-					for ($i = 0; $i < rand($minwords,$maxwords); $i++){
-						if($i != 0){ $phrase .= "+"; }
-						$phrase .= str_replace(array("\n", "\r"), '', $words[rand(0, $possibilities - 1)])	;
-					}
-					?>
-					<a href="<?php echo $prefix.$phrase; ?>" data-index="<?php echo $counter; ?>" target="_blank"><?php echo preg_replace('/\+/', ' ', $phrase); ?></a>
-					<?
-				}
-			?>
+			<?php echo $bingMe; ?>
 			</div>
 		</section>
 
