@@ -36,7 +36,6 @@
 	});
 
 	var status = false;
-	var $timer = $("<div>", {id: "timer"}).insertBefore("#standard").hide();
 	var $statusbar = $("<div>", {id: "statusbar"})
 		.append($("<div>", {"class": "progress-label"}))
 		.on("update", function(e, data){
@@ -52,8 +51,8 @@
 			window.clearInterval(status);
 			$(this).progressbar({ value: 0 });
 		})
-		.appendTo($timer)
 		.progressbar({ max: 100 })
+		.insertBefore("#standard").hide();
 
 	$(window).on("load", function(){
 		var timer = false;
@@ -97,7 +96,6 @@
 			$statusbar.trigger("reset");
 
 			if(count === 0){
-				$timer.text("all done.");
 				$stop.trigger("click");
 			} else {
 				var min = getInt($delay.data("min"));
@@ -119,7 +117,7 @@
 
 		var $start = $("#bingMe").on("click", function(e){
 			e.preventDefault();
-			$timer.show();
+			$statusbar.show();
 			$("#form-controls").hide();
 			$(this).add('#automate input[type="number"], #modified button').attr({disabled: "disabled"});
 			bingMe();
@@ -128,8 +126,7 @@
 		var $stop = $("#stop").on("click", function(e){
 			e.preventDefault();
 			window.clearTimeout(timer);
-			$statusbar.trigger("reset");
-			$timer.hide();
+			$statusbar.trigger("reset").hide();
 			$("#form-controls").show();
 			$start.add('#automate input[disabled], #modified button').removeAttr('disabled');
 		});
