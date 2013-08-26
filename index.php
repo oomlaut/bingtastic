@@ -1,83 +1,9 @@
 <?php
 
-class BingMe{
-	private $filename = "wordlist.csv";
-	private $bings = 0;
-	private $words = array();
-	private $minwords;
-	private $maxwords;
-	private $possibilities = 0;
-	private $prefixes = array(
-		"http://www.bing.com/search?setmkt=en-US&q=",
-		"http://www.bing.com/images/search?q=",
-		"http://www.bing.com/videos/search?q=",
-		// "http://www.bing.com/maps/default.aspx?mkt=en&q=",
-		"http://www.bing.com/news/search?q=",
-		//"http://www.bing.com/events/search?q=",
-		//"http://www.bing.com/friendsphotos/search?q="
-		"http://www.bing.com/explore?q="
-	);
-	private $sepChar = '+';
-
-	public function __construct($bings, $min = 1, $max = 6){
-
-		if(file_exists($this->filename)){
-			$this->words = explode("\n", file_get_contents($this->filename, true));
-			$this->possibilities = count($this->words);
-			$this->bings = $bings;
-			$this->minwords = $min;
-			$this->maxwords = $max;
-		} else {
-			die("$filename does not exist.");
-		}
-
-	}
-
-	public function __toString(){
-		$counter = 0;
-		$string = '';
-		while($counter < $this->bings){
-			$counter += 1;
-			$phrase = $this->newPhrase();
-			$string .= '<a href="' . $phrase["prefix"] . $phrase["query"] . '" data-index="' . $counter . '" target="_blank">' . $phrase["text"] . '</a>';
-		}
-		return $string;
-	}
-
-	public function __get($name){
-	    if (isset($this->$name)) {
-	        return $this->$name;
-	    }
-	    return null;
-	}
-
-	private function getPrefix(){
-		$index = rand(0, count($this->prefixes) - 1);
-		return $this->prefixes[$index];
-	}
-
-	private function getPhrase(){
-		$phrase = "";
-		for ($i = 0; $i < rand($this->minwords,$this->maxwords); $i++){
-			if($i != 0){
-				$phrase .= $this->sepChar;
-			}
-			$phrase .= str_replace(array("\n", "\r"), '', $this->words[rand(0, $this->possibilities - 1)])	;
-		}
-		return $phrase;
-	}
-
-	private function newPhrase(){
-		$phrase = $this->getPhrase();
-		return array(
-			"prefix" => $this->getPrefix(),
-			"query" => $phrase,
-			"text" => preg_replace('/\\' . $this->sepChar . '/', ' ', $phrase)
-		);
-	}
-}
-
-$bingMe = new BingMe((isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30 , 2, 4);
+require_once("library/BingMe.class.php");
+$bingMe = new BingMe("data/wordlist.csv");
+$bingMe->setBings( (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30 );
+$bingMe->setWordRange(2,4);
 
 ?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -90,13 +16,15 @@ $bingMe = new BingMe((isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bing
 		<title>it's bingtastic!</title>
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="robots" content="noindex, nofollow">
+		<link rel="author" href="humans.txt">
+		<link rel="sitemap" href="sitemap.xml">
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-		<link rel="icon" href="/icons/favicon.png" />
-		<link rel="apple-touch-icon" href="/icons/57.png" />
-		<link rel="apple-touch-icon" sizes="72x72" href="/icons/72.png" />
-		<link rel="apple-touch-icon" sizes="144x144" href="/icons/114.png" />
+		<link rel="icon" href="/icons/favicon.png">
+		<link rel="apple-touch-icon" href="/icons/57.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/icons/72.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/icons/114.png">
 		<link rel="stylesheet" href="styles/main.css">
 	</head>
 	<body class="container">

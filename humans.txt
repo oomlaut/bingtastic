@@ -1,0 +1,32 @@
+/* TEAM */
+
+Site: http://bingtastic.projects.paulgueller.com
+
+Developer: Paul Gueller
+	Site: http://paulgueller.com
+	Twitter: @oomlaut
+	Location: Milwaukee, WI
+
+Developer: Ivan Eisenberg
+	Site:
+	Twitter: @ivaneisenberg
+	Location:
+
+
+/* THANKS */
+
+* http://www.bing.com/explore/rewards
+* http://www.pogocheats.net/bing-rewards-bot/
+
+
+/* SITE */
+
+Last update: 2013/08/26
+
+Standards: HTML5, CSS3, JavaScript, PHP
+
+Components: jQuery, jQuery UI, jQuery Validate, Twitter Bootstrap, Font Awesome, Facebook SDK for JavaScript, Google Analytics
+
+Software: Sublime Text, CodeKit, NPM (bower), MAMP PRO, Tower, Transmit
+
+Language: English
