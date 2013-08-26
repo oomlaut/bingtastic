@@ -2,7 +2,7 @@
 
 require_once("library/BingMe.class.php");
 $bingMe = new BingMe("data/wordlist.csv");
-$bingMe->setBings( (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30 );
+$bingMe->setBings( (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] * 1 : 30 );
 $bingMe->setWordRange(2,4);
 
 ?><!DOCTYPE html>
@@ -21,6 +21,7 @@ $bingMe->setWordRange(2,4);
 		<link rel="author" href="humans.txt">
 		<link rel="sitemap" href="sitemap.xml">
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="/icons/favicon.png">
 		<link rel="apple-touch-icon" href="/icons/57.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="/icons/72.png">
