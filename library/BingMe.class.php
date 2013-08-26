@@ -19,6 +19,7 @@ class BingMe{
 		"http://www.bing.com/explore?q="
 	);
 	private $sepChar = '+';
+	private $linkPattern = '<a href="@link" data-index="@index" target="_blank">@text</a>';
 
 	public function __construct($filepath){
 
@@ -37,7 +38,17 @@ class BingMe{
 		while($counter < $this->bings){
 			$counter += 1;
 			$phrase = $this->newPhrase();
-			$string .= '<a href="' . $phrase["prefix"] . $phrase["query"] . '" data-index="' . $counter . '" target="_blank">' . $phrase["text"] . '</a>';
+			$link = $this->linkPattern;
+			$map = array(
+				'/@link/'  => $phrase["prefix"] . $phrase["query"],
+				'/@index/' => $counter,
+				'/@text/'  => $phrase["text"]
+				);
+			foreach($map as $find => $replace){
+				$link = preg_replace($find, $replace, $link);
+			}
+
+			$string .= $link;
 		}
 		return $string;
 	}
