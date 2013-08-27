@@ -23,6 +23,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30
 		<link rel="author" href="humans.txt">
 		<link rel="sitemap" href="sitemap.xml">
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 		<link rel="icon" href="/icons/favicon.png">
 		<link rel="apple-touch-icon" href="/icons/57.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="/icons/72.png">
