@@ -3,7 +3,6 @@
 
 class BingMe{
 	private $filename = null;
-	private $bings = 0;
 	private $words = array();
 	private $minwords = 0;
 	private $maxwords = 0;
@@ -19,7 +18,6 @@ class BingMe{
 		"http://www.bing.com/explore?q="
 	);
 	private $sepChar = '+';
-	private $linkPattern = '<a href="@link" data-index="@index" target="_blank">@text</a>';
 
 	public function __construct($filepath){
 
@@ -33,24 +31,7 @@ class BingMe{
 	}
 
 	public function __toString(){
-		$counter = 0;
-		$string = '';
-		while($counter < $this->bings){
-			$counter += 1;
-			$phrase = $this->newPhrase();
-			$link = $this->linkPattern;
-			$map = array(
-				'/@link/'  => $phrase["prefix"] . $phrase["query"],
-				'/@index/' => $counter,
-				'/@text/'  => $phrase["text"]
-				);
-			foreach($map as $find => $replace){
-				$link = preg_replace($find, $replace, $link);
-			}
-
-			$string .= $link;
-		}
-		return $string;
+		return implode(", ", $this->words);
 	}
 
 	public function __get($name){
@@ -59,17 +40,9 @@ class BingMe{
 	    }
 	    return null;
 	}
+
 	private function validateInt($arg){
 		return (gettype($arg) == "integer");
-	}
-
-	public function setBings($int = 30){
-		if($this->validateInt($int)){
-			$this->bings = $int;
-			return true;
-		}
-		throw new Exception('Integer required to set bing quantity.');
-		return false;
 	}
 
 	public function setWordRange($min = 1, $max = 10){
@@ -82,7 +55,7 @@ class BingMe{
 				throw new Exception('Integer required to set "max" property.');
 			}
 		} else {
-				throw new Exception('Integer required to set "min" property.');
+			throw new Exception('Integer required to set "min" property.');
 		}
 
 		return false;
@@ -104,12 +77,19 @@ class BingMe{
 		return $phrase;
 	}
 
-	private function newPhrase(){
+	public function parse($string){
+
 		$phrase = $this->getPhrase();
-		return array(
-			"prefix" => $this->getPrefix(),
-			"query" => $phrase,
-			"text" => preg_replace('/\\' . $this->sepChar . '/', ' ', $phrase)
-		);
+
+		$map = array(
+			'/@link/'  => $this->getPrefix() . $phrase,
+			'/@text/'  => preg_replace('/\\' . $this->sepChar . '/', ' ', $phrase)
+			);
+
+		foreach($map as $find => $replace){
+			$string = preg_replace($find, $replace, $string);
+		}
+
+		return $string;
 	}
 }

@@ -1,9 +1,11 @@
 <?php
 
 require_once("library/BingMe.class.php");
+
 $bingMe = new BingMe("data/wordlist.csv");
-$bingMe->setBings( (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30 );
 $bingMe->setWordRange(2,4);
+
+$bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30
 
 ?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -58,7 +60,7 @@ $bingMe->setWordRange(2,4);
 					<div class="control-group">
 						<label for="bings" class="control-label" >Bings:</label>
 						<div class="controls">
-							<input name="bings" id="bings" class="input-mini" type="number" step="1" min="" data-default="<?php echo $bingMe->bings; ?>" value="<?php echo $bingMe->bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
+							<input name="bings" id="bings" class="input-mini" type="number" step="1" min="" data-default="<?php echo $bings; ?>" value="<?php echo $bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
 						</div>
 					</div>
 
@@ -97,9 +99,15 @@ $bingMe->setWordRange(2,4);
 		</section>
 
 		<section class="row">
-			<h3 id="phrase-heading" class="span12 toggle-control">Phraselist (<?php echo $bingMe->bings; ?>)</h3>
+			<h3 id="phrase-heading" class="span12 toggle-control">Phraselist (<?php echo $bings; ?>)</h3>
 			<div id="phraselist" class="span12 toggle">
-			<?php echo $bingMe; ?>
+			<?php
+				$counter = 0;
+				while($counter < $bings){
+					$counter += 1;
+					echo $bingMe->parse('<a href="@link" target="_blank">@text</a>');
+				}
+			  ?>
 			</div>
 		</section>
 
