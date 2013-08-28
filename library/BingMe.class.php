@@ -11,16 +11,17 @@ class BingMe{
 	private $maxwords = 0;
 	private $possibilities = 0;
 	private $keys = null;
+
 	private $prefixes = array(
-		"browser" => "http://www.bing.com/search?q={{query}}&setmkt=en-US",
 		"default" => "http://www.bing.com/search?q={{query}}&go=&qs=n&form=&pq={{query}}&sc=0-0&sp=-1&sk=",
+		"omnibar" => "http://www.bing.com/search?q={{query}}&setmkt=en-US",
 		"images" => "http://www.bing.com/images/search?q={{query}}",
 		"videos" => "http://www.bing.com/videos/search?q={{query}}",
 		"maps" => "http://www.bing.com/maps/default.aspx?q={{query}}&mkt=en",
 		"news" => "http://www.bing.com/news/search?q={{query}}",
-		//"events" => "http://www.bing.com/events/search?q={{query}}",
-		//"friendphotos" => "http://www.bing.com/friendsphotos/search?q={{query}}",
-		"explore" => "http://www.bing.com/explore?q={{query}}"
+		// "events" => "http://www.bing.com/events/search?q={{query}}",
+		// "friendphotos" => "http://www.bing.com/friendsphotos/search?q={{query}}",
+		// "explore" => "http://www.bing.com/explore?q={{query}}"
 	);
 	private $queryToken = "query";
 	private $sepChar = '+';
@@ -107,20 +108,20 @@ class BingMe{
 
 	public function generate($int){
 		if($this->validateInt($int)){
-
-			$phrase = $this->getRandomPhrase();
-			$prefix = $this->getRandomPrefix();
-
 			$array = array();
 			$counter = 0;
 			while($counter < $int){
 				++$counter;
+
+				$phrase = $this->getRandomPhrase();
+				$prefix = $this->getRandomPrefix();
+
 				$array[] = array(
-					'query' => $phrase,
 					'type' => $prefix["key"],
+					'query' => $phrase,
+					'text'  => preg_replace($this->regexNeedle($this->sepChar), ' ', $phrase),
 					'prefix' => $prefix["url"],
-					'link'  => $this->m->render($prefix["url"], array($this->queryToken => $phrase) ),
-					'text'  => preg_replace($this->regexNeedle($this->sepChar), ' ', $phrase)
+					'url'  => $this->m->render($prefix["url"], array($this->queryToken => $phrase) )
 				);
 			}
 			return $array;

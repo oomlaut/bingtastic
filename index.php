@@ -14,33 +14,19 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30;
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 	<head lang="en">
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>it's bingtastic!</title>
 		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="robots" content="noindex, nofollow">
-		<link rel="author" href="humans.txt">
-		<link rel="sitemap" href="sitemap.xml">
-		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-		<link rel="icon" href="/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="/icons/favicon.png">
-		<link rel="apple-touch-icon" href="/icons/57.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="/icons/72.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="/icons/114.png">
-		<link rel="stylesheet" href="styles/main.css">
+		<?php include("includes/head.php"); ?>
 	</head>
 	<body class="container">
 		<div id="fb-root"></div>
 		<!--[if lt IE 7]>
 			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->
-
-		<hgroup class="row">
+		<header class="row hgroup">
 			<h1 class="span8">bingtastic!</h1>
 			<div id="login" class="span3"></div>
-		</hgroup>
+		</header>
 
 		<section class="row">
 
@@ -54,6 +40,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30;
 
 				<h3>Search Daily</h3>
 				<p>Earn from 15 to more than 30 points every day and <a href="http://www.bing.com/rewards/redeem/all">redeem them for one of many great offers</a>, or even donate them to a charity.</p>
+
 			</div>
 
 			<form id="automate" action="/#automate" method="get" class="form-horizontal span5 offset1 row">
@@ -107,25 +94,13 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30;
 				$counter = 0;
 				while($counter < $bings){
 					$counter += 1;
-					echo $bingMe->parse('<a href="{{link}}" target="_blank">{{text}}</a>');
+					echo $bingMe->parse('<a href="{{url}}" target="_blank">{{text}}</a>');
 				}
 			  ?>
 			</div>
 		</section>
 
-		<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
-		<script>window.jQuery || document.write('<script src="packages/jquery/jquery.min.js"><\/script>')</script>
-
-		<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-
-		<!--
-		<script>window.jQuery || document.write('<script src="scripts/jquery-validate.min.js"><\/script>')</script>
-		-->
-
-		<script src="scripts/main.min.js"></script>
-
-		<script>
-		</script>
+		<?php include("includes/footer.php"); ?>
 	</body>
 </html>
 
