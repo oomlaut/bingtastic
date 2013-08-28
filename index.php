@@ -2,10 +2,11 @@
 
 require_once("library/BingMe.class.php");
 
-$bingMe = new BingMe("data/wordlist.csv");
+$bingMe = new BingMe;
+$bingMe->dataSource("data/wordlist.csv");
 $bingMe->setWordRange(2,4);
 
-$bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30
+$bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30;
 
 ?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -106,7 +107,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : 30
 				$counter = 0;
 				while($counter < $bings){
 					$counter += 1;
-					echo $bingMe->parse('<a href="@link" target="_blank">@text</a>');
+					echo $bingMe->parse('<a href="{{link}}" target="_blank">{{text}}</a>');
 				}
 			  ?>
 			</div>
