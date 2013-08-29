@@ -1,12 +1,13 @@
 <?php
 // Using Mustache for string interpolation: https://github.com/bobthecow/mustache.php/wiki
-require_once("Mustache/autoloader.php");
+require_once("Mustache/Autoloader.php");
 Mustache_Autoloader::register();
 
 class BingMe{
 	private $m = null;
 	private $filename = null;
 	private $words = array();
+	private $q = 30;
 	private $minwords = 0;
 	private $maxwords = 0;
 	private $possibilities = 0;
