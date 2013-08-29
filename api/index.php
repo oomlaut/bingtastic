@@ -3,28 +3,28 @@
 /** API Functions
  */
 
-header("Content-type: application/json");
+
+foreach($_GET as $key => $value){
+	$$key = $value;
+}
+
+$response = (isset($response)) ? $response : "jsonp" ;
+$request = (isset($request)) ? $request : null ;
+$categories = (isset($categories)) ? $categories : null ;
+$content = null;
 
 require_once("../library/BingMe.class.php");
 
 $bingMe = new BingMe;
 $bingMe->dataSource("../data/wordlist.csv");
 
-foreach($_GET as $key => $value){
-	$$key = $value;
-}
-
-$request = (isset($request)) ? $request : null ;
-$categories = (isset($categories)) ? $categories : null ;
-$response = null;
-
 
 switch($request){
 	case "categories":
-		$response = $bingMe->keys;
+		$content = $bingMe->keys;
 		break;
 	case "words":
-		$response = $bingMe->words;
+		$content = $bingMe->words;
 		break;
 	case "default":
 	default:
@@ -42,13 +42,30 @@ switch($request){
 			$bingMe->setPrefixKeys(explode(",", $categories));
 		}
 
-		$response = $bingMe->generate( ($bings * 1) );
-
-		if($bings == 1){
-			$response = $response[0];
-		}
+		$content = $bingMe->generate( ($bings * 1) );
 
 		break;
 }
 
-echo json_encode($response);
+if(!headers_sent()){
+	$prefix  = '';
+	$postfix = '';
+
+	switch($response){
+		case "javascript":
+			header("Content-type: text/javascript");
+			$prefix = ";var BingMe = ";
+			$postfix = ";";
+			break;
+		case "json":
+			header("Content-type: application/json");
+			break;
+		case "jsonp":
+		default:
+			header("Content-type: text/javascript");
+			$prefix = ";callback(";
+			$postfix = ");";
+	}
+
+	echo $prefix . json_encode($content) . $postfix;
+}

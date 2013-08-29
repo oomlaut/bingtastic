@@ -7,6 +7,7 @@ class BingMe{
 	private $m = null;
 	private $filename = null;
 	private $words = array();
+	private $q = 30;
 	private $minwords = 0;
 	private $maxwords = 0;
 	private $possibilities = 0;
