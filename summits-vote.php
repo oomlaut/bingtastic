@@ -72,6 +72,16 @@
 			   "locale": "en_US"
 			},
 			{
+			   "id": "500265241",
+			   "name": "Bill O'Neil",
+			   "first_name": "Bill",
+			   "last_name": "O'Neil",
+			   "link": "http://www.facebook.com/bill.oneil.79",
+			   "username": "bill.oneil.79",
+			   "gender": "male",
+			   "locale": "en_US"
+			},
+			{
 			   "id": "563873693",
 			   "name": "Dave Walsh",
 			   "first_name": "Dave",
@@ -163,6 +173,15 @@
 			   "first_name": "Bas",
 			   "last_name": "Kuis",
 			   "username": "bas.kuis",
+			   "gender": "male",
+			   "locale": "en_US"
+			},
+			{
+			   "id": "504165694",
+			   "name": "John Larson",
+			   "first_name": "John",
+			   "last_name": "Larson",
+			   "username": "veloracer",
 			   "gender": "male",
 			   "locale": "en_US"
 			},
