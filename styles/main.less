@@ -1,3 +1,11 @@
+
+// fonts
+// @import "//fonts.googleapis.com/css?family=Maven+Pro:400,500";
+@import "//fonts.googleapis.com/css?family=Lato:400,700";
+
+// syntax highlighter
+@import "http://yandex.st/highlightjs/7.3/styles/default.min.css";
+
 // Twitter Bootstrap
 @import "../packages/twitter/less/bootstrap";
 @import "../packages/twitter/less/responsive";
@@ -12,9 +20,6 @@
 @import "../packages/jquery-ui/themes/base/minified/jquery.ui.slider.min.css";
 @import "../packages/jquery-ui/themes/cupertino/jquery-ui.min.css";
 
-// fonts
-// @import "//fonts.googleapis.com/css?family=Maven+Pro:400,500";
-@import "//fonts.googleapis.com/css?family=Lato:400,700";
 
 .headingFont(){
 	font-family: 'Lato', sans-serif;
@@ -62,13 +67,15 @@ h1,h2,h3,h4,h5,h6{
 
 #phraselist{
 	padding-bottom:1em;
+	text-align:center;
 	a{
-		float:left;
+		display:inline-block;
 		padding:.25em .5em;
 		margin-right:5px;
 		margin-bottom:5px;
 		border:1px solid #efefef;
 		text-decoration:none;
+		font-size:75%;
 		&:hover{
 			background-color:#efefef;
 		}
@@ -94,23 +101,31 @@ h1,h2,h3,h4,h5,h6{
 	}
 }
 
-.hgroup p{
-	font-weight:bold;
-	padding-top:1.75em;
-}
 
 .api{
+
+	.hgroup p{
+		font-weight:bold;
+		padding-top:1.25em;
+	}
 	h3,h4,h5,h6{
 		margin-top:0;
 		margin-bottom:0;
 	}
 	dt{
-		border-top:1px solid @grayLight;
 		clear:both;
 	}
-	dt,
-	dd .row{
+	dd.row{
 		margin-bottom:2em;
+	}
+	.argument{
+		// display:inline-block;
+		&:after{
+			content: "\002C\0020";
+		}
+		&:last-child:after{
+			content:'';
+		}
 	}
 }
 

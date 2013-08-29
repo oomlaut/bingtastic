@@ -8,6 +8,10 @@
 (function($){
 	"use strict";
 
+	//code highlighter
+	hljs.tabReplace = '  ';
+	$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+
 	$(".toggle, #modified").hide();
 
 	$(".toggle-control").on("click", function(){
