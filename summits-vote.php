@@ -270,7 +270,7 @@
 			   "locale": "en_US"
 			}
 		];
-		$.JSONparse
+
 		var summitsVote = function(){
 			var delay = 1;
 			$.each(users, function(i, data){
