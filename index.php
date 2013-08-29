@@ -1,9 +1,9 @@
 <?php
-
-require_once("library/BingMe.class.php");
+require_once("config.php");
+require_once("BingMe.class.php");
 
 $bingMe = new BingMe;
-$bingMe->dataSource("data/wordlist.csv");
+$bingMe->dataSource(PATH . "/data/wordlist.csv");
 $bingMe->setWordRange(2,4);
 
 $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingMe->q;
