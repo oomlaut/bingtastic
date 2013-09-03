@@ -7,301 +7,227 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title>summits-vote</title>
-		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="robots" content="noindex, nofollow">
-		<link rel="author" href="humans.txt">
-		<link rel="sitemap" href="sitemap.xml">
-		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-		<link rel="icon" href="/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="/icons/favicon.png">
-		<link rel="apple-touch-icon" href="/icons/57.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="/icons/72.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="/icons/114.png">
 		<link rel="stylesheet" href="styles/main.css">
 
+		<style type="text/css" media="screen">
+			@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+			@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+			@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+			#spinner{
+				-webkit-animation:spin 1s linear infinite;
+				-moz-animation:spin 1s linear infinite;
+				animation:spin 1s linear infinite;position:absolute;
+				top:50%;
+				left:50%;
+				height:1em;
+				line-height:1em;
+				width:1em;
+				margin-top:-.5em;
+				margin-left:-.5em;
+			}
+			#container a{
+				color:#666;
+				float:left;
+				margin-right:1em;
+				margin-bottom:1em;
+				padding:.25em .5em;
+			}
+			#container a.visited{
+				color:#999;
+				background-color:#eee;
+			}
+		</style>
 	</head>
 	<body class="container">
-		<div id="fb-root"></div>
 		<!--[if lt IE 7]>
 			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->
 
 		<hgroup class="row">
 			<h1 class="span8">summits vote!</h1>
-			<div id="login" class="span3"></div>
 		</hgroup>
 
 		<section class="row">
 
 			<div class="span12">
-				<button id="summits-vote">Go</button>
+				<button id="summits-vote">Batch</button>
+				<p><a href="http://t.co/w5Yg2GhnCy">Or Vote here:</a></p>
+				<h1 class="text-center"><i id="spinner" class="icon icon-spinner"></i></h1>
 			</div>
 
-			
+			<div class="span12" id="container"></div>
 
 		</section>
 
 		<script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
 		<script>window.jQuery || document.write('<script src="packages/jquery/jquery.min.js"><\/script>')</script>
 
-		<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-
 		<script type="text/javascript">
-			
-		var users = [
-			{
-			   "id": "634487084",
-			   "name": "Paul Stillmank",
-			   "first_name": "Paul",
-			   "last_name": "Stillmank",
-			   "link": "http://www.facebook.com/paul.stillmank",
-			   "username": "paul.stillmank",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "100001697500387",
-			   "name": "Kelsey Dins",
-			   "first_name": "Kelsey",
-			   "last_name": "Dins",
-			   "username": "kelsey.dins",
-			   "gender": "female",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "596388775",
-			   "name": "Brian Poulsen",
-			   "first_name": "Brian",
-			   "last_name": "Poulsen",
-			   "username": "brian.d.poulsen",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "728418209",
-			   "name": "James Davidson",
-			   "first_name": "James",
-			   "last_name": "Davidson",
-			   "link": "http://www.facebook.com/james.davidson1",
-			   "username": "james.davidson1",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "500265241",
-			   "name": "Bill O'Neil",
-			   "first_name": "Bill",
-			   "last_name": "O'Neil",
-			   "link": "http://www.facebook.com/bill.oneil.79",
-			   "username": "bill.oneil.79",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "563873693",
-			   "name": "Dave Walsh",
-			   "first_name": "Dave",
-			   "last_name": "Walsh",
-			   "username": "davidowalsh",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "1710638762",
-			   "name": "RJ Reimers",
-			   "first_name": "RJ",
-			   "last_name": "Reimers",
-			   "link": "http://www.facebook.com/rj.reimers",
-			   "username": "rj.reimers",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "7701077",
-			   "name": "Sally-Anne Kaminski",
-			   "first_name": "Sally-Anne",
-			   "last_name": "Kaminski",
-			   "username": "sa.kaminski",
-			   "gender": "female",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "583556631",
-			   "name": "Kathleen Coughlin O'Malley",
-			   "first_name": "Kathleen",
-			   "middle_name": "Coughlin",
-			   "last_name": "O'Malley",
-			   "link": "http://www.facebook.com/kathleen.c.omalley",
-			   "username": "kathleen.c.omalley",
-			   "gender": "female",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "557640636",
-			   "name": "Todd Nilson",
-			   "first_name": "Todd",
-			   "last_name": "Nilson",
-			   "link": "http://www.facebook.com/todd.nilson",
-			   "username": "todd.nilson",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-				"id": "9326167",
-				"name": "Ivan Eisenberg",
-				"first_name": "Ivan",
-				"last_name": "Eisenberg",
-				"username": "ivan.eisenberg",
-				"gender": "male",
-				"locale": "en_GB"	
-			},
-			{
-			   "id": "1343930693",
-			   "name": "Cullen O'Brien",
-			   "first_name": "Cullen",
-			   "last_name": "O'Brien",
-			   "username": "CullenOB",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "616320586",
-			   "name": "Paul Gueller",
-			   "first_name": "Paul",
-			   "last_name": "Gueller",
-			   "link": "http://www.facebook.com/paul.gueller",
-			   "username": "paul.gueller",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "1606980168",
-			   "name": "Tori Hubertz",
-			   "first_name": "Tori",
-			   "last_name": "Hubertz",
-			   "username": "vhubertz",
-			   "gender": "female",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "1547255920",
-			   "name": "Bas Kuis",
-			   "first_name": "Bas",
-			   "last_name": "Kuis",
-			   "username": "bas.kuis",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "504165694",
-			   "name": "John Larson",
-			   "first_name": "John",
-			   "last_name": "Larson",
-			   "username": "veloracer",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "107500187",
-			   "name": "Jason Kobs",
-			   "first_name": "Jason",
-			   "last_name": "Kobs",
-			   "username": "jasonkobs",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "780783536",
-			   "name": "Kristin Hinkel",
-			   "first_name": "Kristin",
-			   "last_name": "Hinkel",
-			   "link": "http://www.facebook.com/kristin.hinkel.3",
-			   "username": "kristin.hinkel.3",
-			   "gender": "female",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "219702612",
-			   "name": "Lukas Sparks",
-			   "first_name": "Lukas",
-			   "last_name": "Sparks",
-			   "username": "lukas.sparks",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "52501618",
-			   "name": "Chaning Ogden",
-			   "first_name": "Chaning",
-			   "last_name": "Ogden",
-			   "username": "chaning.ogden",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "26714391",
-			   "name": "Kent Heberling",
-			   "first_name": "Kent",
-			   "last_name": "Heberling",
-			   "link": "http://www.facebook.com/kentheberling",
-			   "username": "kentheberling",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "699733445",
-			   "name": "Rob Murray",
-			   "first_name": "Rob",
-			   "last_name": "Murray",
-			   "link": "http://www.facebook.com/robertemmet.murray",
-			   "username": "robertemmet.murray",
-			   "gender": "male",
-			   "locale": "en_US"
-			},
-			{
-			   "id": "100001465038954",
-			   "name": "Ellie Jerow",
-			   "first_name": "Ellie",
-			   "last_name": "Jerow",
-			   "username": "elliejerow",
-			   "gender": "female",
-			   "locale": "en_US"
+		(function($){
+			'use strict';
+
+			var timer = null;
+			function batch($set, node){
+
+				if(arguments.length === 1){
+					node = 0;
+				}
+
+				if(node === $set.length){
+					$spinner.hide();
+					console.log("all done!");
+				} else {
+
+					var delay = 24 + Math.floor(Math.random() * 60);
+					var $el = $set.eq(node);
+					$el.trigger("click");
+					console.log("... voted for " + $el.text());
+					console.log(delay + " seconds until the next vote ...");
+					window.clearTimeout(timer)
+
+					timer= window.setTimeout(function(){
+						batch($set, node + 1);
+					}, delay * 1000);
+				}
+
 			}
-		];
 
-		var summitsVote = function(){
-			var delay = 1;
-			$.each(users, function(i, data){
+			var $spinner = $("#spinner").hide();
 
-				delay = delay + (10 + Math.floor(Math.random() * 27)) * 1000;
-				console.log(delay);
+			var $btn = $("#summits-vote").attr("disabled", "disabled")
+				.data("pending", 0)
+				.bind("schedule", function(){
+					$(this).data("pending", $(this).data("pending") + 1 );
+				})
+				.bind("complete", function(){
+					var $this = $(this);
+					$this.data("pending", $this.data("pending") - 1 ).trigger("check");
+				})
+				.bind("check", function(){
+					var $this = $(this);
+					if($this.data("pending") === 0){
+						$this.removeAttr("disabled");
+					}
+				}).on("click", function(e){
+					e.preventDefault();
+					$spinner.show();
 
-				setTimeout(function(){
+					batch($("#container a"));
 
-					var id = data.id;
-					var name = data.name.replace(' ', '+');
+					return false;
 
-					console.log('https://fbui.publishtofanpage.com/contests/vote?media=24479&fbUserId='+id+'&fbUserName='+name+'&rating=5');
-					window.open('https://fbui.publishtofanpage.com/contests/vote?media=24479&fbUserId='+id+'&fbUserName='+name+'&rating=5', "_newtab");
+				});
 
-				}, delay);
-				
+			var userIDs = (function(array){
+				// randomizes array
+				var currentIndex = array.length
+					, temporaryValue
+					, randomIndex
+					;
+
+				// While there remain elements to shuffle...
+				while (0 !== currentIndex) {
+					// Pick a remaining element...
+					randomIndex = Math.floor(Math.random() * currentIndex);
+					currentIndex -= 1;
+
+					// And swap it with the current element.
+					temporaryValue = array[currentIndex];
+					array[currentIndex] = array[randomIndex];
+					array[randomIndex] = temporaryValue;
+				}
+
+				return array;
+			})([
+				"aaron.walker1",
+				"AdamUI96",
+				"akcober",
+				"amy.balza",
+				"andre.malske",
+				"bas.kuis",
+				"bill.oneil.79",
+				// "brad.hollander.33",
+				"brian.d.poulsen",
+				"brian.molstad",
+				"brian.welter",
+				"chaning.ogden",
+				"courtney.coxpoulsen",
+				// "CullenOB",
+				"daniil",
+				"davidowalsh",
+				"elliejerow",
+				"gail.petersondunlap",
+				"garret.starke",
+				"ivan.eisenberg",
+				"james.davidson1",
+				"james.ketola.98",
+				// "jasonkobs",
+				// "jennifer.andersonpulvermacher",
+				"jill.marie.lg",
+				// "jim.blixt",
+				"jim.graf.144181",
+				// "jim.palzewicz",
+				"jonbalza",
+				"julia.malske",
+				"karilynn.oneil",
+				"kathleen.c.omalley",
+				"kelly.basten.1",
+				"kelsey.dins",
+				"kentheberling",
+				"kieran.hennessey",
+				"kim.welter.9",
+				// "KristenEDavis",
+				"kristin.hinkel.3",
+				"linda.kaminski.14",
+				"lukas.sparks",
+				"maggie.cain",
+				"marilyn.gueller",
+				// "marissa.gallus",
+				// "michael.schwobe",
+				// "michelle.hickstobias",
+				"paul.gueller",
+				// "paul.stillmank",
+				// "rj.reimers",
+				// "robert.hogervorst",
+				// "robertemmet.murray",
+				"sa.kaminski",
+				"sally.kaminski.5",
+				"shannon.gburzynski",
+				// "stactum", // andre
+				"todd.nilson",
+				"veloracer",
+				"vhubertz"
+			]);
+
+			$.each(userIDs, function(i,v){
+				$btn.trigger("schedule");
+				$.ajax({
+					dataType: "json",
+					cache:false,
+					url: "//graph.facebook.com/" + v,
+					complete: function(){
+						$btn.trigger("complete");
+					},
+					success: function(data){
+						// graph.push(data);
+						$("<a>", {
+							href: 'https://fbui.publishtofanpage.com/contests/vote?media=24479&fbUserId=' + data.id + '&fbUserName=' + data.name.replace(' ', '+') + '&rating=5',
+							text: data.name,
+							target: "_blank",
+							click: function(){
+								var $this = $(this);
+								window.open($this.attr("href"), "batch");
+								$this.addClass("visited");
+							}
+						}).appendTo("#container");
+					}
+				});
 			});
-		};
-		
-		$('#summits-vote').click(function(){
-			summitsVote();
-		});
 
-		</script>
+		})(jQuery);
 
-		<!--
-		<script>window.jQuery || document.write('<script src="scripts/jquery-validate.min.js"><\/script>')</script>
-		-->
-
-		<script>
 		</script>
 	</body>
 </html>
