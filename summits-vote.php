@@ -82,7 +82,7 @@
 
 					var delay = 24 + Math.floor(Math.random() * 60);
 					var $el = $set.eq(node);
-					$el.trigger("click");
+					//$el.trigger("click");
 					console.log("... voted for " + $el.text());
 					console.log(delay + " seconds until the next vote ...");
 					window.clearTimeout(timer)
