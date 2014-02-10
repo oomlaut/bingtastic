@@ -1,9 +1,9 @@
 <?php
-require_once("config.php");
+require_once(__DIR__ . "/../config.php");
 require_once("BingMe.class.php");
 
 $bingMe = new BingMe;
-$bingMe->dataSource(PATH . "/data/wordlist.csv");
+$bingMe->dataSource(DATA_FILE);
 $bingMe->setWordRange(2,4);
 
 $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingMe->q;
@@ -20,8 +20,8 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="robots" content="noindex, nofollow">
 
-		<title>it's bingtastic!</title>
-		<meta name="description" content="">
+		<title>it&rsquo;s bingtastic!</title>
+		<meta name="description" content="Automation of daily searches to earn the maximum Bing Rewards points">
 
 		<link rel="author" href="/humans.txt">
 		<link rel="sitemap" href="/sitemap.xml">

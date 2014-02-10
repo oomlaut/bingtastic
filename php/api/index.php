@@ -1,4 +1,9 @@
 <?php
+require_once(__DIR__ . "/../config.php");
+require_once("BingMe.class.php");
+
+$bingMe = new BingMe;
+$bingMe->dataSource(DATA_FILE);
 
 /** API Functions
  */
@@ -12,12 +17,6 @@ $response = (isset($response)) ? $response : "jsonp" ;
 $request = (isset($request)) ? $request : null ;
 $categories = (isset($categories)) ? $categories : null ;
 $content = null;
-
-require_once("../library/BingMe.class.php");
-
-$bingMe = new BingMe;
-$bingMe->dataSource("../data/wordlist.csv");
-
 
 switch($request){
 	case "categories":
