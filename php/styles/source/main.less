@@ -1,3 +1,4 @@
+@bower_path = "/packages";
 
 // fonts
 // @import "//fonts.googleapis.com/css?family=Maven+Pro:400,500";
@@ -7,18 +8,18 @@
 @import "http://yandex.st/highlightjs/7.3/styles/default.min.css";
 
 // Twitter Bootstrap
-@import "../packages/twitter/less/bootstrap";
-@import "../packages/twitter/less/responsive";
+@import "@{bower_path}/twitter/less/bootstrap";
+@import "@{bower_path}/twitter/less/responsive";
 
 // Font Awesome
-@import "../packages/font-awesome/less/bootstrap";
-@import "../packages/font-awesome/less/font-awesome";
+@import "@{bower_path}/font-awesome/less/bootstrap";
+@import "@{bower_path}s/font-awesome/less/font-awesome";
 @FontAwesomePath:    "../packages/font-awesome/font";
 
 // jQuery UI
-@import "../packages/jquery-ui/themes/base/minified/jquery.ui.progressbar.min.css";
-@import "../packages/jquery-ui/themes/base/minified/jquery.ui.slider.min.css";
-@import "../packages/jquery-ui/themes/cupertino/jquery-ui.min.css";
+@import "@{bower_path}/jquery-ui/themes/base/minified/jquery.ui.progressbar.min.css";
+@import "@{bower_path}/jquery-ui/themes/base/minified/jquery.ui.slider.min.css";
+@import "@{bower_path}/jquery-ui/themes/cupertino/jquery-ui.min.css";
 
 
 .headingFont(){
