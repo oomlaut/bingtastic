@@ -1,0 +1,25 @@
+{
+  "name": "bingtastic",
+  "version": "1.0.0",
+  "description": "Automation of daily searches to earn Bing Rewards points",
+  "main": "/php/index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:oomlaut/bingtastic.git"
+  },
+  "keywords": [
+    "bing",
+    "php",
+    "bootstrap"
+  ],
+  "author": "Paul Gueller",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-less": "~0.9.0",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}

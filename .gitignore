@@ -1,5 +1,7 @@
+# Node Packages
+node_modules/
+
+# Bower Assets
 bower_components/
 packages/
 
-*.min.js
-*.css
