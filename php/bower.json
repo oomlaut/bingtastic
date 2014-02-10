@@ -8,7 +8,7 @@
   ],
   "main": "index.php",
   "license": "MIT",
-  "homepage": "http://bingtastic.projects.paulgueller.com",
+  "homepage": "http://bingtastic-oomlaut.rhcloud.com/",
   "private": true,
   "ignore": [
     "**/.*",
