@@ -48,62 +48,51 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 
 		<section class="row">
 
-			<form role="form" id="automate" action="/#automate" method="get" class="form-horizontal col-xs-5">
+			<form role="form" id="automate" action="/#automate" method="get" class="form-horizontal col-xs-4">
 				<h2 class="heading">Automate Searches</h2>
 				<fieldset id="form-controls">
+					<h4 class="group-label">Searches to perform</h4>
 					<div class="control-group">
-						<label for="bings" class="control-label col-xs-2">Bings:</label>
-						<div class="controls col-xs-10">
-							<input name="bings" id="bings" class="input-mini form-control" type="number" step="1" min="" data-default="<?php echo $bings; ?>" value="<?php echo $bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
+						<div class="controls input-group">
+							<label for="bings" class="control-label input-group-addon">Bings:</label>
+							<input name="bings" id="bings" class="input-sm form-control" type="number" step="1" min="" data-default="<?php echo $bings; ?>" value="<?php echo $bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
 						</div>
 					</div>
 
-					<p class="heading toggle-control col-xs-12">Change delay interval</p>
+					<h4 class="group-label">Delay interval</h4>
 
-					<div id="intervals" class="toggle control-group col-xs-12 row">
-						<label for="delay" class="control-label col-xs-2" >Delay:</label>
-						<div class="controls col-xs-10">
-							<div class="input-append">
-								<input id="delay" class="input-mini" type="text" data-min="1" data-max="30" value="5 - 15" title="minimum delay" required readonly>
-								<span class="add-on">seconds</span>
-							</div>
-						</div>
-						<div class="controls col-xs-12">
+					<div id="intervals" class="control-group">
+						<div class="controls">
 							<div id="slider-range"></div>
+						</div>
+						<div class="controls input-group">
+							<label for="delay" class="control-label input-group-addon" >Delay:</label>
+							<input id="delay" class="input-sm form-control" type="text" data-min="1" data-max="30" value="5 - 15" title="minimum delay" required readonly>
+							<span class="input-group-addon">seconds</span>
 						</div>
 					</div>
 
 				</fieldset>
 
-				<fieldset id="modified" class="control-group row">
-					<div class="btn-row controls col-xs-12">
-						<button id="update" class="btn btn-lg btn-success" type="submit">update</button>
+				<fieldset id="modified" class="control-group">
+					<div class="btn-row controls">
+						<button id="update" class="btn btn-lg btn-success" type="button">update</button>
 						<button id="reset" class="btn btn-lg btn-danger" type="reset">reset</button>
 					</div>
 				</fieldset>
 
-				<fieldset id="standard" class="control-group row">
-					<div class="btn-row controls col-xs-12">
+				<fieldset id="standard" class="control-group">
+					<div class="btn-row controls">
 						<button id="bingMe" class="btn btn-lg btn-primary" type="button">bing me!</button>
 						<button id="stop" class="btn btn-lg btn-default" type="button">stop</button>
 					</div>
 				</fieldset>
 
 
-				<h3 id="phrase-heading" class="heading toggle-control col-xs-12">Phraselist (<?php echo $bings; ?>)</h3>
 
-				<div id="phraselist" class="toggle">
-				<?php
-					$counter = 0;
-					while($counter < $bings){
-						$counter += 1;
-						echo $bingMe->parse('<a href="{{url}}" target="_blank">{{text}}</a>');
-					}
-				  ?>
-				</div>
 			</form>
 
-			<div class="col-xs-6 col-xs-offset-1">
+			<div class="col-xs-6 col-xs-offset-2">
 				<h2>Get Rewarded for &ldquo;Using&rdquo; <a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external" target="_blank">bing</a></h2>
 				<p><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external" target="_blank">Sign up</a> and start earning points that you can turn into contest entries, Amazon or Starbucks gift cards, Hulu Plus subscription, or Redbox rentals. </p>
 
@@ -118,7 +107,23 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 
 		</section>
 
-		<section class="row api">
+		<section id="search-phrases" class="row">
+			<div class="col-xs-12">
+				<h3 id="phrase-heading" class="heading toggle-control">Phraselist (<?php echo $bings; ?>)</h3>
+
+				<div id="phraselist" class="toggle">
+				<?php
+					$counter = 0;
+					while($counter < $bings){
+						$counter += 1;
+						echo $bingMe->parse('<a href="{{url}}" target="_blank">{{text}}</a>');
+					}
+				  ?>
+				</div>
+			</div>
+		</section>
+
+		<section id="api" class="row api">
 			<div class="col-xs-12">
 				<h2><abbr title="Application Programming Interface">API</abbr></h2>
 				<p>We have exposed a data endpoint for using the functions that were created for automating these bing searches. Feel free to use this site to generate <b>your</b> bings, too!</p>
@@ -145,7 +150,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 							<p class="col-xs-1">returns</p>
 							<p class="col-xs-2">value</p>
 							<p class="col-xs-1">default</p>
-							<p class="col-xs-3">description</p>
+							<p class="col-xs-5">description</p>
 							<p class="col-xs-3">example</p>
 						</div>
 					</div>
@@ -159,7 +164,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 							<div class="col-xs-1">object</div>
 							<div class="col-xs-2">"default" or <i>null</i></div>
 							<div class="col-xs-1"></div>
-							<div class="col-xs-3">Generates a jsonp response for a BingMe function evaluation, using the defaults below unless otherwise provided.</div>
+							<div class="col-xs-5">Generates a jsonp response for a BingMe function evaluation, using the defaults below unless otherwise provided.</div>
 							<div class="col-xs-3"><a href="/api/" target="_blank">/api/</a></div>
 						</div>
 					</dd>
@@ -169,7 +174,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 							<div class="col-xs-1">array</div>
 							<div class="col-xs-2">"categories"</div>
 							<div class="col-xs-1"></div>
-							<div class="col-xs-3">Retrieves a list of available categories.</div>
+							<div class="col-xs-5">Retrieves a list of available categories.</div>
 							<div class="col-xs-3"><a href="/api/?request=categories" target="_blank">/api/?request=categories</a></div>
 						</div>
 					</dd>
@@ -179,7 +184,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 							<div class="col-xs-1">array</div>
 							<div class="col-xs-2">"words"</div>
 							<div class="col-xs-1"></div>
-							<div class="col-xs-3">Retrieve the full list of potential words that the service has to choose from.</div>
+							<div class="col-xs-5">Retrieve the full list of potential words that the service has to choose from.</div>
 							<div class="col-xs-3"><a href="/api/?request=words" target="_blank">/api/?request=words</a></div>
 						</div>
 					</dd>
@@ -190,7 +195,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 							<div class="col-xs-1">object</div>
 							<div class="col-xs-2">integer</div>
 							<div class="col-xs-1"><?php echo $bingMe->q; ?></div>
-							<div class="col-xs-3">Provide the service with the number of nodes on the object to generate. Only applies to request type: default.</div>
+							<div class="col-xs-5">Provide the service with the number of nodes on the object to generate. Only applies to request type: default.</div>
 							<div class="col-xs-3"><a href="/api/?bings=60" target="_blank">/api/?bings=60</a></div>
 						</div>
 					</dd>
@@ -201,7 +206,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 							<div class="col-xs-1">object</div>
 							<div class="col-xs-2">integer</div>
 							<div class="col-xs-1"><?php echo $bingMe->minwords; ?></div>
-							<div class="col-xs-3">Specify the minimum number of words in any given phrase. Minimum: 1</div>
+							<div class="col-xs-5">Specify the minimum number of words in any given phrase. Minimum: 1</div>
 							<div class="col-xs-3"><a href="/api/?minwords=1" target="_blank">/api/?minwords=1</a></div>
 						</div>
 					</dd>
@@ -212,7 +217,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 							<div class="col-xs-1">object</div>
 							<div class="col-xs-2">integer</span></div>
 							<div class="col-xs-1"><?php echo $bingMe->maxwords; ?></div>
-							<div class="col-xs-3">Specify the maximum number of words in any given phrase. Must be greater than ?minwords</div>
+							<div class="col-xs-5">Specify the maximum number of words in any given phrase. Must be greater than ?minwords</div>
 							<div class="col-xs-3"><a href="/api/?maxwords=6" target="_blank">/api/?maxwords=6</a></div>
 						</div>
 					</dd>
@@ -223,7 +228,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 							<div class="col-xs-1">object</div>
 							<div class="col-xs-2">comma-separated strings</div>
 							<div class="col-xs-1">all</div>
-							<div class="col-xs-3">
+							<div class="col-xs-5">
 								Generate prefixes only from categories provided. Options include:
 								<span class="argument">all</span>
 								<?php
@@ -242,7 +247,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 							<div class="col-xs-1">array</div>
 							<div class="col-xs-2">string</div>
 							<div class="col-xs-1">jsonp</div>
-							<div class="col-xs-3">Tell the service which format you would like to receive your data in:
+							<div class="col-xs-5">Tell the service which format you would like to receive your data in:
 								<span class="argument default">jsonp</span>
 								<span class="argument">javascript</span>
 								<span class="argument">json</span>
