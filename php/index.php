@@ -75,15 +75,15 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 
 				</fieldset>
 
-				<fieldset id="modified" class="control-group col-xs-12 row">
-					<div class="controls col-xs-10 col-xs-offset-2">
+				<fieldset id="modified" class="control-group row">
+					<div class="btn-row controls col-xs-12">
 						<button id="update" class="btn btn-lg btn-success" type="submit">update</button>
 						<button id="reset" class="btn btn-lg btn-danger" type="reset">reset</button>
 					</div>
 				</fieldset>
 
-				<fieldset id="standard" class="control-group col-xs-12 row">
-					<div class="controls col-xs-10 col-xs-offset-2">
+				<fieldset id="standard" class="control-group row">
+					<div class="btn-row controls col-xs-12">
 						<button id="bingMe" class="btn btn-lg btn-primary" type="button">bing me!</button>
 						<button id="stop" class="btn btn-lg btn-default" type="button">stop</button>
 					</div>
