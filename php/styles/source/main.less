@@ -1,25 +1,24 @@
-@bower_path = "/packages";
+@bower_url: "/packages";
+@bower_path: "../..@{bower_url}";
 
 // fonts
 // @import "//fonts.googleapis.com/css?family=Maven+Pro:400,500";
 @import "//fonts.googleapis.com/css?family=Lato:400,700";
 
 // syntax highlighter
-@import "http://yandex.st/highlightjs/7.3/styles/default.min.css";
+@import "//yandex.st/highlightjs/7.3/styles/default.min.css";
 
 // Twitter Bootstrap
 @import "@{bower_path}/twitter/less/bootstrap";
-@import "@{bower_path}/twitter/less/responsive";
 
 // Font Awesome
-@import "@{bower_path}/font-awesome/less/bootstrap";
-@import "@{bower_path}s/font-awesome/less/font-awesome";
-@FontAwesomePath:    "@{bower_path}/font-awesome/font";
+@import "@{bower_path}/font-awesome/less/font-awesome";
+@fa-font-path:    "@{bower_url}/font-awesome/fonts";
 
 // jQuery UI
-@import "@{bower_path}/jquery-ui/themes/base/minified/jquery.ui.progressbar.min.css";
-@import "@{bower_path}/jquery-ui/themes/base/minified/jquery.ui.slider.min.css";
-@import "@{bower_path}/jquery-ui/themes/cupertino/jquery-ui.min.css";
+@import "@{bower_url}/jquery-ui/themes/base/minified/jquery.ui.progressbar.min.css";
+@import "@{bower_url}/jquery-ui/themes/base/minified/jquery.ui.slider.min.css";
+@import "@{bower_url}/jquery-ui/themes/cupertino/jquery-ui.min.css";
 
 
 .headingFont(){
@@ -33,7 +32,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .toggle-control{
-	.icon{
+	.fa{
 		margin-right:.25em;
 	}
 	&:hover{
@@ -48,6 +47,9 @@ h1,h2,h3,h4,h5,h6{
 #automate{
 	.heading {
 		text-align:center;
+	}
+	p.heading{
+		padding-top:1em;
 	}
 	fieldset{
 		margin-bottom:1em;
@@ -90,7 +92,7 @@ h1,h2,h3,h4,h5,h6{
 
 #login{
 	padding-top:1.5em;
-	color:@grayLight;
+	color:@gray-light;
 	&.active{
 		color:inherit;
 		a{

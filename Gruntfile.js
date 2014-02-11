@@ -11,8 +11,10 @@ module.exports = function(grunt) {
 				optimization: 1,
 				strictImports: true
 			},
-			files: {
-				'styles/main.css': 'styles/source/main.less'
+			dist:{
+				files: {
+					'php/styles/main.css': 'php/styles/source/main.less'
+				}
 			}
 		},
 
@@ -21,14 +23,24 @@ module.exports = function(grunt) {
 			options: {
 				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
 			},
-			files: {
-				'scripts/main.min.js': ['scripts/source/social.js', 'scripts/source/main.js']
+			dist:{
+				files: {
+					'php/scripts/main.min.js': [
+						'php/scripts/source/social.js',
+						'php/packages/jquery-ui/ui/minified/jquery.ui.core.min.js',
+						'php/packages/jquery-ui/ui/minified/jquery.ui.widget.min.js',
+						'php/packages/jquery-ui/ui/minified/jquery.ui.mouse.min.js',
+						'php/packages/jquery-ui/ui/minified/jquery.ui.progressbar.min.js',
+						'php/packages/jquery-ui/ui/minified/jquery.ui.slider.min.js',
+						'php/scripts/source/main.js'
+					]
+				}
 			}
 		},
 
 		// https://github.com/gruntjs/grunt-contrib-jshint
 		jshint: {
-			files: ['scripts/source/**/*.js'],
+			files: ['php/scripts/source/**/*.js'],
 			options: {
 				// options here to override JSHint defaults
 				globals: {
@@ -46,11 +58,11 @@ module.exports = function(grunt) {
 		//https://github.com/gruntjs/grunt-contrib-watch
 		watch: {
 			less:{
-				files: ['styles/source/**/*.less'],
+				files: ['php/styles/source/**/*.less'],
 				tasks: ['less']
 			},
 			js:{
-				files: ['scripts/source/**/*/js'],
+				files: ['php/scripts/source/**/*/js'],
 				tasks: ['uglify']
 			}
 		}
@@ -62,7 +74,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-notify');
 
-	grunt.file.setBase('php/');
 
 	grunt.registerTask('default', ['less', 'uglify', 'watch']);
 

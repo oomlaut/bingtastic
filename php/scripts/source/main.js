@@ -1,10 +1,3 @@
-//@codekit-prepend "social.js";
-//@codekit-prepend "../packages/jquery-ui/ui/minified/jquery.ui.core.min.js"
-//@codekit-prepend "../packages/jquery-ui/ui/minified/jquery.ui.widget.min.js"
-//@codekit-prepend "../packages/jquery-ui/ui/minified/jquery.ui.mouse.min.js"
-//@codekit-prepend "../packages/jquery-ui/ui/minified/jquery.ui.progressbar.min.js"
-//@codekit-prepend "../packages/jquery-ui/ui/minified/jquery.ui.slider.min.js"
-
 (function($){
 	"use strict";
 
@@ -16,8 +9,8 @@
 
 	$(".toggle-control").on("click", function(){
 		$(this).toggleClass("active").next().toggleClass("active").slideToggle();
-		$("i.icon", $(this)).toggleClass("icon icon-expand-alt").toggleClass("icon icon-collapse-alt");
-	}).prepend($("<i>", {"class": "icon icon-expand-alt"}));
+		$("i.fa", $(this)).toggleClass("fa fa-plus-square-o").toggleClass("fa fa-minus-square-o");
+	}).prepend($("<i>", {"class": "fa fa-plus-square-o"}));
 
 	var $range = $("#delay");
 
