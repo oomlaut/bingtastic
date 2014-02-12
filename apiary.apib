@@ -6,61 +6,79 @@ HOST: http://bingtastic-oomlaut.rhcloud.com/api
 The Bingtastic service provides usable data for developers to roll their own
 [Bing Rewards](http://go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5) applications.
 
-Data can be accessed either via `curl` or `jsonp`
+# Group Search Queries
 
-## cURL Example
+## Default [/{bings}{minwords}{maxwords}{categories}{response}]
+Returns assembled search queries with metadata. Defaults to 30 items, 2-4 words per phrase, all categories.
 
-    curl "http://bingtastic-oomlaut.rhcloud.com/api/?respo curl "http://bingtastic-oomlaut.rhcloud.com/api/?response=json"
-
-## JSONp Example
-
-    &lt;script&gt;
-        'use strict';
-        BingMe = function(data){
-            /* &hellip; do something with the data returned &hellip; */
-        };
-    &lt;/script&gt;
-
-    &lt;script src="//bingtastic-oomlaut.rhcloud.com/api/?bings=60&amp;categories=images,videos"&gt;&lt;/script&gt;
-    
-# Group Notes
-Notes related resources of the **Notes API**
-
-## Notes Collection [/notes]
-### List all Notes [GET]
-+ Response 200 (application/json)
-
-        [{
-          "id": 1, "title": "Jogging in park"
-        }, {
-          "id": 2, "title": "Pick-up posters from post-office"
-        }]
-
-### Create a Note [POST]
-+ Request (application/json)
-
-        { "title": "Buy cheese and bread for breakfast." }
-
-+ Response 201 (application/json)
-
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
-
-## Note [/notes/{id}]
-A single Note object with all its details
+### Default [GET]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+    + bings (optional, number, `30`) ... number of nodes on the object to generate.
+    + minwords (optional, number, `2`) ... minimum word count in any given phrase. _Minimum: 1_
+    + maxwords (optional, number, `4`) ... maximum words count in any given phrase. _Must be greater than `minwords`_
+    + categories (optional, comma-separated string, `images,videos`) ... generate prefixes only from categories provided. Reference `Metadata:Categories` for listing of valid options
+    + response (optional, string, `jsonp`) ... format in which data will be provided. Reference `Metadata:Response Types
 
-### Retrieve a Note [GET]
 + Response 200 (application/json)
+    
+        [{
+            type: "default",
+            query: "swear+actual",
+            text: "swear actual",
+            template: "http://www.bing.com/search?q={{query}}&go=&qs=n&form=&pq={{query}}&sc=0-0&sp=-1&sk=",
+            url: "http://www.bing.com/search?q=swear+actual&go=&qs=n&form=&pq=swear+actual&sc=0-0&sp=-1&sk="
+        },
+        {
+            type: "omnibar",
+            query: "transaction+invisible",
+            text: "transaction invisible",
+            template: "http://www.bing.com/search?q={{query}}&setmkt=en-US",
+            url: "http://www.bing.com/search?q=transaction+invisible&setmkt=en-US"
+        }]
 
-    + Header
+# Group Metadata
 
-            X-My-Header: The Value
+## Categories [/?request=categories]
+Provides the list of available categories as an array.
 
-    + Body
+### Categories [GET]
++ Response 200
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
+        [
+            "default",
+            "omnibar",
+            "images",
+            "videos",
+            "maps",
+            "news"
+        ]
 
-### Remove a Note [DELETE]
-+ Response 204
+## Words [/?request=words]
+Provides the full list of potential words that the service has to choose from.
+
+### Words [GET]
++ Response 200
+
+        [
+            "the",
+            "be",
+            "and",
+            "of",
+            "a",
+            "in",
+            "to",
+            …
+        ]
+
+## Response Types [/?request=responsetypes]
+Provides the available response types the service can format data in.
+
+### Response Types [GET]
++ Response 200
+
+        [
+            "jsonp",
+            "javascript",
+            "json"
+        ]
