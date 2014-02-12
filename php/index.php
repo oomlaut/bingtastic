@@ -31,6 +31,14 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 		<link rel="apple-touch-icon" sizes="72x72" href="/icons/72.png">
 		<link rel="apple-touch-icon" sizes="144x144" href="/icons/114.png">
 		<link rel="stylesheet" href="/styles/main.css">
+
+		<!-- facebook opengraph -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="http://bingtastic-oomlaut.rhcloud.com">
+		<meta property="og:site_name" content="it's bingtastic!">
+		<meta property="og:title" content="Bingtastic Helps Earn Rewards">
+		<meta property="og:description" content="Use Bing Rewards search and earn points redeemable for popular gift cards, Hulu+ subscriptions or sweepstakes entries!">
+		<meta property="og:image" content="http://bingtastic-oomlaut.rhcloud.com/icons/fb.png"/>
 	</head>
 
 	<body class="container">
