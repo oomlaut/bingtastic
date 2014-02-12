@@ -1,9 +1,28 @@
 FORMAT: 1A
-HOST: http://www.google.com
+HOST: http://bingtastic-oomlaut.rhcloud.com/api
 
-# bingtastic
-Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+# Bingtastic API
 
+The Bingtastic service provides usable data for developers to roll their own
+[Bing Rewards](http://go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5) applications.
+
+Data can be accessed either via `curl` or `jsonp`
+
+## cURL Example
+
+    curl "http://bingtastic-oomlaut.rhcloud.com/api/?respo curl "http://bingtastic-oomlaut.rhcloud.com/api/?response=json"
+
+## JSONp Example
+
+    &lt;script&gt;
+        'use strict';
+        BingMe = function(data){
+            /* &hellip; do something with the data returned &hellip; */
+        };
+    &lt;/script&gt;
+
+    &lt;script src="//bingtastic-oomlaut.rhcloud.com/api/?bings=60&amp;categories=images,videos"&gt;&lt;/script&gt;
+    
 # Group Notes
 Notes related resources of the **Notes API**
 
