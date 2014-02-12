@@ -35,6 +35,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 
 	<body class="container">
 		<div id="fb-root"></div>
+
 		<!--[if lt IE 7]>
 			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->
@@ -105,7 +106,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 
 			<div class="col-sm-6">
 				<h3>Get Rewarded for &ldquo;Using&rdquo; <a class="their-name" href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external" target="_blank">bing</a></h3>
-				<p><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external" target="_blank">Sign up</a> and start earning points that you can turn into contest entries, Amazon or Starbucks gift cards, Hulu Plus subscription, or Redbox rentals. </p>
+				<p><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external" target="_blank">Sign up</a> and start earning points with every search that you can turn into contest entries, Amazon or Starbucks gift cards, Hulu Plus subscription, or Redbox rentals. </p>
 
 				<h4>&ldquo;But, I Like <abbr title='Does it rhyme with "Moogle"?'>[Other Search Engine]</abbr> Better&hellip;&rdquo;</abbr></h4>
 				<p>That&rsquo;s where this service comes in. Make sure you are logged in to Facebook or MSN/Hotmail, then use the fields provided to automate your <span class="their-name">bing</span> queries.</p>
@@ -113,6 +114,11 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 
 				<h4>Search Daily</h4>
 				<p>Earn from 15 to more than 30 points every day and <a href="//www.bing.com/rewards/redeem/all" rel="external" target="_blank">redeem them for one of many great offers</a>, or even donate them to a charity.</p>
+
+				<h4>Spread the word </h4>
+				<p>Help others earn free rewards too! Share or recommend this site if you find it valuable.</p>
+
+				<div class="fb-like" data-href="http://bingtastic-oomlaut.rhcloud.com/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true" data-width="280"></div>
 
 				<h4><abbr title="Application Programming Interface">API</abbr></h4>
 				<p>We have exposed a data endpoint for using the functions that were created for automating these searches. Feel free to use this site to generate <b>your</b> <span class="their-name">bing</span>s, too!</p>
@@ -125,7 +131,10 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 		</section>
 
 		<footer class="row">
-			<p class="col-sm-12 text-right"><a href="//creativecommons.org/licenses/by-nc-sa/3.0" rel="external" target="_blank"><img src="//i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="Attribution-NonCommercial-ShareAlike" title="CC BY-NC-SA"></a></small></p>
+			<div class="col-sm-4 col-sm-offset-6 col-xs-10">
+				<a href="https://apps.facebook.com/1404888123068033/" rel="external" target="_blank" class="btn fb-btn btn-primary"><i class="fa fa-facebook-square"></i>Bingtastic Facebook App</a>
+			</div>
+			<p class="col-sm-2 col-xs-2 text-right"><a href="//creativecommons.org/licenses/by-nc-sa/3.0" rel="external" target="_blank"><img src="//i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="Attribution-NonCommercial-ShareAlike" title="CC BY-NC-SA"></a></small></p>
 		</footer>
 
 		<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>

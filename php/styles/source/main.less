@@ -13,6 +13,10 @@
 @import "@{bower_url}/jquery-ui/themes/base/minified/jquery.ui.slider.min.css";
 @import "@{bower_url}/jquery-ui/themes/cupertino/jquery-ui.min.css";
 
+@import "mixins";
+
+@fbBlue: #3b5998;
+
 body,
 .their-name{
 	font-family:"Webly Sleek Semilight", sans-serif;
@@ -21,8 +25,9 @@ body,
 h1,h2,h3,h4,h5,h6,.btn, b, strong{
 	font-weight:700;
 	font-family: '@{GoogleFont}', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
-
 
 .btn,
 .their-name{
@@ -97,47 +102,30 @@ h1,h2,h3,h4,h5,h6,.btn, b, strong{
 		a{
 			position:relative;
 			margin-top:-.25em;
-			background-color:#3b579d;
+			background-color:@fbBlue;
 			background-image:none;
 		}
 	}
 }
 
+.fb_iframe_widget{
+	.clearfix;
+	margin-bottom:1em;
+}
 
-#api{
-
-	.hgroup p{
-		padding-top:1.25em;
-		font-weight:bold;
+.fb-btn{
+	.gradient(#4c69ba, #3b55a0);
+	&:hover{
+		.gradient(#5b7bd5, #4864b1);
+		background-color:lighten(@fbBlue, 10%);
 	}
-	h3,h4,h5,h6{
-		margin-top:0;
-		margin-bottom:0;
-	}
-	dt{
-		clear:both;
-	}
-	dd.row{
-		margin-bottom:2em;
-	}
-	.argument{
-		// display:inline-block;
-		&:after{
-			content: "\002C\0020";
-		}
-		&:last-child:after{
-			content:'';
-		}
-	}
-	.stripe{
-		margin-top:.5em;
-		padding-top:.5em;
-		border-top:1px solid @gray-lighter;
+	.fa{
+		margin-right:.5em;
 	}
 }
 
-footer .pull-right{
-	margin-left:1em;
+footer{
+	margin-top:2em;
 }
 
 .ui-slider-horizontal{
