@@ -25,6 +25,9 @@ switch($request){
 	case "words":
 		$content = $bingMe->words;
 		break;
+	case "responsetypes":
+		$content = array('jsonp', 'json', 'javascript');
+		break;
 	case "default":
 	default:
 

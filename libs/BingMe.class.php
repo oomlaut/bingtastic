@@ -121,7 +121,7 @@ class BingMe{
 					'type' => $prefix["key"],
 					'query' => $phrase,
 					'text'  => preg_replace($this->regexNeedle($this->sepChar), ' ', $phrase),
-					'prefix' => $prefix["url"],
+					'template' => $prefix["url"],
 					'url'  => $this->m->render($prefix["url"], array($this->queryToken => $phrase) )
 				);
 			}
