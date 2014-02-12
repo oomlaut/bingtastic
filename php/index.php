@@ -139,7 +139,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 		</section>
 
 		<footer class="row">
-			<p class="col-xs-12 text-right">
+			<p class="col-sm-6 col-sm-offset-6 col-xs-12 col-xs-offset-0 text-right">
 				<a href="https://apps.facebook.com/1404888123068033/" rel="external" target="_blank" class="btn fb-btn btn-primary"><i class="fa fa-facebook-square"></i>Bingtastic Facebook App</a>
 				<a href="//creativecommons.org/licenses/by-nc-sa/3.0" rel="external" target="_blank" class="license"><img src="//i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="Attribution-NonCommercial-ShareAlike" title="CC BY-NC-SA"></a></small>
 			</p>
