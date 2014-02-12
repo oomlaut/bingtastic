@@ -49,7 +49,7 @@
 			$(this).progressbar({ value: 0 });
 		})
 		.progressbar({ max: 100 })
-		.insertBefore("#standard").hide();
+		.insertBefore("#search-phrases").hide();
 
 	$(window).on("load", function(){
 		var timer = false;

@@ -22,8 +22,8 @@
 
 
 .customFont(){
-	font-family: '@{GoogleFont}', sans-serif;
 	font-weight:400;
+	font-family: '@{GoogleFont}', sans-serif;
 }
 .headingFont(){
 	.customFont;
@@ -65,8 +65,8 @@ h1,h2,h3,h4,h5,h6{
 		text-align:center;
 	}
 	.btn-row{
-		text-align:center;
 		padding-top:1em;
+		text-align:center;
 	}
 }
 
@@ -79,11 +79,12 @@ h1,h2,h3,h4,h5,h6{
 	}
 	a{
 		display:inline-block;
-		padding:.25em .5em;
 		margin-right:5px;
 		margin-bottom:5px;
+		padding:.25em .5em;
 		border:1px solid #efefef;
 		text-decoration:none;
+		white-space:nowrap;
 		font-size:66.6666666666%;
 		&:hover{
 			background-color:#efefef;
@@ -102,10 +103,10 @@ h1,h2,h3,h4,h5,h6{
 	&.active{
 		color:inherit;
 		a{
-			background-color:#3b579d;
-			background-image:none;
 			position:relative;
 			margin-top:-.25em;
+			background-color:#3b579d;
+			background-image:none;
 		}
 	}
 }
@@ -114,8 +115,8 @@ h1,h2,h3,h4,h5,h6{
 #api{
 
 	.hgroup p{
-		font-weight:bold;
 		padding-top:1.25em;
+		font-weight:bold;
 	}
 	h3,h4,h5,h6{
 		margin-top:0;
@@ -137,9 +138,9 @@ h1,h2,h3,h4,h5,h6{
 		}
 	}
 	.stripe{
-		border-top:1px solid @gray-lighter;
 		margin-top:.5em;
 		padding-top:.5em;
+		border-top:1px solid @gray-lighter;
 	}
 }
 
@@ -155,11 +156,11 @@ footer .pull-right{
 	margin: 0 1em 1em;
 	.progress-label {
 		position: absolute;
-		left: 0;
 		top: 4px;
-		font-weight: bold;
-		text-shadow: 1px 1px 0 #fff;
-		text-align:center;
+		left: 0;
 		width:100%;
+		text-align:center;
+		text-shadow: 1px 1px 0 #fff;
+		font-weight: bold;
 	}
 }

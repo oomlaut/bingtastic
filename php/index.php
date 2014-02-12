@@ -42,8 +42,8 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->
 		<header class="row hgroup">
-			<h1 class="col-xs-9">bingtastic!</h1>
-			<div id="login" class="col-xs-3"></div>
+			<h1 class="col-sm-9">bingtastic!</h1>
+			<div id="login" class="col-sm-3 text-right"></div>
 		</header>
 
 		<section class="row">
@@ -58,7 +58,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 						<div class="control-group">
 							<div class="controls input-group">
 								<label for="bings" class="control-label input-group-addon">Bings:</label>
-								<input name="bings" id="bings" class="input-sm form-control" type="number" step="1" min="" data-default="<?php echo $bings; ?>" value="<?php echo $bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
+								<input name="bings" id="bings" class="input-sm form-control" type="number" step="1" min="1" data-default="<?php echo $bings; ?>" value="<?php echo $bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
 							</div>
 						</div>
 						<div id="phrases">
