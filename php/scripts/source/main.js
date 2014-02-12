@@ -1,9 +1,5 @@
 (function($){
-	"use strict";
-
-	//code highlighter
-	hljs.tabReplace = '  ';
-	$('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+	'use strict';
 
 	$(".toggle, #modified").hide();
 

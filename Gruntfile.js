@@ -62,7 +62,7 @@ module.exports = function(grunt) {
 				tasks: ['less']
 			},
 			js:{
-				files: ['php/scripts/source/**/*/js'],
+				files: ['php/scripts/source/**/*.js'],
 				tasks: ['uglify']
 			}
 		}
@@ -75,6 +75,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-notify');
 
 
-	grunt.registerTask('default', ['less', 'uglify', 'watch']);
+	grunt.registerTask('default', ['dist', 'watch']);
+	grunt.registerTask('dist', ['less:dist', 'uglify:dist']);
 
 };

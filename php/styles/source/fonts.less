@@ -1,0 +1,32 @@
+// Google Fonts
+@import "//fonts.googleapis.com/css?family=@{GoogleFont}:400,700";
+
+// Font Awesome
+@import "@{bower_path}/font-awesome/less/font-awesome";
+@fa-font-path:    "@{bower_url}/font-awesome/fonts";
+
+// Local fonts
+@fontDir: "/fonts";
+
+.font-import(@fontName, @fontPath){
+	font-family: '@{fontName}';
+	src: url('@{fontPath}.eot');
+	src: url('@{fontPath}.eot?#iefix') format('embedded-opentype'),
+		 url('@{fontPath}.woff') format('woff'),
+		 url('@{fontPath}.ttf') format('truetype'),
+		 url('@{fontPath}.svg#@{fontPath}') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	.font-import("Webly Sleek Light", "@{fontDir}/weblysleek/weblysleekuil-webfont");
+}
+
+@font-face {
+	.font-import('Webly Sleek Semilight', "@{fontDir}/weblysleek/weblysleekuisl-webfont");
+}
+
+@font-face {
+	.font-import('Webly Sleek Semibold', "@{fontDir}/weblysleek/weblysleekuisb-webfont");
+}

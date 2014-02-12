@@ -23,4 +23,6 @@ Automation of daily searches to earn the maximum Bing Rewards points, integrated
 * [LESS](http://lesscss.org/)
 * [Twitter Bootstrap](http://getbootstrap.com/)
 * [Font Awesome](http://fortawesome.github.io/Font-Awesome/)
+* [WeblySleek](http://www.dafont.com/weblysleek-ui.font)
+* [Google Fonts](https://www.google.com/fonts)
 * [Grunt](http://gruntjs.com/)

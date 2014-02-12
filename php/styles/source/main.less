@@ -2,39 +2,31 @@
 @bower_path: "../..@{bower_url}";
 
 // Google fonts
-@GoogleFont: "Oxygen";
-@import "//fonts.googleapis.com/css?family=@{GoogleFont}:400";
-
-// syntax highlighter
-@import "//yandex.st/highlightjs/7.3/styles/default.min.css";
+@import "fonts";
+@GoogleFont: "Droid Sans";
 
 // Twitter Bootstrap
 @import "@{bower_path}/twitter/less/bootstrap";
-
-// Font Awesome
-@import "@{bower_path}/font-awesome/less/font-awesome";
-@fa-font-path:    "@{bower_url}/font-awesome/fonts";
 
 // jQuery UI
 @import "@{bower_url}/jquery-ui/themes/base/minified/jquery.ui.progressbar.min.css";
 @import "@{bower_url}/jquery-ui/themes/base/minified/jquery.ui.slider.min.css";
 @import "@{bower_url}/jquery-ui/themes/cupertino/jquery-ui.min.css";
 
+body,
+.their-name{
+	font-family:"Webly Sleek Semilight", sans-serif;
+}
 
-.customFont(){
-	font-weight:400;
+h1,h2,h3,h4,h5,h6,.btn, b, strong{
+	font-weight:700;
 	font-family: '@{GoogleFont}', sans-serif;
 }
-.headingFont(){
-	.customFont;
-}
 
-h1,h2,h3,h4,h5,h6{
-	.headingFont;
-}
 
-.btn{
-	.customFont;
+.btn,
+.their-name{
+	font-weight:400;
 }
 
 .toggle-control{

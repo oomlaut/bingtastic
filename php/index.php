@@ -31,9 +31,6 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 		<link rel="apple-touch-icon" sizes="72x72" href="/icons/72.png">
 		<link rel="apple-touch-icon" sizes="144x144" href="/icons/114.png">
 		<link rel="stylesheet" href="/styles/main.css">
-
-		<!-- highlight.js syntax highlighting -->
-		<script src="//yandex.st/highlightjs/7.3/highlight.min.js"></script>
 	</head>
 
 	<body class="container">
@@ -42,7 +39,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->
 		<header class="row hgroup">
-			<h1 class="col-sm-9">bingtastic!</h1>
+			<h1 class="col-sm-9"><span class="their-name">bing</span>tastic!</h1>
 			<div id="login" class="col-sm-3 text-right"></div>
 		</header>
 
@@ -57,7 +54,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 
 						<div class="control-group">
 							<div class="controls input-group">
-								<label for="bings" class="control-label input-group-addon">Bings:</label>
+								<label for="bings" class="control-label input-group-addon"><span class="their-name">bing</span>s:</label>
 								<input name="bings" id="bings" class="input-sm form-control" type="number" step="1" min="1" data-default="<?php echo $bings; ?>" value="<?php echo $bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
 							</div>
 						</div>
@@ -107,18 +104,18 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 			</form>
 
 			<div class="col-sm-6">
-				<h3>Get Rewarded for &ldquo;Using&rdquo; <a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external" target="_blank">bing</a></h3>
+				<h3>Get Rewarded for &ldquo;Using&rdquo; <a class="their-name" href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external" target="_blank">bing</a></h3>
 				<p><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external" target="_blank">Sign up</a> and start earning points that you can turn into contest entries, Amazon or Starbucks gift cards, Hulu Plus subscription, or Redbox rentals. </p>
 
 				<h4>&ldquo;But, I Like <abbr title='Does it rhyme with "Moogle"?'>[Other Search Engine]</abbr> Better&hellip;&rdquo;</abbr></h4>
-				<p>That&rsquo;s where <em>bingtastic</em> comes in. Make sure you are logged in to Facebook, then use the fields provided to automate your bing queries.</p>
+				<p>That&rsquo;s where this service comes in. Make sure you are logged in to Facebook or MSN/Hotmail, then use the fields provided to automate your <span class="their-name">bing</span> queries.</p>
 				<p>We&rsquo;ll generate as many <?php echo $bingMe->minwords; ?>-<?php echo $bingMe->maxwords; ?> word phrases as you need, then open up a new tab next door to help you get those precious, precious points.</p>
 
 				<h4>Search Daily</h4>
 				<p>Earn from 15 to more than 30 points every day and <a href="//www.bing.com/rewards/redeem/all" rel="external" target="_blank">redeem them for one of many great offers</a>, or even donate them to a charity.</p>
 
 				<h4><abbr title="Application Programming Interface">API</abbr></h4>
-				<p>We have exposed a data endpoint for using the functions that were created for automating these bing searches. Feel free to use this site to generate <b>your</b> bings, too!</p>
+				<p>We have exposed a data endpoint for using the functions that were created for automating these searches. Feel free to use this site to generate <b>your</b> <span class="their-name">bing</span>s, too!</p>
 				<p>Documentation provided on <a href="http://docs.bingtastic.apiary.io/" rel="external" target="_blank">apiary.io</a></p>
 
 				<h4>We&rsquo;re Open Source</h4>
