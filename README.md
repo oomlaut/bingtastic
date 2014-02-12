@@ -9,7 +9,7 @@ Automation of daily searches to earn the maximum Bing Rewards points, integrated
 
 ## API
 
-[Documentation provided on Apiary](https://app.apiary.io/bingtastic/)
+[Documentation provided on Apiary](http://docs.bingtastic.apiary.io/)
 
 ### Colophon
 

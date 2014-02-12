@@ -1,9 +1,9 @@
 @bower_url: "/packages";
 @bower_path: "../..@{bower_url}";
 
-// fonts
-// @import "//fonts.googleapis.com/css?family=Maven+Pro:400,500";
-@import "//fonts.googleapis.com/css?family=Lato:400,700";
+// Google fonts
+@GoogleFont: "Oxygen";
+@import "//fonts.googleapis.com/css?family=@{GoogleFont}:400";
 
 // syntax highlighter
 @import "//yandex.st/highlightjs/7.3/styles/default.min.css";
@@ -21,14 +21,20 @@
 @import "@{bower_url}/jquery-ui/themes/cupertino/jquery-ui.min.css";
 
 
+.customFont(){
+	font-family: '@{GoogleFont}', sans-serif;
+	font-weight:400;
+}
 .headingFont(){
-	font-family: 'Lato', sans-serif;
-	// font-size:@size;
-	font-weight:700;
+	.customFont;
 }
 
 h1,h2,h3,h4,h5,h6{
 	.headingFont;
+}
+
+.btn{
+	.customFont;
 }
 
 .toggle-control{
@@ -45,14 +51,9 @@ h1,h2,h3,h4,h5,h6{
 }
 
 #automate{
-	#form-controls{
-		padding-bottom:2em;
-	}
+	padding-bottom:2em;
 	.group-label{
 		padding-top:1em;
-		&:after{
-			content:":";
-		}
 	}
 	#slider-range{
 		margin-bottom:1em;
@@ -64,17 +65,18 @@ h1,h2,h3,h4,h5,h6{
 		text-align:center;
 	}
 	.btn-row{
-		text-align:right;
+		text-align:center;
+		padding-top:1em;
 	}
-}
-
-#phrase-heading{
-	margin-bottom:.5em;
 }
 
 #phraselist{
 	padding-bottom:1em;
 	text-align:center;
+	#phrases{
+		.clearfix;
+		padding-top:1em;
+	}
 	a{
 		display:inline-block;
 		padding:.25em .5em;
@@ -82,7 +84,7 @@ h1,h2,h3,h4,h5,h6{
 		margin-bottom:5px;
 		border:1px solid #efefef;
 		text-decoration:none;
-		font-size:75%;
+		font-size:66.6666666666%;
 		&:hover{
 			background-color:#efefef;
 		}
@@ -109,7 +111,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 
-.api{
+#api{
 
 	.hgroup p{
 		font-weight:bold;
