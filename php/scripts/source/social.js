@@ -37,8 +37,9 @@ window.fbAsyncInit = function() {
 			// the user isn't logged in to Facebook.
 			var link = document.createElement("a");
 			link.setAttribute("href", "https://www.facebook.com/dialog/oauth?client_id=" + app.id + "&redirect_uri=" + window.location.protocol + app.uri);
-			link.className = "btn btn-primary";
-			link.innerHTML = '<i class="icon icon-facebook-sign"></i> Login with Facebook';
+			link.setAttribute("rel", "external");
+			link.className = "btn fb-btn btn-primary btn-larges";
+			link.innerHTML = '<i class="fa fa-facebook-square"></i> Login with Facebook';
 			login.className = login.className + " active";
 			login.appendChild(link);
 		}
