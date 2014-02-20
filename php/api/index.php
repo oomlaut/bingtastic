@@ -4,10 +4,6 @@ require_once("BingMe.class.php");
 
 $bingMe = new BingMe(DATA_FILE);
 
-/** API Functions
- */
-
-
 foreach($_GET as $key => $value){
 	$$key = $value;
 }
