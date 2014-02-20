@@ -2,8 +2,7 @@
 require_once(__DIR__ . "/../../config.php");
 require_once("BingMe.class.php");
 
-$bingMe = new BingMe;
-$bingMe->dataSource(DATA_FILE);
+$bingMe = new BingMe(DATA_FILE);
 
 /** API Functions
  */

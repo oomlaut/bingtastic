@@ -2,8 +2,7 @@
 require_once(__DIR__ . "/../config.php");
 require_once("BingMe.class.php");
 
-$bingMe = new BingMe;
-$bingMe->dataSource(DATA_FILE);
+$bingMe = new BingMe(DATA_FILE);
 $bingMe->setWordRange(2,4);
 
 $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingMe->q;

@@ -3,6 +3,9 @@
 require_once("Mustache/Autoloader.php");
 Mustache_Autoloader::register();
 
+// Use SafeSearch functionality in this class
+require_once("SafeSearch.class.php");
+
 class BingMe{
 	private $m = null;
 	private $filename = null;
@@ -12,6 +15,8 @@ class BingMe{
 	private $maxwords = 0;
 	private $possibilities = 0;
 	private $keys = null;
+	private $delimiter = "\n";
+	private $safeSearch = true;
 
 	private $prefixes = array(
 		"default" => "http://www.bing.com/search?q={{query}}&go=&qs=n&form=&pq={{query}}&sc=0-0&sp=-1&sk=",
@@ -27,13 +32,22 @@ class BingMe{
 	private $queryToken = "query";
 	private $sepChar = '+';
 
-	public function __construct(){
+	public function __construct($filepath){
+
+		if(file_exists($filepath)){
+			$this->words = $this->buildWordList($filepath);
+			$this->possibilities = count($this->words);
+		} else {
+			die("Data source not found: $filepath");
+		}
 
 		// store keys for later use
 		$this->setPrefixKeys(array_keys($this->prefixes));
 
 		//register Mustache;
 		$this->m = new Mustache_Engine;
+
+		return $this;
 
 	}
 
@@ -56,37 +70,6 @@ class BingMe{
 		return (gettype($arg) == "integer");
 	}
 
-	public function dataSource($filepath){
-		if(file_exists($filepath)){
-			$this->filepath = "wordlist.csv";
-			$this->words = explode("\n", file_get_contents($filepath, true));
-			$this->possibilities = count($this->words);
-		} else {
-			die("$filepath does not exist.");
-		}
-	}
-
-	public function setWordRange($min = 1, $max = 10){
-		if($this->validateInt($min)){
-			$this->minwords = $min;
-			if($this->validateInt($max)){
-				$this->maxwords = $max;
-				return true;
-			} else {
-				throw new Exception('Integer required to set "max" property.');
-			}
-		} else {
-			throw new Exception('Integer required to set "min" property.');
-		}
-
-		return false;
-	}
-
-	public function setPrefixKeys($array){
-		$this->keys = $array;
-		return true;
-	}
-
 	private function getRandomPrefix(){
 		$index = rand(0, count($this->keys) - 1);
 		$key = $this->keys[$index];
@@ -105,6 +88,52 @@ class BingMe{
 			$phrase .= str_replace(array("\n", "\r"), '', $this->words[rand(0, $this->possibilities - 1)])	;
 		}
 		return $phrase;
+	}
+
+	private function buildWordList($path){
+		$data = file_get_contents($path, true);
+		$list = explode($this->delimiter, $data);
+
+		if($this->safeSearch):
+			$ss = new SafeSearch();
+			$approved = array();
+			foreach($list as $word){
+				if($ss->safe($word)){
+					$approved[] = $word;
+				}
+			}
+			return $approved;
+		endif;
+
+		return $list;
+	}
+
+	public function setPrefixKeys($array){
+		$this->keys = $array;
+		return $this;
+	}
+
+	public function safeSearch($safeSearch = true){
+		// store safeSearch option
+		$this->safeSearch = $safeSearch;
+
+		return $this;
+	}
+
+	public function setWordRange($min = 1, $max = 10){
+		if($this->validateInt($min)){
+			$this->minwords = $min;
+			if($this->validateInt($max)){
+				$this->maxwords = $max;
+				return $this;
+			} else {
+				throw new Exception('Integer required to set "max" property.');
+			}
+		} else {
+			throw new Exception('Integer required to set "min" property.');
+		}
+
+		return $this;
 	}
 
 	public function generate($int){
