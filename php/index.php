@@ -97,7 +97,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 
 				<fieldset id="modified" class="control-group">
 					<div class="btn-row controls">
-						<button id="update" class="btn btn-lg btn-success" type="button">update</button>
+						<button id="update" class="btn btn-lg btn-success" type="submit">update</button>
 						<button id="reset" class="btn btn-lg btn-danger" type="reset">reset</button>
 					</div>
 				</fieldset>
