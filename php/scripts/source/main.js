@@ -1,5 +1,37 @@
-(function($){
+(function($, $500px){
 	'use strict';
+
+	// load '500px' background image bing-style
+	// https://github.com/500px/500px-js-sdk
+	// https://github.com/500px/api-documentation
+
+	if(arguments.length > 1 && typeof $500px === 'object'){
+		$500px.init({
+			sdk_key: 'bb90d1c6f1b501447a9a4c2ed000fcf9ecc464a7'
+		});
+
+		$500px.api('/photos', {
+			feature: 'popular',
+			only: 'Landscapes',
+			page: 1,
+			rpp: 1,
+			image_size:4
+		}, function(response){
+			var photo = response.data.photos[0];
+
+			$('html').css({
+				'background-image': 'url("' + photo.image_url + '")'
+			});
+
+			var icon = $('<span>', {
+				id: 'photo_cred',
+				text:'Info',
+				title: photo.name + ' (by ' + photo.user.fullname + ' of ' + photo.user.city + ', ' + photo.user.country + ')'
+			}).appendTo('body').prepend($('<i>', {
+				'class': 'fa fa-camera'
+			}));
+		});
+	}
 
 	$(".toggle, #modified").hide();
 
@@ -126,4 +158,4 @@
 
 
 	});
-})(jQuery);
+})(jQuery, _500px);

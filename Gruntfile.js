@@ -29,6 +29,7 @@ module.exports = function(grunt) {
 			dist:{
 				files: {
 					'php/scripts/main.min.js': [
+						'php/scripts/source/500px.js',
 						'php/scripts/source/social.js',
 						'php/packages/jquery-ui/ui/minified/jquery.ui.core.min.js',
 						'php/packages/jquery-ui/ui/minified/jquery.ui.widget.min.js',
@@ -43,7 +44,7 @@ module.exports = function(grunt) {
 
 		// https://github.com/gruntjs/grunt-contrib-jshint
 		jshint: {
-			files: ['php/scripts/source/**/*.js'],
+			files: ['php/scripts/source/**/*.js', '!php/scripts/source/500px.js'],
 			options: {
 				// options here to override JSHint defaults
 				globals: {

@@ -16,6 +16,12 @@
 @import "mixins";
 
 @fbBlue: #3b5998;
+@bgFill: hsla(0, 100%, 100%, 0.5);
+
+html{
+	background-size: cover;
+	background-position: 50% 50%;
+}
 
 body,
 .their-name{
@@ -24,6 +30,26 @@ body,
 
 body{
 	padding-bottom:1em;
+	background-color:@bgFill;
+}
+
+#photo_cred{
+	.border-radius(1em);
+	.box-shadow(0 0 2px hsla(0,100%,0%,0.5));
+	.clearfix;
+	display:block;
+	background-color:#fff;
+	position:fixed;
+	top:1em;
+	right:1em;
+	font-size:100%;
+	padding:0.25em 0.5em;
+	white-space:nowrap;
+	cursor:help;
+	i{
+		display:inline-block;
+		margin-right:0.5em;
+	}
 }
 
 h1,h2,h3,h4,h5,h6,.btn, b, strong{
@@ -40,7 +66,7 @@ h1,h2,h3,h4,h5,h6,.btn, b, strong{
 
 .toggle-control{
 	.fa{
-		margin-right:.25em;
+		margin-right:0.25em;
 	}
 	&:hover{
 		color:@gray;
@@ -79,10 +105,11 @@ h1,h2,h3,h4,h5,h6,.btn, b, strong{
 		padding-top:1em;
 	}
 	a{
+		background-color:@bgFill;
 		display:inline-block;
 		margin-right:5px;
 		margin-bottom:5px;
-		padding:.25em .5em;
+		padding:0.25em 0.5em;
 		border:1px solid #efefef;
 		text-decoration:none;
 		white-space:nowrap;
@@ -106,7 +133,7 @@ h1,h2,h3,h4,h5,h6,.btn, b, strong{
 		text-align:center;
 		.btn{
 			position:relative;
-			margin:-.25em auto 0;
+			margin:-0.25em auto 0;
 		}
 	}
 }
@@ -123,7 +150,7 @@ h1,h2,h3,h4,h5,h6,.btn, b, strong{
 		background-color:lighten(@fbBlue, 10%);
 	}
 	.fa{
-		margin-right:.25em;
+		margin-right:0.25em;
 	}
 }
 
@@ -138,6 +165,7 @@ footer{
 .ui-slider-horizontal{
 	margin-top:1em;
 }
+
 .ui-progressbar {
 	position: relative;
 	margin: 0 1em 1em;
