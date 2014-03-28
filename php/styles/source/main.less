@@ -1,9 +1,9 @@
-@bower_url: "/packages";
-@bower_path: "../..@{bower_url}";
+@bower_url:"/packages";
+@bower_path:"../..@{bower_url}";
 
 // Google fonts
 @import "fonts";
-@GoogleFont: "Droid Sans";
+@GoogleFont:"Droid Sans";
 
 // Twitter Bootstrap
 @import "@{bower_path}/twitter/less/bootstrap";
@@ -15,12 +15,13 @@
 
 @import "mixins";
 
-@fbBlue: #3b5998;
-@bgFill: hsla(0, 100%, 100%, 0.5);
+@fbBlue:#3b5998;
+@bgFill:hsla(0, 100%, 100%, 0.5);
 
 html{
-	background-size: cover;
-	background-position: 50% 50%;
+	background-position:50% 50%;
+	background-size:cover;
+	background-repeat:no-repeat;
 }
 
 body,
@@ -37,14 +38,14 @@ body{
 	.border-radius(1em);
 	.box-shadow(0 0 2px hsla(0,100%,0%,0.5));
 	.clearfix;
-	display:block;
-	background-color:#fff;
 	position:fixed;
 	top:1em;
 	right:1em;
-	font-size:100%;
+	display:block;
 	padding:0.25em 0.5em;
+	background-color:#fff;
 	white-space:nowrap;
+	font-size:100%;
 	cursor:help;
 	i{
 		display:inline-block;
@@ -53,10 +54,10 @@ body{
 }
 
 h1,h2,h3,h4,h5,h6,.btn, b, strong{
+	text-shadow:1px 1px 1px rgba(0,0,0,0.004);
 	font-weight:700;
-	font-family: '@{GoogleFont}', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+	font-family:'@{GoogleFont}', sans-serif;
+	-webkit-font-smoothing:antialiased;
 }
 
 .btn,
@@ -105,12 +106,12 @@ h1,h2,h3,h4,h5,h6,.btn, b, strong{
 		padding-top:1em;
 	}
 	a{
-		background-color:@bgFill;
 		display:inline-block;
 		margin-right:5px;
 		margin-bottom:5px;
 		padding:0.25em 0.5em;
 		border:1px solid #efefef;
+		background-color:@bgFill;
 		text-decoration:none;
 		white-space:nowrap;
 		font-size:66.6666666666%;
@@ -158,7 +159,7 @@ footer{
 	margin-top:2em;
 	.btn{
 		float:left;
-		font-size: 85.7142857%;
+		font-size:85.7142857%;
 	}
 }
 
@@ -167,15 +168,15 @@ footer{
 }
 
 .ui-progressbar {
-	position: relative;
-	margin: 0 1em 1em;
+	position:relative;
+	margin:0 1em 1em;
 	.progress-label {
-		position: absolute;
-		top: 4px;
-		left: 0;
+		position:absolute;
+		top:4px;
+		left:0;
 		width:100%;
 		text-align:center;
-		text-shadow: 1px 1px 0 #fff;
-		font-weight: bold;
+		text-shadow:1px 1px 0 #fff;
+		font-weight:bold;
 	}
 }
