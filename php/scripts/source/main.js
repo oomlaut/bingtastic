@@ -19,9 +19,9 @@
 		}, function(response){
 			var photo = response.data.photos[0];
 
-			$('html').css({
-				'background-image': 'url("' + photo.image_url + '")'
-			});
+			// http://srobbin.com/jquery-plugins/backstretch/
+			$.backstretch(photo.image_url);
+
 
 			var icon = $('<span>', {
 				id: 'photo_cred',

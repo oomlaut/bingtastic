@@ -40,117 +40,114 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 		<meta name="og:image" content="http://bingtastic-oomlaut.rhcloud.com/icons/fb.png"/>
 	</head>
 
-	<body class="container">
+	<body>
 		<div id="fb-root"></div>
 
 		<!--[if lt IE 7]>
 			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->
-		<header class="row hgroup">
-			<h1 class="col-sm-9"><span class="their-name">bing</span>tastic!</h1>
-			<div id="login" class="col-sm-3 text-right"></div>
-		</header>
+		<div id="content" class="container">
+			<header class="row hgroup">
+				<h1 class="col-sm-9"><span class="their-name">bing</span>tastic!</h1>
+				<div id="login" class="col-sm-3 text-right"></div>
+			</header>
 
-		<section class="row">
+			<section class="row">
 
-			<form role="form" id="automate" action="/#automate" method="get" class="form-horizontal col-sm-6">
-				<h2 class="heading">Automate Searches</h2>
-				<fieldset id="search-phrases">
-					<h4 id="phrase-heading" class="group-label toggle-control">Phraselist (<?php echo $bings; ?>)</h4>
+				<form role="form" id="automate" action="/#automate" method="get" class="form-horizontal col-sm-6">
+					<h2 class="heading">Automate Searches</h2>
+					<fieldset id="search-phrases">
+						<h4 id="phrase-heading" class="group-label toggle-control">Phraselist (<?php echo $bings; ?>)</h4>
 
-					<div id="phraselist" class="toggle">
+						<div id="phraselist" class="toggle">
 
-						<div class="control-group">
-							<div class="controls input-group">
-								<label for="bings" class="control-label input-group-addon"><span class="their-name">bing</span>s:</label>
-								<input name="bings" id="bings" class="input-sm form-control" type="number" step="1" min="1" data-default="<?php echo $bings; ?>" value="<?php echo $bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
+							<div class="control-group">
+								<div class="controls input-group">
+									<label for="bings" class="control-label input-group-addon"><span class="their-name">bing</span>s:</label>
+									<input name="bings" id="bings" class="input-sm form-control" type="number" step="1" min="1" data-default="<?php echo $bings; ?>" value="<?php echo $bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
+								</div>
+							</div>
+							<div id="phrases">
+								<?php
+									$counter = 0;
+									while($counter < $bings){
+										$counter += 1;
+										echo $bingMe->parse('<a href="{{url}}" target="_blank">{{text}}</a>');
+									}
+								?>
 							</div>
 						</div>
-						<div id="phrases">
-							<?php
-								$counter = 0;
-								while($counter < $bings){
-									$counter += 1;
-									echo $bingMe->parse('<a href="{{url}}" target="_blank">{{text}}</a>');
-								}
-							?>
+					</fieldset>
+
+					<fieldset id="form-controls">
+
+						<h4 class="group-label toggle-control">Delay interval</h4>
+
+						<div id="intervals" class="control-group toggle">
+							<div class="controls">
+								<div id="slider-range"></div>
+							</div>
+							<div class="controls input-group">
+								<label for="delay" class="control-label input-group-addon" >Delay:</label>
+								<input id="delay" class="input-sm form-control" type="text" data-min="1" data-max="30" value="5 - 15" title="minimum delay" required readonly>
+								<span class="input-group-addon">seconds</span>
+							</div>
 						</div>
-					</div>
-				</fieldset>
 
-				<fieldset id="form-controls">
+					</fieldset>
 
-					<h4 class="group-label toggle-control">Delay interval</h4>
-
-					<div id="intervals" class="control-group toggle">
-						<div class="controls">
-							<div id="slider-range"></div>
+					<fieldset id="modified" class="control-group">
+						<div class="btn-row controls">
+							<button id="update" class="btn btn-lg btn-success" type="submit">update</button>
+							<button id="reset" class="btn btn-lg btn-danger" type="reset">reset</button>
 						</div>
-						<div class="controls input-group">
-							<label for="delay" class="control-label input-group-addon" >Delay:</label>
-							<input id="delay" class="input-sm form-control" type="text" data-min="1" data-max="30" value="5 - 15" title="minimum delay" required readonly>
-							<span class="input-group-addon">seconds</span>
+					</fieldset>
+
+					<fieldset id="standard" class="control-group">
+						<div class="btn-row controls">
+							<button id="bingMe" class="btn btn-lg btn-primary" type="button">bing me!</button>
+							<button id="stop" class="btn btn-lg btn-default" type="button">stop</button>
 						</div>
-					</div>
+					</fieldset>
 
-				</fieldset>
+				</form>
 
-				<fieldset id="modified" class="control-group">
-					<div class="btn-row controls">
-						<button id="update" class="btn btn-lg btn-success" type="submit">update</button>
-						<button id="reset" class="btn btn-lg btn-danger" type="reset">reset</button>
-					</div>
-				</fieldset>
+				<div class="col-sm-6">
+					<h3>Get Rewarded for &ldquo;Using&rdquo; <a class="their-name" href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external" target="_blank">bing</a></h3>
+					<p><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external" target="_blank">Sign up</a> and start earning points with every search that you can turn into contest entries, Amazon or Starbucks gift cards, Hulu Plus subscription, or Redbox rentals. </p>
 
-				<fieldset id="standard" class="control-group">
-					<div class="btn-row controls">
-						<button id="bingMe" class="btn btn-lg btn-primary" type="button">bing me!</button>
-						<button id="stop" class="btn btn-lg btn-default" type="button">stop</button>
-					</div>
-				</fieldset>
+					<h4>&ldquo;But, I Like <abbr title='Does it rhyme with "Moogle"?'>[Other Search Engine]</abbr> Better&hellip;&rdquo;</abbr></h4>
+					<p>That&rsquo;s where this service comes in. Make sure you are logged in to Facebook or MSN/Hotmail, then use the fields provided to automate your <span class="their-name">bing</span> queries.</p>
+					<p>We&rsquo;ll generate as many <?php echo $bingMe->minwords; ?>-<?php echo $bingMe->maxwords; ?> word phrases as you need, then open up a new tab next door to help you get those precious, precious points.</p>
 
-			</form>
+					<h4>Search Daily</h4>
+					<p>Earn from 15 to more than 30 points every day and <a href="//www.bing.com/rewards/redeem/all" rel="external" target="_blank">redeem them for one of many great offers</a>, or even donate them to a charity.</p>
 
-			<div class="col-sm-6">
-				<h3>Get Rewarded for &ldquo;Using&rdquo; <a class="their-name" href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external" target="_blank">bing</a></h3>
-				<p><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external" target="_blank">Sign up</a> and start earning points with every search that you can turn into contest entries, Amazon or Starbucks gift cards, Hulu Plus subscription, or Redbox rentals. </p>
+					<h4>Spread the word </h4>
+					<p>Help others earn free rewards too! Share or recommend this site if you find it valuable.</p>
 
-				<h4>&ldquo;But, I Like <abbr title='Does it rhyme with "Moogle"?'>[Other Search Engine]</abbr> Better&hellip;&rdquo;</abbr></h4>
-				<p>That&rsquo;s where this service comes in. Make sure you are logged in to Facebook or MSN/Hotmail, then use the fields provided to automate your <span class="their-name">bing</span> queries.</p>
-				<p>We&rsquo;ll generate as many <?php echo $bingMe->minwords; ?>-<?php echo $bingMe->maxwords; ?> word phrases as you need, then open up a new tab next door to help you get those precious, precious points.</p>
+					<div class="fb-like" data-href="http://bingtastic-oomlaut.rhcloud.com/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true" data-width="280"></div>
 
-				<h4>Search Daily</h4>
-				<p>Earn from 15 to more than 30 points every day and <a href="//www.bing.com/rewards/redeem/all" rel="external" target="_blank">redeem them for one of many great offers</a>, or even donate them to a charity.</p>
+					<h4><abbr title="Application Programming Interface">API</abbr></h4>
+					<p>We have exposed a data endpoint for using the functions that were created for automating these searches. Feel free to use this site to generate <b>your</b> <span class="their-name">bing</span>s, too!</p>
+					<p>Documentation provided on <a href="http://docs.bingtastic.apiary.io/" rel="external" target="_blank">apiary.io</a></p>
 
-				<h4>Spread the word </h4>
-				<p>Help others earn free rewards too! Share or recommend this site if you find it valuable.</p>
+					<h4>We&rsquo;re Open Source</h4>
+					<p><a href="https://github.com/oomlaut/bingtastic" rel="external" target="_blank"><i class="fa fa-github-square"></i> Follow this project on GitHub</a></p>
+				</div>
 
-				<div class="fb-like" data-href="http://bingtastic-oomlaut.rhcloud.com/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true" data-width="280"></div>
+			</section>
 
-				<h4><abbr title="Application Programming Interface">API</abbr></h4>
-				<p>We have exposed a data endpoint for using the functions that were created for automating these searches. Feel free to use this site to generate <b>your</b> <span class="their-name">bing</span>s, too!</p>
-				<p>Documentation provided on <a href="http://docs.bingtastic.apiary.io/" rel="external" target="_blank">apiary.io</a></p>
-
-				<h4>We&rsquo;re Open Source</h4>
-				<p><a href="https://github.com/oomlaut/bingtastic" rel="external" target="_blank"><i class="fa fa-github-square"></i> Follow this project on GitHub</a></p>
-			</div>
-
-		</section>
-
-		<footer class="row">
-			<p class="col-sm-6 col-sm-offset-6 col-xs-12 col-xs-offset-0 text-right">
-				<a href="https://apps.facebook.com/1404888123068033/" rel="external" target="_blank" class="btn fb-btn btn-primary"><i class="fa fa-facebook-square"></i> Bingtastic Facebook App</a>
-				<a href="//creativecommons.org/licenses/by-nc-sa/3.0" rel="external" target="_blank" class="license"><img src="//i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="Attribution-NonCommercial-ShareAlike" title="CC BY-NC-SA"></a></small>
-			</p>
-		</footer>
+			<footer class="row">
+				<p class="col-sm-6 col-sm-offset-6 col-xs-12 col-xs-offset-0 text-right">
+					<a href="https://apps.facebook.com/1404888123068033/" rel="external" target="_blank" class="btn fb-btn btn-primary"><i class="fa fa-facebook-square"></i> Bingtastic Facebook App</a>
+					<a href="//creativecommons.org/licenses/by-nc-sa/3.0" rel="external" target="_blank" class="license"><img src="//i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="Attribution-NonCommercial-ShareAlike" title="CC BY-NC-SA"></a></small>
+				</p>
+			</footer>
+		</div>
 
 		<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 		<script>window.jQuery || document.write('<script src="packages/jquery/jquery.min.js"><\/script>')</script>
-
-		<!--
-		<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-		<script>window.jQuery || document.write('<script src="scripts/jquery-validate.min.js"><\/script>')</script>
-		-->
 
 		<script src="scripts/main.min.js"></script>
 
