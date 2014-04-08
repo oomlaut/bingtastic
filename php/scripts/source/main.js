@@ -31,7 +31,7 @@
 	}
 
 	// Open "external" links in a new window. Because it's 2008.
-	$('a[rel*="external"').attr('target', '_blank');
+	$('a[rel*="external"]').attr('target', '_blank');
 
 	// Enable jQuery UI "range/slider" elements
 	// https://jqueryui.com/slider/
