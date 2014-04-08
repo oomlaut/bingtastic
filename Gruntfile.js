@@ -9,9 +9,9 @@ module.exports = function(grunt) {
 		// https://github.com/gruntjs/grunt-contrib-less
 		less: {
 			options: {
-				// compress: true,
-				// cleancss: true,
-				// optimization: 1,
+				compress: true,
+				cleancss: true,
+				optimization: 1,
 				strictImports: true
 			},
 			dist:{

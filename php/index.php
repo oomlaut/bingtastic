@@ -65,41 +65,41 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 			<article id="pane">
 
 				<section id="hs1" class="hotspot">
-					<i class="icon"></i>
 					<div class="content">
-						<h3>Get Rewarded for &ldquo;Using&rdquo; <a class="their-name" href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external">bing</a></h3>
+						<h3 class="h3">Get rewarded for &ldquo;using&rdquo; <a class="their-name" href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external">bing</a></h3>
 						<p><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external">Sign up</a> and start earning points with every search that you can turn into contest entries, Amazon or Starbucks gift cards, Hulu Plus subscription, or Redbox rentals. </p>
 
 						<h4>&ldquo;But, I Like <abbr title='Does it rhyme with "Moogle"?'>[Other Search Engine]</abbr> Better&hellip;&rdquo;</abbr></h4>
 						<p>That&rsquo;s where this service comes in. Make sure you are logged in to Facebook or MSN/Hotmail, then use the fields provided to automate your <span class="their-name">bing</span> queries.</p>
 						<p>We&rsquo;ll generate as many <?php echo $bingMe->minwords; ?>-<?php echo $bingMe->maxwords; ?> word phrases as you need, then open up a new tab next door to help you get those precious, precious points.</p>
 					</div>
+					<i class="icon"></i>
 				</section>
 
 				<section id="hs2" class="hotspot">
-					<i class="icon"></i>
 					<div class="content">
-						<h4>Search Daily</h4>
+						<h4>Search daily</h4>
 						<p>Earn from 15 to more than 30 points every day and <a href="//www.bing.com/rewards/redeem/all" rel="external">redeem them for one of many great offers</a>, or even donate them to a charity.</p>
 					</div>
+					<i class="icon"></i>
 				</section>
 
 				<section id="hs3" class="hotspot">
-					<i class="icon"></i>
 					<div class="content">
 						<h4>Spread the word </h4>
 						<p>Help others earn free rewards too! Share or recommend this site if you find it valuable.</p>
 						<div class="fb-like" data-href="http://bingtastic-oomlaut.rhcloud.com/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true" data-width="280"></div>
 					</div>
+					<i class="icon"></i>
 				</section>
 
 				<section id="hs4" class="hotspot">
-					<i class="icon"></i>
 					<div class="content">
 						<h4><abbr title="Application Programming Interface">API</abbr></h4>
 						<p>We have exposed a data endpoint for using the functions that were created for automating these searches. Feel free to use this site to generate <b>your</b> <span class="their-name">bing</span>s, too!</p>
 						<p>Documentation provided on <a href="http://docs.bingtastic.apiary.io/" rel="external">apiary.io</a></p>
 					</div>
+					<i class="icon"></i>
 				</section>
 
 			</article>
@@ -176,4 +176,3 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 
 	</body>
 </html>
-
