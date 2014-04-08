@@ -19,6 +19,11 @@
 	font-style: normal;
 }
 
+.webfont(){
+	-webkit-font-smoothing:antialiased;
+	font-weight:400;
+}
+
 @font-face {
 	.font-import("Webly Sleek Light", "@{fontDir}/weblysleek/weblysleekuil-webfont");
 }
@@ -29,4 +34,19 @@
 
 @font-face {
 	.font-import('Webly Sleek Semibold', "@{fontDir}/weblysleek/weblysleekuisb-webfont");
+}
+
+.googleFont(){
+	.webfont;
+	font-family:'@{GoogleFont}', sans-serif;
+}
+
+.weblyLight(){
+	.webfont;
+	font-family:"Webly Sleek Semilight", sans-serif;
+}
+
+.weblyBold(){
+	.webfont;
+	font-family:"Webly Sleek Semilbold", sans-serif;
 }

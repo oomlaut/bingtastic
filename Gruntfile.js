@@ -9,9 +9,9 @@ module.exports = function(grunt) {
 		// https://github.com/gruntjs/grunt-contrib-less
 		less: {
 			options: {
-				compress: true,
-				cleancss: true,
-				optimization: 1,
+				// compress: true,
+				// cleancss: true,
+				// optimization: 1,
 				strictImports: true
 			},
 			dist:{
@@ -30,7 +30,6 @@ module.exports = function(grunt) {
 				files: {
 					'php/scripts/main.min.js': [
 						'php/scripts/source/500px.js',
-						'php/scripts/source/jquery.backstretch.min.js',
 						'php/scripts/source/social.js',
 						'php/packages/jquery-ui/ui/minified/jquery.ui.core.min.js',
 						'php/packages/jquery-ui/ui/minified/jquery.ui.widget.min.js',

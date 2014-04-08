@@ -1,10 +1,6 @@
 @bower_url:"/packages";
 @bower_path:"../..@{bower_url}";
 
-// Google fonts
-@import "fonts";
-@GoogleFont:"Droid Sans";
-
 // Twitter Bootstrap
 @import "@{bower_path}/twitter/less/bootstrap";
 
@@ -13,29 +9,156 @@
 @import "@{bower_url}/jquery-ui/themes/base/minified/jquery.ui.slider.min.css";
 @import "@{bower_url}/jquery-ui/themes/cupertino/jquery-ui.min.css";
 
+// custom mixins
 @import "mixins";
+
+// Google fonts
+@import "fonts";
+@GoogleFont:"Droid Sans";
 
 @fbBlue:#3b5998;
 @bgFill:hsla(0, 100%, 100%, 0.5);
+@transition:0.3s;
+
+@fillColor:#444;
+@inverseColor:#fff;
+
+body{
+	margin:0;
+	padding:60px 0;
+	background-color:@fillColor;
+}
 
 body,
 .their-name{
-	font-family:"Webly Sleek Semilight", sans-serif;
+	.weblyLight;
 }
 
-#content{
-	padding-bottom:1em;
-	padding-top:1em;
-	background-color:@bgFill;
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6,
+.btn, b, strong{
+	.googleFont;
+	text-shadow:1px 1px 1px hsla(0, 100%, 0%, 0.004);
+	font-weight:700;
+}
+
+#container{
+	.box-shadow(0 0 2px hsla(0,100%,0%,0.5));
+	position:relative;
+	margin:0 auto;
+	min-width:768px;
+	min-height:432px;
+	max-width:1366px;
+	max-height:1200px;
+	width:100%;
+	background-position:50% 50%;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-scroll:fixed;
+}
+
+header{
+	position:absolute;
+	top:50%;
+	left:2em;
+	z-index:99;
+	margin-top:-200px;
+	min-width:450px;
+	max-width:50%;
+	.h1{
+		color:@inverseColor;
+		text-shadow:0 0 2px hsla(0, 100%, 0%, 0.5);
+	}
+}
+
+#pane{
+	position:absolute;
+	width:100%;
+	height:100%;
+
+	&:hover{
+		.icon{
+			.opacity(1);
+			.transition(@transition*2);
+		}
+	}
+}
+
+.hotspot{
+	@dim:20px;
+	position:absolute;
+	top:50%;
+
+	width:20%;
+
+	& .icon,
+	& .content{
+		position:absolute;
+		top:0;
+		left:0;
+		margin-top:-@dim/2;
+	}
+	.icon{
+		.opacity(0);
+		.border-radius(0);
+		.box-shadow(inset 0 0 1px #000);
+		margin-left:-@dim/2;
+		width:@dim;
+		height:@dim;
+		border:1px solid #fff;
+		background-color:hsla(0, 100%, 100%, 0.5);
+		cursor:pointer;
+	}
+	.content{
+		overflow:auto;
+		margin-left:@dim/2 + 1;
+		padding:0 1em;
+		max-height:210px;
+		width:100%;
+		background-color:hsla(0, 100%, 100%, 0.875);
+		// .opacity(0);
+		display:none;
+	}
+	&:hover{
+		.icon{
+			.transition(@transition);
+			background-color:hsla(0, 100%, 100%, .75);
+			cursor::default;
+		}
+		.content{
+			// .transition(@transition);
+			// .opacity(1);
+			display:block;
+		}
+	}
+	&#hs1{
+		left:10%;
+	}
+	&#hs2{
+		left:30%;
+	}
+	&#hs3{
+		left:50%;
+	}
+	&#hs4{
+		left:70%;
+	}
 }
 
 #photo_cred{
 	.border-radius(1em);
 	.box-shadow(0 0 2px hsla(0,100%,0%,0.5));
 	.clearfix;
-	position:fixed;
-	top:1em;
+	position:absolute;
 	right:1em;
+	bottom:1em;
 	display:block;
 	padding:0.25em 0.5em;
 	background-color:#fff;
@@ -48,58 +171,164 @@ body,
 	}
 }
 
-h1,h2,h3,h4,h5,h6,.btn, b, strong{
-	text-shadow:1px 1px 1px rgba(0,0,0,0.004);
-	font-weight:700;
-	font-family:'@{GoogleFont}', sans-serif;
-	-webkit-font-smoothing:antialiased;
-}
+.otb{
+	.clearfix;
+	position:absolute;
+	padding:1em 0;
+	width:100%;
+	a{
+		display:inline-block;
+		text-decoration:none;
+		font-weight:700;
 
-.btn,
-.their-name{
-	font-weight:400;
-}
-
-.toggle-control{
-	.fa{
-		margin-right:0.25em;
-	}
-	&:hover{
-		color:@gray;
-		cursor:s-resize;
-		&.active{
-			cursor:n-resize;
+		&,
+		&:hover{
+			color:#fff;
+		}
+		&:hover{
+			text-decoration:underline;
 		}
 	}
 }
 
-#automate{
-	padding-bottom:2em;
-	.group-label{
-		padding-top:1em;
+nav.otb{
+	bottom:100%;
+	color:@inverseColor;
+	ul{
+		margin:0;
+		padding:0;
+		li{
+			display:inline;
+			float:left;
+			margin:0 0 0 2em;
+			padding:0;
+			list-style-type:none;
+		}
 	}
-	#slider-range{
-		margin-bottom:1em;
+	a.active{
+		color:#ccc;
+		cursor:default;
+		&:hover{
+			color:#ccc;
+			text-decoration:none !important;
+		}
 	}
-	.toggle{
-		margin-bottom:0;
+	.fa{
+		margin-right:.5em;
+	}
+}
+
+#login{
+	float:right;
+	margin-right:2em;
+}
+
+footer.otb{
+	top:100%;
+	text-align:right;
+	.btn{
+		padding-top:4px;
+		padding-bottom:5px;
+	}
+	a{
+		float:right;
+		margin-right:2em;
+
+		&[rel*='github']{
+			position:relative;
+			color:#333;
+			text-align:center;
+			.fa{
+				@size:32px;
+				display:block;
+				width:@size;
+				height:@size;
+				color:inherit;
+				font-size:@size;
+				line-height:@size;
+			}
+
+			&:hover{
+				text-decoration:none;
+				color:#666;
+			}
+		}
+		&[rel*='facebook']{
+			float:left;
+			margin-left:2em;
+		}
+	}
+}
+
+// Overlay and modal contents
+#overlay{
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:999;
+	display:none;
+	width:100%;
+	height:100%;
+	background-color:hsla(0, 100%, 0%, 0.5);
+	&.active{
+		display:block;
+	}
+	.hide-overlay{
+		@size:24px;
+		position:absolute;
+		top:0;
+		right:0;
+		display:block;
+		margin-top:@size/2;
+		margin-right:@size/2;
+		width:@size;
+		height:@size;
+		color:#333;
+		text-align:center;
+		font-size:@size;
+		line-height:@size;
+		cursor:pointer;
+		&:hover{
+			color:@brand-danger;
+		}
+	}
+	.form-panel,
+	#buttons{
+		.box-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+		position:relative;
+		margin-left:auto;
+		margin-right:auto;
+		padding:2em;
+		min-width:480px;
+		max-width:66%;
+		max-height:310px;
+		overflow:auto;
+		background-color:#fff;
+		border:1px solid transparent;
+	}
+	.form-panel{
+		display:none;
+		margin-top:2em;
+		.heading{
+			margin-top:0;
+		}
+	}
+	#buttons{
+		margin-top:0;
+		padding-top:0;
+		.btn-row{
+			text-align:center;
+		}
 	}
 	.input-sm{
 		text-align:center;
 	}
-	.btn-row{
-		padding-top:1em;
-		text-align:center;
-	}
 }
 
-#phraselist{
-	padding-bottom:1em;
+#phrases{
+	.clearfix;
+	padding-top:1em;
 	text-align:center;
-	#phrases{
-		.clearfix;
-		padding-top:1em;
-	}
 	a{
 		display:inline-block;
 		margin-right:5px;
@@ -121,19 +350,14 @@ h1,h2,h3,h4,h5,h6,.btn, b, strong{
 	}
 }
 
-#login{
-	padding-top:1.5em;
-	color:@gray-light;
-	&.active{
-		color:inherit;
-		text-align:center;
-		.btn{
-			position:relative;
-			margin:-0.25em auto 0;
-		}
+#delay-interval{
+	#slider-range{
+		margin-bottom:1em;
 	}
 }
 
+
+// Facebook Elements
 .fb_iframe_widget{
 	.clearfix;
 	margin-bottom:1em;
@@ -144,20 +368,17 @@ h1,h2,h3,h4,h5,h6,.btn, b, strong{
 	&:hover{
 		.gradient(#5b7bd5, #4864b1);
 		background-color:lighten(@fbBlue, 10%);
+		text-decoration:none !important;
 	}
 	.fa{
 		margin-right:0.25em;
 	}
 }
 
-footer{
-	margin-top:2em;
-	.btn{
-		float:left;
-		font-size:85.7142857%;
-	}
+// jQuery UI Elements
+#statusbar{
+	margin-left:0;
 }
-
 .ui-slider-horizontal{
 	margin-top:1em;
 }
@@ -176,4 +397,34 @@ footer{
 	}
 }
 
+/*
+
+.toggle-control{
+	.fa{
+		margin-right:0.25em;
+	}
+	&:hover{
+		color:@gray;
+		cursor:s-resize;
+		&.active{
+			cursor:n-resize;
+		}
+	}
+}
+
+#automate{
+	padding-bottom:2em;
+	.group-label{
+		padding-top:1em;
+	}
+	.toggle{
+		margin-bottom:0;
+	}
+	.btn-row{
+		padding-top:1em;
+		text-align:center;
+	}
+}
+
 @import "responsive";
+*/

@@ -1,4 +1,4 @@
-(function($, $500px){
+(function($, $500px, window, _void){
 	'use strict';
 
 	// load '500px' background image bing-style
@@ -12,36 +12,30 @@
 
 		$500px.api('/photos', {
 			feature: 'popular',
-			only: 'Landscapes',
+			only: 'Landscapes', //Category list: https://github.com/500px/api-documentation/blob/master/basics/formats_and_terms.md#categories
 			page: 1,
 			rpp: 1,
 			image_size:4
 		}, function(response){
 			var photo = response.data.photos[0];
-
-			// http://srobbin.com/jquery-plugins/backstretch/
-			$.backstretch(photo.image_url);
-
+			var $container = $('#container').css({'background-image': 'url(' + photo.image_url + ')'});
 
 			var icon = $('<span>', {
 				id: 'photo_cred',
 				text:'Info',
 				title: photo.name + ' (by ' + photo.user.fullname + ' of ' + photo.user.city + ', ' + photo.user.country + ')'
-			}).appendTo('body').prepend($('<i>', {
+			}).appendTo($container).prepend($('<i>', {
 				'class': 'fa fa-camera'
 			}));
 		});
 	}
 
-	$(".toggle, #modified").hide();
+	// Open "external" links in a new window. Because it's 2008.
+	$('a[rel*="external"').attr('target', '_blank');
 
-	$(".toggle-control").on("click", function(){
-		$(this).toggleClass("active").next().toggleClass("active").slideToggle();
-		$("i.fa", $(this)).toggleClass("fa fa-plus-square-o").toggleClass("fa fa-minus-square-o");
-	}).prepend($("<i>", {"class": "fa fa-plus-square-o"}));
-
+	// Enable jQuery UI "range/slider" elements
+	// https://jqueryui.com/slider/
 	var $range = $("#delay");
-
 	var $slider = $( "#slider-range" ).slider({
 		range: true,
 		animate: true,
@@ -60,6 +54,8 @@
 		max: $slider.slider( "values", 1 )
 	});
 
+	// Enable jQuery UI "progressbar" element
+	// https://jqueryui.com/progressbar/
 	var status = false;
 	var $statusbar = $("<div>", {id: "statusbar"})
 		.append($("<div>", {"class": "progress-label"}))
@@ -77,14 +73,63 @@
 			$(this).progressbar({ value: 0 });
 		})
 		.progressbar({ max: 100 })
-		.insertBefore("#search-phrases").hide();
+		.insertBefore("#standard").hide();
 
-	$(window).on("load", function(){
+	// Behaviors for overlay "modal"
+	var $overlay = $("#overlay").on('modal', function(e, args){
+		// console.log(arguments);
+		$overlay.addClass('active');
+		$(args.selector).show().siblings('.form-panel').hide();
+	}).on('close', function(){
+		$('nav a.active').removeClass('active');
+		$overlay.removeClass('active').children('.form-panel').hide();
+	});
+
+	// "close" icon
+	$('<span>', {
+		'class': 'hide-overlay',
+		html: '<i class=" fa fa-times-circle"></i>',
+		click: function(e){
+			e.preventDefault();
+			$overlay.trigger('close');
+			return false;
+		}
+	}).appendTo('.form-panel', $overlay);
+
+	$('nav a[href^="#"]').each(function(){
+		var $el = $(this);
+		$el.on('click', function(e){
+			e.preventDefault();
+			if(!$el.hasClass('active')){
+				$el.addClass('active').parent().siblings().find('.active').removeClass('active');
+				$overlay.trigger('modal', {
+					selector: $el.attr('href')
+				});
+			}
+			return false;
+		});
+	});
+
+	// Attach events to the window object
+	var $window = $(window);
+	$window.on('resize', function(e) {
+		// resize the container height based on window dimensions
+		var $el = $('#container');
+		var $body = $('body');
+		var yOffset = parseInt($body.css('padding-top'), 10) + parseInt($body.css('padding-bottom'), 10);
+
+		$el.css({height: $window.height() - yOffset});
+
+	}).on('load', function(){
+		// force size the "pane"
+		$window.trigger('resize');
+
 		var timer = false;
-		var $bings = $("#phraselist a");
+		var $bings = $("#phrases a");
 		var $count = $("#bings");
 		var $delay = $("#delay");
 
+		//
 		$("#bings, #min, #max").on("change", function(){
 			var $this = $(this);
 			var val = $this.val();
@@ -92,16 +137,6 @@
 				$this.val(0);
 			}
 
-			if($this.attr("data-require-redraw") === "true"){
-				var defaultval = $this.attr("data-default");
-				if(val === defaultval ){
-					$("#modified").hide();
-					$("#standard").show();
-				} else {
-					$("#modified").show();
-					$("#standard").hide();
-				}
-			}
 		});
 
 		function getRandom(int){
@@ -113,7 +148,6 @@
 		}
 
 		function bingMe() {
-			// console.log("bingme");
 			var count = getInt($count.val()) - 1;
 			window.open($bings.eq(count).addClass("visited").attr("href"), "_newtab");
 
@@ -133,17 +167,13 @@
 				window.clearTimeout(timer);
 				timer = window.setTimeout(bingMe, time);
 			}
-		}
 
-		$("#reset").on("click", function(){
-			$("#modified").hide();
-			$("#standard").show();
-		});
+			return;
+		}
 
 		var $start = $("#bingMe").on("click", function(e){
 			e.preventDefault();
 			$statusbar.show();
-			$("#form-controls").hide();
 			$(this).add('#automate input[type="number"], #modified button').attr({disabled: "disabled"});
 			bingMe();
 		});
@@ -152,10 +182,9 @@
 			e.preventDefault();
 			window.clearTimeout(timer);
 			$statusbar.trigger("reset").hide();
-			$("#form-controls").show();
 			$start.add('#automate input[disabled], #modified button').removeAttr('disabled');
 		});
 
 
 	});
-})(jQuery, _500px);
+})(jQuery, _500px, window);
