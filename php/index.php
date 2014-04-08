@@ -69,7 +69,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 						<h3 class="h3">Get rewarded for &ldquo;using&rdquo; <a class="their-name" href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external">bing</a></h3>
 						<p><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external">Sign up</a> and start earning points with every search that you can turn into contest entries, Amazon or Starbucks gift cards, Hulu Plus subscription, or Redbox rentals. </p>
 
-						<h4>&ldquo;But, I Like <abbr title='Does it rhyme with "Moogle"?'>[Other Search Engine]</abbr> Better&hellip;&rdquo;</abbr></h4>
+						<h4>&ldquo;But, I like <abbr title='Does it rhyme with "Moogle"?'>[other search engine]</abbr> better&hellip;&rdquo;</abbr></h4>
 						<p>That&rsquo;s where this service comes in. Make sure you are logged in to Facebook or MSN/Hotmail, then use the fields provided to automate your <span class="their-name">bing</span> queries.</p>
 						<p>We&rsquo;ll generate as many <?php echo $bingMe->minwords; ?>-<?php echo $bingMe->maxwords; ?> word phrases as you need, then open up a new tab next door to help you get those precious, precious points.</p>
 					</div>
