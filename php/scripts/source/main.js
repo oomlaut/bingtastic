@@ -200,7 +200,7 @@
 			return this;
 		}).on('setMobileState', function(){
 			//console.log('setMobileState', $(this).prop('checked'));
-			loadSrc = ($(this).prop('checked')) ? 'ajax' : 'newtab';
+			loadSrc = ($(this).prop('checked')) ? 'iframe' : 'newtab';
 			console.log(loadSrc);
 			return this;
 		});
