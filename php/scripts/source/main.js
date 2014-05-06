@@ -161,8 +161,11 @@
 						'seamless': 'seamless',
 						'src': href
 					}).appendTo('body').on('load', function(){
-						console.log('destroying frame: ', href);
-						$(this).remove();
+						/*
+						window.setTimeout(function(){
+							$(this).remove();
+						}, getInt($delay.data('min') * 1000);
+						*/
 					});
 					break;
 				default:
@@ -197,7 +200,7 @@
 			return this;
 		}).on('setMobileState', function(){
 			//console.log('setMobileState', $(this).prop('checked'));
-			loadSrc = ($(this).prop('checked')) ? 'iframe' : 'newtab';
+			loadSrc = ($(this).prop('checked')) ? 'ajax' : 'newtab';
 			console.log(loadSrc);
 			return this;
 		});
