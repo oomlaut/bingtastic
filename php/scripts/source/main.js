@@ -35,48 +35,48 @@
 
 	// Enable jQuery UI "range/slider" elements
 	// https://jqueryui.com/slider/
-	var $range = $("#delay");
-	var $slider = $( "#slider-range" ).slider({
+	var $range = $('#delay');
+	var $slider = $( '#slider-range' ).slider({
 		range: true,
 		animate: true,
-		min: $range.attr("data-min") * 1,
-		max: $range.attr("data-max") * 1,
+		min: $range.attr('data-min') * 1,
+		max: $range.attr('data-max') * 1,
 		values: [ 5, 15 ],
 		slide: function( event, ui ) {
-			$range.val( ui.values[ 0 ] + " - " + ui.values[ 1 ] ).data({
+			$range.val( ui.values[ 0 ] + ' - ' + ui.values[ 1 ] ).data({
 				min: ui.values[ 0 ],
 				max: ui.values[ 1 ]
 			});
 		}
 	});
 	$range.data({
-		min: $slider.slider( "values", 0 ),
-		max: $slider.slider( "values", 1 )
+		min: $slider.slider( 'values', 0 ),
+		max: $slider.slider( 'values', 1 )
 	});
 
 	// Enable jQuery UI "progressbar" element
 	// https://jqueryui.com/progressbar/
 	var status = false;
-	var $statusbar = $("<div>", {id: "statusbar"})
-		.append($("<div>", {"class": "progress-label"}))
-		.on("update", function(e, data){
+	var $statusbar = $('<div>', {id: 'statusbar'})
+		.append($('<div>', {'class': 'progress-label'}))
+		.on('update', function(e, data){
 			var elapsed = 0;
 			var interval = 50;
-			$(".progress-label", $(this)).text((data.time / 1000) + " seconds until the next Bing. " + data.count + " remaining.");
+			$('.progress-label', $(this)).text((data.time / 1000) + ' seconds until the next Bing. ' + data.count + ' remaining.');
 			status = window.setInterval(function(){
 				elapsed += interval;
 				$statusbar.progressbar({ value: Math.floor(((elapsed/(data.time*0.9)) * 100)) });
 			}, interval);
 		})
-		.on("reset", function(){
+		.on('reset', function(){
 			window.clearInterval(status);
 			$(this).progressbar({ value: 0 });
 		})
 		.progressbar({ max: 100 })
-		.insertBefore("#standard").hide();
+		.insertBefore('#standard').hide();
 
 	// Behaviors for overlay "modal"
-	var $overlay = $("#overlay").on('modal', function(e, args){
+	var $overlay = $('#overlay').on('modal', function(e, args){
 		// console.log(arguments);
 		$overlay.addClass('active');
 		$(args.selector).show().siblings('.form-panel').hide();
@@ -120,17 +120,18 @@
 
 		$el.css({height: $window.height() - yOffset});
 
-	}).on('load', function(){
+	}).on('load', function(e, callback, undefined){
 		// force size the "pane"
 		$window.trigger('resize');
 
 		var timer = false;
-		var $bings = $("#phrases a");
-		var $count = $("#bings");
-		var $delay = $("#delay");
+		var loadSrc = 'newtab';
+		var $bings = $('#phrases a');
+		var $count = $('#bings');
+		var $delay = $('#delay');
 
 		//
-		$("#bings, #min, #max").on("change", function(){
+		$('#bings, #min, #max').on('change', function(){
 			var $this = $(this);
 			var val = $this.val();
 			if(val < 0 ){
@@ -149,20 +150,37 @@
 
 		function bingMe() {
 			var count = getInt($count.val()) - 1;
-			window.open($bings.eq(count).addClass("visited").attr("href"), "_newtab");
+			var href = $bings.eq(count).addClass('visited').attr('href');
+
+			switch(loadSrc){
+				case 'iframe':
+					$('<iframe>', {
+						'allowfullscreen': 'allowfullscreen',
+						'class': 'mobile-frame',
+						'name': 'bingmobile',
+						'seamless': 'seamless',
+						'src': href
+					}).appendTo('body').on('load', function(){
+						console.log('destroying frame: ', href);
+						$(this).remove();
+					});
+					break;
+				default:
+					window.open(href, '_newtab');
+			}
 
 			$count.val(count);
-			$statusbar.trigger("reset");
+			$statusbar.trigger('reset');
 
 			if(count === 0){
-				$stop.trigger("click");
+				$stop.trigger('click');
 			} else {
-				var min = getInt($delay.data("min"));
-				var max = getInt($delay.data("max"));
+				var min = getInt($delay.data('min'));
+				var max = getInt($delay.data('max'));
 				var seconds = ( getRandom(max - min)  + min );
 				var time = ( seconds * 1000 );
 
-				$statusbar.trigger("update", {"count": count, "time": time});
+				$statusbar.trigger('update', {'count': count, 'time': time});
 
 				window.clearTimeout(timer);
 				timer = window.setTimeout(bingMe, time);
@@ -171,17 +189,32 @@
 			return;
 		}
 
-		var $start = $("#bingMe").on("click", function(e){
+		var $checkMobile = $('#mobile-friendly').on('disable', function(){
+			$(this).attr('disabled', 'disabled');
+			return this;
+		}).on('enable', function(){
+			$(this).removeAttr('disabled');
+			return this;
+		}).on('setMobileState', function(){
+			//console.log('setMobileState', $(this).prop('checked'));
+			loadSrc = ($(this).prop('checked')) ? 'iframe' : 'newtab';
+			console.log(loadSrc);
+			return this;
+		});
+
+		var $start = $('#bingMe').on('click', function(e){
 			e.preventDefault();
+			$checkMobile.trigger('disable').trigger('setMobileState');
 			$statusbar.show();
-			$(this).add('#automate input[type="number"], #modified button').attr({disabled: "disabled"});
+			$(this).add('#automate input[type="number"], #modified button').attr({disabled: 'disabled'});
 			bingMe();
 		});
 
-		var $stop = $("#stop").on("click", function(e){
+		var $stop = $('#stop').on('click', function(e){
 			e.preventDefault();
+			$checkMobile.trigger('enable');
 			window.clearTimeout(timer);
-			$statusbar.trigger("reset").hide();
+			$statusbar.trigger('reset').hide();
 			$start.add('#automate input[disabled], #modified button').removeAttr('disabled');
 		});
 
