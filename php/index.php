@@ -110,7 +110,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 				<ul>
 					<li><a href="#search-phrases" title="View or change the phrases to be searched"><i class="fa fa-plus-square-o"></i>Phraselist</a></li>
 					<li><a href="#delay-interval" title="view or change the script interval"><i class="fa fa-plus-square-o"></i>Delay Interval</a></li>
-					<li><a href="//http://www.bing.com/rewards/dashboard" title="Check the dashboard daily for Bing bonus points">Rewards Dashboard</a></li>
+					<li><a href="//www.bing.com/rewards/dashboard" title="Check the dashboard daily for Bing bonus points">Rewards Dashboard</a></li>
 					<li><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external">Sign up for Bing Rewards</a></li>
 				</ul>
 

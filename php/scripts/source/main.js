@@ -154,19 +154,13 @@
 
 			switch(loadSrc){
 				case 'iframe':
-					$('<iframe>', {
+					$checkMobile.data('window', $('<iframe>', {
 						'allowfullscreen': 'allowfullscreen',
 						'class': 'mobile-frame',
 						'name': 'bingmobile',
 						'seamless': 'seamless',
 						'src': href
-					}).appendTo('body').on('load', function(){
-						/*
-						window.setTimeout(function(){
-							$(this).remove();
-						}, getInt($delay.data('min') * 1000);
-						*/
-					});
+					}).appendTo('body'));
 					break;
 				default:
 					window.open(href, '_newtab');
@@ -203,7 +197,7 @@
 			loadSrc = ($(this).prop('checked')) ? 'iframe' : 'newtab';
 			console.log(loadSrc);
 			return this;
-		});
+		}).data('window', false);
 
 		var $start = $('#bingMe').on('click', function(e){
 			e.preventDefault();
