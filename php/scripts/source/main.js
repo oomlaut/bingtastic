@@ -125,7 +125,6 @@
 		$window.trigger('resize');
 
 		var timer = false;
-		var loadSrc = 'newtab';
 		var $bings = $('#phrases a');
 		var $count = $('#bings');
 		var $delay = $('#delay');
@@ -150,21 +149,8 @@
 
 		function bingMe() {
 			var count = getInt($count.val()) - 1;
-			var href = $bings.eq(count).addClass('visited').attr('href');
 
-			switch(loadSrc){
-				case 'iframe':
-					$checkMobile.data('window', $('<iframe>', {
-						'allowfullscreen': 'allowfullscreen',
-						'class': 'mobile-frame',
-						'name': 'bingmobile',
-						'seamless': 'seamless',
-						'src': href
-					}).appendTo('body'));
-					break;
-				default:
-					window.open(href, '_newtab');
-			}
+			window.open($bings.eq(count).addClass('visited').attr('href'), '_newtab');
 
 			$count.val(count);
 			$statusbar.trigger('reset');
@@ -186,22 +172,8 @@
 			return;
 		}
 
-		var $checkMobile = $('#mobile-friendly').on('disable', function(){
-			$(this).attr('disabled', 'disabled');
-			return this;
-		}).on('enable', function(){
-			$(this).removeAttr('disabled');
-			return this;
-		}).on('setMobileState', function(){
-			//console.log('setMobileState', $(this).prop('checked'));
-			loadSrc = ($(this).prop('checked')) ? 'iframe' : 'newtab';
-			console.log(loadSrc);
-			return this;
-		}).data('window', false);
-
 		var $start = $('#bingMe').on('click', function(e){
 			e.preventDefault();
-			$checkMobile.trigger('disable').trigger('setMobileState');
 			$statusbar.show();
 			$(this).add('#automate input[type="number"], #modified button').attr({disabled: 'disabled'});
 			bingMe();
@@ -209,7 +181,6 @@
 
 		var $stop = $('#stop').on('click', function(e){
 			e.preventDefault();
-			$checkMobile.trigger('enable');
 			window.clearTimeout(timer);
 			$statusbar.trigger('reset').hide();
 			$start.add('#automate input[disabled], #modified button').removeAttr('disabled');

@@ -58,7 +58,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 					<div class="btn-row controls">
 						<button id="bingMe" class="btn btn-lg btn-primary" type="button">bing me!</button>
 						<button id="stop" class="btn btn-lg btn-default" type="button">stop</button>
-						<label id="lbl-mobile" class="lbl checkbox" for="mobile-friendly"><input id="mobile-friendly" type="checkbox" name="mobile-friendly" class="cbx input" value="1" autosave="1" /> Mobile friendly</label>
+						<?php  /* label id="lbl-mobile" class="lbl checkbox" for="mobile-friendly"><input id="mobile-friendly" type="checkbox" name="mobile-friendly" class="cbx input" value="1" autosave="1" /> Mobile friendly</label */ ?>
 					</div>
 				</div>
 			</header>
