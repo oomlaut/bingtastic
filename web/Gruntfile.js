@@ -7,9 +7,9 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		basePath: {
-			bower: 'web/packages',
-			scripts: 'web/scripts',
-			styles: 'web/styles'
+			bower: 'packages',
+			scripts: 'scripts',
+			styles: 'styles'
 		},
 
 		// https://github.com/gruntjs/grunt-contrib-less
