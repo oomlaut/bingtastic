@@ -2,6 +2,9 @@
 vendor/
 .env
 
+# Composer
+*.phar
+
 # Logs
 *.log
 
