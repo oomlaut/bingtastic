@@ -1,3 +1,10 @@
+# Heroku files
+vendor/
+.env
+
+# Logs
+*.log
+
 # Node Packages
 node_modules/
 

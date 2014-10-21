@@ -6,6 +6,12 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
+		basePath: {
+			bower: 'web/packages',
+			scripts: 'web/scripts',
+			styles: 'web/styles'
+		},
+
 		// https://github.com/gruntjs/grunt-contrib-less
 		less: {
 			options: {
@@ -16,7 +22,7 @@ module.exports = function(grunt) {
 			},
 			dist:{
 				files: {
-					'php/styles/main.css': 'php/styles/source/main.less'
+					'<%= basePath.styles %>/main.css': '<%= basePath.styles %>/source/main.less'
 				}
 			}
 		},
@@ -28,15 +34,15 @@ module.exports = function(grunt) {
 			},
 			dist:{
 				files: {
-					'php/scripts/main.min.js': [
-						'php/scripts/source/500px.js',
-						'php/scripts/source/social.js',
-						'php/packages/jquery-ui/ui/minified/jquery.ui.core.min.js',
-						'php/packages/jquery-ui/ui/minified/jquery.ui.widget.min.js',
-						'php/packages/jquery-ui/ui/minified/jquery.ui.mouse.min.js',
-						'php/packages/jquery-ui/ui/minified/jquery.ui.progressbar.min.js',
-						'php/packages/jquery-ui/ui/minified/jquery.ui.slider.min.js',
-						'php/scripts/source/main.js'
+					'<%= basePath.scripts %>/main.min.js': [
+						'<%= basePath.scripts %>/source/500px.js',
+						'<%= basePath.scripts %>/source/social.js',
+						'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.core.min.js',
+						'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.widget.min.js',
+						'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.mouse.min.js',
+						'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.progressbar.min.js',
+						'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.slider.min.js',
+						'<%= basePath.scripts %>/source/main.js'
 					]
 				}
 			}
@@ -44,7 +50,7 @@ module.exports = function(grunt) {
 
 		// https://github.com/gruntjs/grunt-contrib-jshint
 		jshint: {
-			files: ['php/scripts/source/**/*.js', '!php/scripts/source/500px.js'],
+			files: ['<%= basePath.scripts %>/source/**/*.js', '!<%= basePath.scripts %>/source/500px.js'],
 			options: {
 				// options here to override JSHint defaults
 				globals: {
@@ -62,11 +68,11 @@ module.exports = function(grunt) {
 		//https://github.com/gruntjs/grunt-contrib-watch
 		watch: {
 			less:{
-				files: ['php/styles/source/**/*.less'],
+				files: ['<%= basePath.styles %>/source/**/*.less'],
 				tasks: ['less']
 			},
 			js:{
-				files: ['php/scripts/source/**/*.js'],
+				files: ['<%= basePath.scripts %>/source/**/*.js'],
 				tasks: ['uglify']
 			}
 		}
