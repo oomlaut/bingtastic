@@ -8,6 +8,7 @@ module.exports = function(grunt) {
 
 		basePath: {
 			bower: 'packages',
+			fonts: 'fonts',
 			scripts: 'scripts',
 			styles: 'styles'
 		},
@@ -24,6 +25,15 @@ module.exports = function(grunt) {
 				files: {
 					'<%= basePath.styles %>/main.css': '<%= basePath.styles %>/source/main.less'
 				}
+			}
+		},
+
+		'copy': {
+			fonts: {
+				expand: true,
+				src: '<%= basePath.bower %>/font-awesome/fonts/*',
+				dest: '<%= basePath.fonts %>/font-awesome/',
+				flatten: true
 			}
 		},
 
@@ -77,6 +87,6 @@ module.exports = function(grunt) {
 
 
 	grunt.registerTask('default', ['dist', 'watch']);
-	grunt.registerTask('dist', ['less:dist', 'uglify:dist']);
+	grunt.registerTask('dist', ['copy:fonts', 'less:dist', 'uglify:dist']);
 
 };
