@@ -62,9 +62,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		//https://github.com/dylang/grunt-notify
-		notify:{},
-
 		//https://github.com/gruntjs/grunt-contrib-watch
 		watch: {
 			less:{

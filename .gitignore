@@ -12,9 +12,9 @@ vendor/
 node_modules/
 
 # Bower Assets
-# bower_components/
-# packages/
+bower_components/
+packages/
 
 # Compiled Assets
-scripts/*.min.js
-styles/*.css
+# scripts/*.min.js
+# styles/*.css
