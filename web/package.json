@@ -1,6 +1,6 @@
 {
   "name": "bingtastic",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Automation of daily searches to earn Bing Rewards points",
   "main": "index.php",
   "scripts": {
@@ -20,7 +20,9 @@
   "license": "ISC",
   "devDependencies": {
     "grunt": "~0.4.2",
+    "grunt-contrib-concat": "^0.5.0",
     "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-cssmin": "^0.10.0",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-less": "~0.9.0",
     "grunt-contrib-uglify": "~0.3.2",

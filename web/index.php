@@ -32,7 +32,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 		<link rel="apple-touch-icon" href="/icons/57.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="/icons/72.png">
 		<link rel="apple-touch-icon" sizes="144x144" href="/icons/114.png">
-		<link rel="stylesheet" href="/styles/main.css">
+		<link rel="stylesheet" href="/styles/main.min.css">
 
 		<!-- facebook opengraph -->
 		<meta name="og:type" content="website">
