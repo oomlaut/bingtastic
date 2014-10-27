@@ -7,10 +7,16 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		basePath: {
-			bower: 'packages',
-			fonts: 'fonts',
-			scripts: 'scripts',
-			styles: 'styles'
+			bower: './packages',
+			dev: {
+				scripts: './scripts',
+				styles: './styles'
+			},
+			dist: {
+				fonts: './../web/fonts',
+				scripts: './../web/scripts',
+				styles: './../web/styles'
+			}
 		},
 
 		// https://github.com/gruntjs/grunt-contrib-less
@@ -26,7 +32,7 @@ module.exports = function(grunt) {
 			},
 			dist:{
 				files: {
-					'<%= basePath.styles %>/main.concat.css': '<%= basePath.styles %>/source/main.less'
+					'<%= basePath.dev.styles %>/main.concat.css': '<%= basePath.dev.styles %>/source/main.less'
 				}
 			}
 		},
@@ -38,32 +44,32 @@ module.exports = function(grunt) {
 					stripBanners: true
 				},
 				src: [
-					'<%= basePath.scripts %>/source/500px.js',
-					'<%= basePath.scripts %>/source/social.js',
+					'<%= basePath.dev.scripts %>/source/500px.js',
+					'<%= basePath.dev.scripts %>/source/social.js',
 					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.core.min.js',
 					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.widget.min.js',
 					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.mouse.min.js',
 					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.progressbar.min.js',
 					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.slider.min.js',
-					'<%= basePath.scripts %>/source/main.js'
+					'<%= basePath.dev.scripts %>/source/main.js'
 				],
-				dest: '<%= basePath.scripts %>/main.concat.js'
+				dest: '<%= basePath.dev.scripts %>/main.concat.js'
 			}
 		},
 
 		copy: {
 			fonts: {
 				expand: true,
+				flatten: true,
 				src: '<%= basePath.bower %>/font-awesome/fonts/*',
-				dest: '<%= basePath.fonts %>/font-awesome/',
-				flatten: true
+				dest: '<%= basePath.dist.fonts %>/font-awesome/'
 			}
 		},
 
 		cssmin: {
 			"jquery-ui": {
 				files: {
-					'<%= basePath.styles %>/ui.concat.css': [
+					'<%= basePath.dev.styles %>/ui.concat.css': [
 						'<%= basePath.bower %>/jquery-ui/themes/base/minified/jquery.ui.progressbar.min.css',
 						'<%= basePath.bower %>/jquery-ui/themes/base/minified/jquery.ui.slider.min.css',
 						'<%= basePath.bower %>/jquery-ui/themes/cupertino/jquery-ui.min.css'
@@ -72,9 +78,9 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: {
-					'<%= basePath.styles %>/main.min.css': [
-						'<%= basePath.styles %>/ui.concat.css',
-						'<%= basePath.styles %>/main.concat.css'
+					'<%= basePath.dist.styles %>/main.min.css': [
+						'<%= basePath.dev.styles %>/ui.concat.css',
+						'<%= basePath.dev.styles %>/main.concat.css'
 					]
 
 				}
@@ -88,14 +94,14 @@ module.exports = function(grunt) {
 			},
 			dist:{
 				files: {
-					'<%= basePath.scripts %>/main.min.js': ['<%= basePath.scripts %>/main.concat.js']
+					'<%= basePath.dist.scripts %>/main.min.js': ['<%= basePath.dev.scripts %>/main.concat.js']
 				}
 			}
 		},
 
 		// https://github.com/gruntjs/grunt-contrib-jshint
 		jshint: {
-			files: ['<%= basePath.scripts %>/source/**/*.js', '!<%= basePath.scripts %>/source/500px.js'],
+			files: ['<%= basePath.dev.scripts %>/source/**/*.js', '!<%= basePath.dev.scripts %>/source/500px.js'],
 			options: {
 				// options here to override JSHint defaults
 				globals: {
@@ -110,11 +116,11 @@ module.exports = function(grunt) {
 		//https://github.com/gruntjs/grunt-contrib-watch
 		watch: {
 			less:{
-				files: ['<%= basePath.styles %>/source/**/*.less'],
+				files: ['<%= basePath.dev.styles %>/source/**/*.less'],
 				tasks: ['less']
 			},
 			js:{
-				files: ['<%= basePath.scripts %>/source/**/*.js'],
+				files: ['<%= basePath.dev.scripts %>/source/**/*.js'],
 				tasks: ['uglify']
 			}
 		}
