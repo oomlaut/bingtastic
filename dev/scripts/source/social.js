@@ -1,10 +1,14 @@
 // Additional JS functions here
+
 var app = {
 	uri:	"//" + window.location.hostname,
 	id:		'1404888123068033'
 };
 
 // https://developers.facebook.com/docs/facebook-login/getting-started-web/
+/*
+	! Bing has removed facebook login as a viable option.
+	! TODO: Remove for next release.
 
 window.fbAsyncInit = function() {
 	FB.init({
@@ -44,7 +48,8 @@ window.fbAsyncInit = function() {
 			login.appendChild(link);
 		}
 	});
-};
+};f
+*/
 
 // Load the SDK asynchronously
 (function(d){

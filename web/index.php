@@ -10,6 +10,13 @@ $bingMe->setWordRange(2,4);
 
 $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingMe->q;
 
+
+function version($urlString, $release = '4.1.12'){
+	$separator = (strpos($urlString, '?')) ? '&' : '?';
+	echo $urlString . $separator . 'v=' . $release;
+	return false;
+}
+
 ?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -25,22 +32,22 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 		<title>it&rsquo;s bingtastic!</title>
 		<meta name="description" content="Automation of daily searches to earn the maximum Bing Rewards points">
 
-		<link rel="author" href="/humans.txt">
-		<link rel="sitemap" href="/sitemap.xml">
-		<link rel="icon" href="/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="/icons/favicon.png">
-		<link rel="apple-touch-icon" href="/icons/57.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="/icons/72.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="/icons/114.png">
-		<link rel="stylesheet" href="/styles/main.min.css">
+		<link rel="author" href="<?php version('/humans.txt'); ?>">
+		<link rel="sitemap" href="<?php version('/sitemap.xml'); ?>">
+		<link rel="icon" href="<?php version('/favicon.ico'); ?>" type="image/x-icon">
+		<link rel="icon" href="<?php version('/icons/favicon.png'); ?>">
+		<link rel="apple-touch-icon" href="<?php version('/icons/57.png'); ?>">
+		<link rel="apple-touch-icon" sizes="72x72" href="<?php version('/icons/72.png'); ?>">
+		<link rel="apple-touch-icon" sizes="144x144" href="<?php version('/icons/114.png'); ?>">
+		<link rel="stylesheet" href="<?php version('/styles/main.min.css'); ?>">
 
 		<!-- facebook opengraph -->
 		<meta name="og:type" content="website">
-		<meta name="og:url" content="http://bingtastic-oomlaut.rhcloud.com">
+		<meta name="og:url" content="http://bingtastic.herokuapp.com">
 		<meta name="og:site_name" content="it's bingtastic!">
 		<meta name="og:title" content="Bingtastic Helps Earn Rewards">
 		<meta name="og:description" content="Use Bing Rewards search and earn points redeemable for popular gift cards, Hulu+ subscriptions or sweepstakes entries!">
-		<meta name="og:image" content="http://bingtastic-oomlaut.rhcloud.com/icons/fb.png"/>
+		<meta name="og:image" content="http://bingtastic.herokuapp.com/icons/fb.png"/>
 	</head>
 
 	<body>
@@ -49,6 +56,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 		<!--[if lt IE 7]>
 			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 		<![endif]-->
+
 		<noscript>
 			<p>JavaScript is required to perform the services that bingtastic provides.</p>
 		</noscript>
@@ -92,7 +100,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 					<div class="content">
 						<h4>Spread the word </h4>
 						<p>Help others earn free rewards too! Share or recommend this site if you find it valuable.</p>
-						<div class="fb-like" data-href="http://bingtastic-oomlaut.rhcloud.com/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true" data-width="280"></div>
+						<div class="fb-like" data-href="//bingtastic.herokuapp.com/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true" data-width="280"></div>
 					</div>
 					<i class="icon"></i>
 				</section>
@@ -101,7 +109,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 					<div class="content">
 						<h4><abbr title="Application Programming Interface">API</abbr></h4>
 						<p>We have exposed a data endpoint for using the functions that were created for automating these searches. Feel free to use this site to generate <b>your</b> <span class="their-name">bing</span>s, too!</p>
-						<p>Documentation provided on <a href="http://docs.bingtastic.apiary.io/" rel="external">apiary.io</a></p>
+						<p>Documentation provided on <a href="//docs.bingtastic.apiary.io/" rel="external">apiary.io</a></p>
 					</div>
 					<i class="icon"></i>
 				</section>
@@ -109,10 +117,17 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 			</article>
 
 			<nav class="otb">
-				<div id="login"></div>
+				<?php
+				/*
+					! Bing has removed facebook login functionality
+					! TODO: Remove for next release.
+
+					<div id="login"></div>
+				*/
+				?>
 				<ul>
 					<li><a href="#search-phrases" title="View or change the phrases to be searched"><i class="fa fa-plus-square-o"></i>Phraselist</a></li>
-					<li><a href="#delay-interval" title="view or change the script interval"><i class="fa fa-plus-square-o"></i>Delay Interval</a></li>
+					<li><a href="#delay-interval" title="View or change the script interval"><i class="fa fa-plus-square-o"></i>Delay Interval</a></li>
 					<li><a href="//www.bing.com/rewards/dashboard" title="Check the dashboard daily for Bing bonus points">Rewards Dashboard</a></li>
 					<li><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external">Sign up for Bing Rewards</a></li>
 				</ul>
@@ -120,9 +135,9 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 			</nav>
 
 			<footer class="otb">
-				<a href="//creativecommons.org/licenses/by-nc-sa/3.0" rel="external creative_commons" class="license"><img src="//i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="Attribution-NonCommercial-ShareAlike" title="CC BY-NC-SA"></a>
-				<a href="https://github.com/oomlaut/bingtastic" rel="external github" title="We're open source! Follow this project on GitHub"><i class="fa fa-github-square"></i></a>
-				<a href="https://apps.facebook.com/1404888123068033/" rel="external facebook" class="btn fb-btn btn-primary"><i class="fa fa-facebook-square"></i> Bingtastic Facebook App</a>
+				<?php /* <a href="//creativecommons.org/licenses/by-nc-sa/3.0" rel="external creative_commons" class="license"><img src="//i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="Attribution-NonCommercial-ShareAlike" title="CC BY-NC-SA"></a> */ ?>
+				<a href="//github.com/oomlaut/bingtastic" rel="external github" title="We're open source! Follow this project on GitHub"><i class="fa fa-github-square"></i></a>
+				<?php /* <a href="//apps.facebook.com/1404888123068033/" rel="external facebook" class="btn fb-btn btn-primary"><i class="fa fa-facebook-square"></i> Bingtastic Facebook App</a> */ ?>
 			</footer>
 
 			<form id="overlay" role="form" action="/#postback" method="get">
@@ -174,10 +189,7 @@ $bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingM
 			</form>
 		</div>
 
-		<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-		<script>window.jQuery || document.write('<script src="packages/jquery/jquery.min.js"><\/script>')</script>
-
-		<script src="scripts/main.min.js"></script>
+		<script src="<?php version('scripts/main.min.js'); ?>"></script>
 
 	</body>
 </html>

@@ -6,6 +6,8 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
+		ui_theme: 'cupertino',
+
 		basePath: {
 			bower: './packages',
 			dev: {
@@ -40,12 +42,17 @@ module.exports = function(grunt) {
 		concat: {
 			scripts: {
 				options: {
-					separator: ';',
-					stripBanners: true
+					separator: ';\n',
+					stripBanners: {
+						block: true,
+						line: true
+					},
+					sourcemap: false
 				},
 				src: [
 					'<%= basePath.dev.scripts %>/source/500px.js',
 					'<%= basePath.dev.scripts %>/source/social.js',
+					'<%= basePath.bower %>/jquery/dist/jquery.min.js',
 					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.core.min.js',
 					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.widget.min.js',
 					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.mouse.min.js',
@@ -63,6 +70,12 @@ module.exports = function(grunt) {
 				flatten: true,
 				src: '<%= basePath.bower %>/font-awesome/fonts/*',
 				dest: '<%= basePath.dist.fonts %>/font-awesome/'
+			},
+			ui_images: {
+				expand: true,
+				flatten: true,
+				src: '<%= basePath.bower %>/jquery-ui/themes/<%= ui_theme %>/images/*',
+				dest: '<%= basePath.dist.styles %>/images/'
 			}
 		},
 
@@ -72,7 +85,8 @@ module.exports = function(grunt) {
 					'<%= basePath.dev.styles %>/ui.concat.css': [
 						'<%= basePath.bower %>/jquery-ui/themes/base/minified/jquery.ui.progressbar.min.css',
 						'<%= basePath.bower %>/jquery-ui/themes/base/minified/jquery.ui.slider.min.css',
-						'<%= basePath.bower %>/jquery-ui/themes/cupertino/jquery-ui.min.css'
+						'<%= basePath.bower %>/jquery-ui/themes/<%= ui_theme %>/jquery-ui.min.css',
+						'<%= basePath.bower %>/jquery-ui/themes/<%= ui_theme %>/jquery-ui.theme.css'
 					]
 				}
 			},
@@ -87,10 +101,19 @@ module.exports = function(grunt) {
 			}
 		},
 
+		//https://github.com/gruntjs/grunt-contrib-clean
+		clean: {
+			options: {
+				force: true
+			},
+			ui_images: ['<%= basePath.dist.styles %>/images']
+		},
+
 		//https://github.com/gruntjs/grunt-contrib-uglify
 		uglify: {
 			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
+				preserveComments: false
 			},
 			dist:{
 				files: {
@@ -117,11 +140,11 @@ module.exports = function(grunt) {
 		watch: {
 			less:{
 				files: ['<%= basePath.dev.styles %>/source/**/*.less'],
-				tasks: ['less']
+				tasks: ['build-css']
 			},
 			js:{
 				files: ['<%= basePath.dev.scripts %>/source/**/*.js'],
-				tasks: ['uglify']
+				tasks: ['build-js']
 			}
 		}
 	});
@@ -130,6 +153,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', ['dist', 'watch']);
 	grunt.registerTask('build-js', ['concat:scripts', 'uglify:dist']);
 	grunt.registerTask('build-css', ['less:dist', 'cssmin:jquery-ui', 'cssmin:dist']);
-	grunt.registerTask('dist', ['copy:fonts', 'build-js', 'build-css']);
+	grunt.registerTask('dist', ['copy:fonts', 'clean:ui_images', 'copy:ui_images', 'build-js', 'build-css']);
 
 };

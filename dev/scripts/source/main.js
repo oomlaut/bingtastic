@@ -36,6 +36,7 @@
 	// Enable jQuery UI "range/slider" elements
 	// https://jqueryui.com/slider/
 	var $range = $('#delay');
+
 	var $slider = $( '#slider-range' ).slider({
 		range: true,
 		animate: true,
@@ -49,6 +50,7 @@
 			});
 		}
 	});
+
 	$range.data({
 		min: $slider.slider( 'values', 0 ),
 		max: $slider.slider( 'values', 1 )
@@ -75,6 +77,8 @@
 		.progressbar({ max: 100 })
 		.insertBefore('#standard').hide();
 
+
+
 	// Behaviors for overlay "modal"
 	var $overlay = $('#overlay').on('modal', function(e, args){
 		// console.log(arguments);
@@ -86,7 +90,7 @@
 	});
 
 	// "close" icon
-	$('<span>', {
+	var $closeBtn = $('<span>', {
 		'class': 'hide-overlay',
 		html: '<i class=" fa fa-times-circle"></i>',
 		click: function(e){
@@ -111,25 +115,27 @@
 	});
 
 	// Attach events to the window object
-	var $window = $(window);
-	$window.on('resize', function(e) {
-		// resize the container height based on window dimensions
+	var $window = $(window).on('resize', function(e) {
+		var $context = $(this);
 		var $el = $('#container');
 		var $body = $('body');
 		var yOffset = parseInt($body.css('padding-top'), 10) + parseInt($body.css('padding-bottom'), 10);
 
-		$el.css({height: $window.height() - yOffset});
+
+		// resize the container height based on window dimensions
+		$el.css({height: $context.height() - yOffset});
 
 	}).on('load', function(e, callback, undefined){
-		// force size the "pane"
-		$window.trigger('resize');
+		var $context = $(this);
 
 		var timer = false;
 		var $bings = $('#phrases a');
 		var $count = $('#bings');
 		var $delay = $('#delay');
 
-		//
+		// force size the "pane"
+		$context.trigger('resize');
+
 		$('#bings, #min, #max').on('change', function(){
 			var $this = $(this);
 			var val = $this.val();
@@ -174,18 +180,17 @@
 
 		var $start = $('#bingMe').on('click', function(e){
 			e.preventDefault();
-			$statusbar.show();
-			$(this).add('#automate input[type="number"], #modified button').attr({disabled: 'disabled'});
+			$statusbar.add($stop).show();
+			$(this).hide().add('#automate input[type="number"], #modified button').attr({disabled: 'disabled'});
 			bingMe();
 		});
 
-		var $stop = $('#stop').on('click', function(e){
+		var $stop = $('#stop').hide().on('click', function(e){
 			e.preventDefault();
 			window.clearTimeout(timer);
-			$statusbar.trigger('reset').hide();
-			$start.add('#automate input[disabled], #modified button').removeAttr('disabled');
+			$statusbar.trigger('reset').add($(this)).hide();
+			$start.show().add('#automate input[disabled], #modified button').removeAttr('disabled');
 		});
-
 
 	});
 })(jQuery, _500px, window);
