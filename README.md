@@ -4,7 +4,7 @@ Automation of daily searches to earn the maximum Bing Rewards points, integrated
 
 ## Web Properties
 
-* [OpenShift](http://bingtastic-oomlaut.rhcloud.com)
+* [Heroku](http://bingtastic.herokuapp.com)
 * [Facebook](https://apps.facebook.com/1404888123068033/)
 
 ## API
