@@ -53,11 +53,11 @@ module.exports = function(grunt) {
 					'<%= basePath.dev.scripts %>/source/500px.js',
 					'<%= basePath.dev.scripts %>/source/social.js',
 					'<%= basePath.bower %>/jquery/dist/jquery.min.js',
-					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.core.min.js',
-					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.widget.min.js',
-					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.mouse.min.js',
-					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.progressbar.min.js',
-					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.slider.min.js',
+					'<%= basePath.bower %>/jquery-ui/ui/minified/core.min.js',
+					'<%= basePath.bower %>/jquery-ui/ui/minified/widget.min.js',
+					'<%= basePath.bower %>/jquery-ui/ui/minified/mouse.min.js',
+					'<%= basePath.bower %>/jquery-ui/ui/minified/progressbar.min.js',
+					'<%= basePath.bower %>/jquery-ui/ui/minified/slider.min.js',
 					'<%= basePath.dev.scripts %>/source/main.js'
 				],
 				dest: '<%= basePath.dev.scripts %>/main.concat.js'
