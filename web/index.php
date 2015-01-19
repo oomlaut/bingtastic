@@ -47,7 +47,7 @@ function version($urlString, $release = '4.1.12'){
 		<meta name="og:site_name" content="it's bingtastic!">
 		<meta name="og:title" content="Bingtastic Helps Earn Rewards">
 		<meta name="og:description" content="Use Bing Rewards search and earn points redeemable for popular gift cards, Hulu+ subscriptions or sweepstakes entries!">
-		<meta name="og:image" content="http://bingtastic.herokuapp.com/icons/fb.png"/>
+		<meta name="og:image" content="http://bingtastic.herokuapp.com/icons/fb.png">
 	</head>
 
 	<body>
@@ -100,7 +100,7 @@ function version($urlString, $release = '4.1.12'){
 					<div class="content">
 						<h4>Spread the word </h4>
 						<p>Help others earn free rewards too! Share or recommend this site if you find it valuable.</p>
-						<div class="fb-like" data-href="//bingtastic.herokuapp.com/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true" data-width="280"></div>
+						<div class="fb-like" data-href="http://bingtastic.herokuapp.com/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true" data-width="280"></div>
 					</div>
 					<i class="icon"></i>
 				</section>
@@ -109,7 +109,7 @@ function version($urlString, $release = '4.1.12'){
 					<div class="content">
 						<h4><abbr title="Application Programming Interface">API</abbr></h4>
 						<p>We have exposed a data endpoint for using the functions that were created for automating these searches. Feel free to use this site to generate <b>your</b> <span class="their-name">bing</span>s, too!</p>
-						<p>Documentation provided on <a href="//docs.bingtastic.apiary.io/" rel="external">apiary.io</a></p>
+						<p>Documentation provided on <a href="http://docs.bingtastic.apiary.io/" rel="external">apiary.io</a></p>
 					</div>
 					<i class="icon"></i>
 				</section>
