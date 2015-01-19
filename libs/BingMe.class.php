@@ -7,32 +7,41 @@ Mustache_Autoloader::register();
 require_once("SafeSearch.class.php");
 
 class BingMe{
-	private $m = null;
-	private $filename = null;
-	private $words = array();
-	private $q = 30;
-	private $minwords = 0;
-	private $maxwords = 0;
-	private $possibilities = 0;
-	private $keys = null;
+
+	private $defaults = array(
+	                          'q' => 45,
+	                          'minwords' => 2,
+	                          'maxwords' => 4
+	                          );
+	private $m;
+	private $filename;
+	private $words;
+	private $q;
+	private $minwords;
+	private $maxwords;
+	private $possibilities;
+	private $keys;
+
 	private $delimiter = "\n";
+	private $useCookie = true;
+	private $cookieName = 'bingtastic';
 	private $safeSearch = true;
 
 	private $prefixes = array(
-		"default" => "http://www.bing.com/search?q={{query}}&go=&qs=n&form=&pq={{query}}&sc=0-0&sp=-1&sk=",
-		"omnibar" => "http://www.bing.com/search?q={{query}}&setmkt=en-US",
-		"images" => "http://www.bing.com/images/search?q={{query}}",
-		"videos" => "http://www.bing.com/videos/search?q={{query}}",
-		"maps" => "http://www.bing.com/maps/default.aspx?q={{query}}&mkt=en",
-		"news" => "http://www.bing.com/news/search?q={{query}}",
-		// "events" => "http://www.bing.com/events/search?q={{query}}",
-		// "friendphotos" => "http://www.bing.com/friendsphotos/search?q={{query}}",
-		// "explore" => "http://www.bing.com/explore?q={{query}}"
+		"default" => "http://www.bing.com/search?q={{query}}&go=&qs=n&form=&pq={{query}}&sc=0-0&sp=-1&sk="
+		,"omnibar" => "http://www.bing.com/search?q={{query}}&setmkt=en-US"
+		,"images" => "http://www.bing.com/images/search?q={{query}}"
+		,"videos" => "http://www.bing.com/videos/search?q={{query}}"
+		,"maps" => "http://www.bing.com/maps/default.aspx?q={{query}}&mkt=en"
+		,"news" => "http://www.bing.com/news/search?q={{query}}"
+		// ,"events" => "http://www.bing.com/events/search?q={{query}}"
+		// ,"friendphotos" => "http://www.bing.com/friendsphotos/search?q={{query}}"
+		// ,"explore" => "http://www.bing.com/explore?q={{query}}"
 	);
 	private $queryToken = "query";
 	private $sepChar = '+';
 
-	public function __construct($filepath){
+	public function __construct($filepath = null, $useCookie = true){
 
 		if(file_exists($filepath)){
 			$this->words = $this->buildWordList($filepath);
@@ -44,8 +53,18 @@ class BingMe{
 		// store keys for later use
 		$this->setPrefixKeys(array_keys($this->prefixes));
 
-		//register Mustache;
+		// register Mustache;
 		$this->m = new Mustache_Engine;
+
+		// initialize private values
+		$this->setQ();
+		$this->setWordRange();
+
+		// to use cookies or not to use cookies...
+		if($useCookie){
+			$this->getCookie();
+		}
+
 
 		return $this;
 
@@ -62,11 +81,11 @@ class BingMe{
 	    return null;
 	}
 
-	private function regexNeedle($string){
+	private function regexNeedle($string = null){
 		return '/' . preg_quote($string) . '/';
 	}
 
-	private function validateInt($arg){
+	private function validateInt($arg = null){
 		return (gettype($arg) == "integer");
 	}
 
@@ -90,22 +109,33 @@ class BingMe{
 		return $phrase;
 	}
 
-	private function buildWordList($path){
+	private function buildWordList($path = null){
 		$data = file_get_contents($path, true);
 		$list = explode($this->delimiter, $data);
 
-		if($this->safeSearch):
-			$ss = new SafeSearch();
-			$approved = array();
-			foreach($list as $word){
-				if($ss->safe($word)){
-					$approved[] = $word;
-				}
-			}
-			return $approved;
-		endif;
+		if(!$this->safeSearch){
+			return $list;
+		}
 
-		return $list;
+		$ss = new SafeSearch();
+		$approved = array();
+		foreach($list as $word){
+			if($ss->safe($word)){
+				$approved[] = $word;
+			}
+		}
+		return $approved;
+	}
+
+	public function setQ($int = null){
+
+		if(isset($int) && $this->validateInt($int)){
+			$this->q = $int;
+		} else {
+			$this->q = $this->defaults['q'];
+		}
+
+		return $this;
 	}
 
 	public function setPrefixKeys($array){
@@ -120,49 +150,80 @@ class BingMe{
 		return $this;
 	}
 
-	public function setWordRange($min = 1, $max = 10){
-		if($this->validateInt($min)){
-			$this->minwords = $min;
-			if($this->validateInt($max)){
-				$this->maxwords = $max;
-				return $this;
-			} else {
-				throw new Exception('Integer required to set "max" property.');
-			}
-		} else {
-			throw new Exception('Integer required to set "min" property.');
-		}
+	public function setWordRange($min = null, $max = null){
+		$this->minwords = ($this->validateInt($min)) ? $min : $this->defaults['minwords'];
+		$this->maxwords = ($this->validateInt($max)) ? $max : $this->defaults['maxwords'];
 
 		return $this;
 	}
 
 	public function generate($int){
-		if($this->validateInt($int)){
-			$array = array();
-			$counter = 0;
-			while($counter < $int){
-				++$counter;
-
-				$phrase = $this->getRandomPhrase();
-				$prefix = $this->getRandomPrefix();
-
-				$array[] = array(
-					'type' => $prefix["key"],
-					'query' => $phrase,
-					'text'  => preg_replace($this->regexNeedle($this->sepChar), ' ', $phrase),
-					'template' => $prefix["url"],
-					'url'  => $this->m->render($prefix["url"], array($this->queryToken => $phrase) )
-				);
-			}
-			return $array;
+		if(!$this->validateInt($int)){
+			throw new Exception('Integer required to generate array.');
+			return false;
 		}
+		$array = array();
+		$counter = 0;
+		while($counter < $int){
+			++$counter;
 
-		throw new Exception('Integer required to generate array.');
+			$phrase = $this->getRandomPhrase();
+			$prefix = $this->getRandomPrefix();
 
-		return false;
+			$array[] = array(
+				'type' => $prefix["key"],
+				'query' => $phrase,
+				'text'  => preg_replace($this->regexNeedle($this->sepChar), ' ', $phrase),
+				'template' => $prefix["url"],
+				'url'  => $this->m->render($prefix["url"], array($this->queryToken => $phrase) )
+			);
+		}
+		return $array;
 	}
 
 	public function parse($string){
 		return $this->m->render($string, $this->generate(1)[0]);
+	}
+
+	public function setCookie(){
+		if(!$this->useCookie){
+			return;
+		}
+
+		$data = array(
+		                  'q'    => $this->q,
+		                  'minwords' => $this->minwords,
+		                  'maxwords' => $this->maxwords
+		                  );
+
+		setcookie($this->cookieName, serialize($data));
+	}
+
+	public function getCookie(){
+		if(!$this->useCookie){
+			return;
+		}
+
+		$cookie = $_COOKIE[$this->cookieName];
+
+		if(!isset($cookie)){
+			$this->setCookie();
+			return;
+		}
+
+		foreach (unserialize($cookie) as $key => &$value){
+			$this->{$key} = $value;
+		}
+
+		return;
+	}
+
+	public function resetCookie(){
+		if(!$this->useCookie){
+			return;
+		}
+
+		setcookie($this->cookieName, serialize(json_encode($this->defaults)));
+		return true;
 	}
 }

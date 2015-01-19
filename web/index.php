@@ -6,12 +6,13 @@ require_once(__DIR__ . "/../config.php");
 require_once("BingMe.class.php");
 
 $bingMe = new BingMe(DATA_FILE);
-$bingMe->setWordRange(2,4);
 
-$bings = (isset($_GET["bings"]) && $_GET["bings"] > 0) ? $_GET["bings"] : $bingMe->q;
+if(isset($_GET['bings'])){
+	echo $_GET['bings'];
+	$bingMe->setQ(intval($_GET['bings']))->setCookie();
+}
 
-
-function version($urlString, $release = '4.1.12'){
+function version($urlString, $release = '4.1.13'){
 	$separator = (strpos($urlString, '?')) ? '&' : '?';
 	echo $urlString . $separator . 'v=' . $release;
 	return false;
@@ -126,7 +127,7 @@ function version($urlString, $release = '4.1.12'){
 				*/
 				?>
 				<ul>
-					<li><a href="#search-phrases" title="View or change the phrases to be searched"><i class="fa fa-plus-square-o"></i>Phraselist</a></li>
+					<li><a href="#search-phrases" title="View or change the phrases to be searched"><i class="fa fa-plus-square-o"></i>Phraselist (<?php echo $bingMe->q; ?>)</a></li>
 					<li><a href="#delay-interval" title="View or change the script interval"><i class="fa fa-plus-square-o"></i>Delay Interval</a></li>
 					<li><a href="//www.bing.com/rewards/dashboard" title="Check the dashboard daily for Bing bonus points">Rewards Dashboard</a></li>
 					<li><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external">Sign up for Bing Rewards</a></li>
@@ -148,13 +149,13 @@ function version($urlString, $release = '4.1.12'){
 					<div class="control-group">
 						<div class="controls input-group">
 							<label for="bings" class="control-label input-group-addon"><span class="their-name">bing</span>s:</label>
-							<input name="bings" id="bings" class="input-sm form-control" type="number" step="1" min="1" data-default="<?php echo $bings; ?>" value="<?php echo $bings; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
+							<input name="bings" id="bings" class="input-sm form-control" type="number" step="1" min="1" data-default="<?php echo $bingMe->q; ?>" value="<?php echo $bingMe->q; ?>" title="Number of Bings to perform" data-require-redraw="true" required autofocus>
 						</div>
 					</div>
 					<div id="phrases">
 						<?php
 							$counter = 0;
-							while($counter < $bings){
+							while($counter < $bingMe->q){
 								$counter += 1;
 								echo $bingMe->parse('<a href="{{url}}">{{text}}</a>');
 							}
