@@ -5,8 +5,6 @@
 	// https://github.com/500px/500px-js-sdk
 	// https://github.com/500px/api-documentation
 
-	console.log(typeof jQuery.cookie);
-
 	if(arguments.length > 1 && typeof $500px === 'object'){
 		$500px.init({
 			sdk_key: 'bb90d1c6f1b501447a9a4c2ed000fcf9ecc464a7'
