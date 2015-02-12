@@ -2,6 +2,8 @@
 
 Automation of daily searches to earn the maximum Bing Rewards points, integrated as an optional Facebook app.
 
+[![endorse](https://api.coderwall.com/oomlaut/endorsecount.png)](https://coderwall.com/oomlaut)
+
 ## Web Properties
 
 * [Heroku](http://bingtastic.herokuapp.com)
