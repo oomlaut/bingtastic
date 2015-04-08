@@ -3,6 +3,7 @@
   "version": "2.1.0",
   "description": "Automation of daily searches to earn Bing Rewards points",
   "main": "index.php",
+  "ui_theme": "cupertino",
   "scripts": {
     "postinstall": "bower install",
     "test": "echo \"Error: no test specified\" && exit 1"

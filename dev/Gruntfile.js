@@ -6,8 +6,6 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
-		ui_theme: 'cupertino',
-
 		basePath: {
 			bower: './packages',
 			dev: {
@@ -18,6 +16,10 @@ module.exports = function(grunt) {
 				fonts: './../web/fonts',
 				scripts: './../web/scripts',
 				styles: './../web/styles'
+			},
+			tmp: {
+				scripts: './tmp/scripts',
+				styles: './tmp/styles'
 			}
 		},
 
@@ -34,7 +36,7 @@ module.exports = function(grunt) {
 			},
 			dist:{
 				files: {
-					'<%= basePath.dev.styles %>/main.concat.css': '<%= basePath.dev.styles %>/source/main.less'
+					'<%= basePath.tmp.styles %>/main.css': '<%= basePath.dev.styles %>/source/main.less'
 				}
 			}
 		},
@@ -60,7 +62,7 @@ module.exports = function(grunt) {
 					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.slider.min.js',
 					'<%= basePath.dev.scripts %>/source/main.js'
 				],
-				dest: '<%= basePath.dev.scripts %>/main.concat.js'
+				dest: '<%= basePath.tmp.scripts %>/main.js'
 			}
 		},
 
@@ -74,7 +76,7 @@ module.exports = function(grunt) {
 			ui_images: {
 				expand: true,
 				flatten: true,
-				src: '<%= basePath.bower %>/jquery-ui/themes/<%= ui_theme %>/images/*',
+				src: '<%= basePath.bower %>/jquery-ui/themes/<%= pkg.ui_theme %>/images/*',
 				dest: '<%= basePath.dist.styles %>/images/'
 			}
 		},
@@ -82,19 +84,18 @@ module.exports = function(grunt) {
 		cssmin: {
 			"jquery-ui": {
 				files: {
-					'<%= basePath.dev.styles %>/ui.concat.css': [
+					'<%= basePath.tmp.styles %>/ui.css': [
 						'<%= basePath.bower %>/jquery-ui/themes/base/minified/jquery.ui.progressbar.min.css',
 						'<%= basePath.bower %>/jquery-ui/themes/base/minified/jquery.ui.slider.min.css',
-						'<%= basePath.bower %>/jquery-ui/themes/<%= ui_theme %>/jquery-ui.min.css',
-						'<%= basePath.bower %>/jquery-ui/themes/<%= ui_theme %>/jquery-ui.theme.css'
+						'<%= basePath.bower %>/jquery-ui/themes/<%= pkg.ui_theme %>/jquery-ui.min.css',
+						'<%= basePath.bower %>/jquery-ui/themes/<%= pkg.ui_theme %>/jquery-ui.theme.css'
 					]
 				}
 			},
 			dist: {
 				files: {
 					'<%= basePath.dist.styles %>/main.min.css': [
-						'<%= basePath.dev.styles %>/ui.concat.css',
-						'<%= basePath.dev.styles %>/main.concat.css'
+						'<%= basePath.tmp.styles %>/*.css'
 					]
 
 				}
@@ -106,7 +107,9 @@ module.exports = function(grunt) {
 			options: {
 				force: true
 			},
-			ui_images: ['<%= basePath.dist.styles %>/images']
+			ui_images: ['<%= basePath.dist.styles %>/images'],
+			scripts: ['<%= basePath.tmp.scripts %>'],
+			styles: ['<%= basePath.tmp.styles %>']
 		},
 
 		//https://github.com/gruntjs/grunt-contrib-uglify
@@ -151,8 +154,8 @@ module.exports = function(grunt) {
 
 
 	grunt.registerTask('default', ['dist', 'watch']);
-	grunt.registerTask('build-js', ['concat:scripts', 'uglify:dist']);
-	grunt.registerTask('build-css', ['less:dist', 'cssmin:jquery-ui', 'cssmin:dist']);
+	grunt.registerTask('build-js', ['concat:scripts', 'uglify:dist', 'clean:scripts']);
+	grunt.registerTask('build-css', ['less:dist', 'cssmin:jquery-ui', 'cssmin:dist', 'clean:styles']);
 	grunt.registerTask('dist', ['copy:fonts', 'clean:ui_images', 'copy:ui_images', 'build-js', 'build-css']);
 
 };

@@ -15,6 +15,9 @@ node_modules/
 bower_components/
 packages/
 
+# Temporary files
+tmp/
+
 # Compiled Assets
 *.concat.js
 # scripts/*.min.js
