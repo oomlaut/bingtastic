@@ -5,7 +5,7 @@
   "main": "index.php",
   "ui_theme": "cupertino",
   "scripts": {
-    "postinstall": "bower install",
+    "postinstall": "bower install && grunt dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -2,13 +2,9 @@
   "name": "bingtastic",
   "version": "1.0.0",
   "description": "Search automation for maximizing your Bing Rewards potential.",
-  "authors": [
-    "Paul Gueller <paul.gueller@7summitsagency.com>",
-    "Ivan Eisenberg <ivan.eisenberg@7summitsagency.com>"
-  ],
   "main": "index.php",
   "license": "MIT",
-  "homepage": "http://bingtastic-oomlaut.rhcloud.com/",
+  "homepage": "http://bingtastic.herokuapp.com/",
   "private": true,
   "ignore": [
     "**/.*",
@@ -19,10 +15,10 @@
     "tests"
   ],
   "devDependencies": {
-    "jquery": "2.1.3",
-    "jquery-ui": "1.10.4",
-    "twitter": "3.1.1",
-    "font-awesome": "4.0.3"
-  },
-  "dependencies": {}
+    "jquery": "^2.1.3",
+    "jquery-ui": "^1.10.4",
+    "twitter": "^3.3.4",
+    "font-awesome": "^4.0.3",
+    "500px": "*"
+  }
 }
