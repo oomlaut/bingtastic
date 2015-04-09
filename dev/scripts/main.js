@@ -142,20 +142,21 @@
 		}
 
 		var $title = $('title#app-title');
-		var exp = /^\([0-9]{1,2}\) /i;
+		var exp = /(^\()([0-9]{1,2})(\) )/ig;
 
 		function updateTitle(int){
-			var prepend = '(' + int + ') ';
 
 			if($title.text().match(exp) != null){
-				$title.text( $title.text().replace(exp, prepend) );
+				$title.text( $title.text().replace(exp, function(){
+					return arguments[1] + int + arguments[3];
+				}));
 			} else {
-				$title.text( prepend + $title.text() );
+				$title.text( '(' + int + ') ' + $title.text() ) ;
 			}
 		}
 
 		function resetTitle(){
-			$title.text($title.text().replace(exp, ''));
+			$title.text( $title.text().replace(exp, '') );
 		}
 
 		function bingMe() {
