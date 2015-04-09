@@ -170,6 +170,7 @@
 
 			if(count === 0){
 				$stop.trigger('click');
+				$start.attr({disabled: 'disabled'});
 			} else {
 				$progressbar.trigger('reset');
 				updateTitle(count);
