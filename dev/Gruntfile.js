@@ -1,43 +1,46 @@
 module.exports = function(grunt) {
+	'use strict';
 
 	// require('time-grunt')(grunt);
 	require('load-grunt-tasks')(grunt);
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		bower: grunt.file.readJSON('bower.json'),
+		bowerprefs: grunt.file.readJSON('.bowerrc'),
 
 		basePath: {
-			bower: './packages',
+			bower: '<%= bowerprefs.directory %>',
 			dev: {
-				scripts: './scripts',
-				styles: './styles'
+				scripts: 'scripts',
+				styles: 'styles'
 			},
 			dist: {
-				fonts: './../web/fonts',
-				scripts: './../web/scripts',
-				styles: './../web/styles'
+				fonts: '../web/fonts',
+				scripts: '../web/scripts',
+				styles: '../web/styles'
 			},
 			tmp: {
-				scripts: './tmp/scripts',
-				styles: './tmp/styles'
+				scripts: 'tmp/scripts',
+				styles: 'tmp/styles'
 			}
 		},
 
-		// https://github.com/gruntjs/grunt-contrib-less
-		less: {
-			options: {
-				modifyVars: {
-					"bower_url": '<%= basePath.bower %>/'
-				},
-				compress: true,
-				cleancss: true,
-				optimization: 1,
-				strictImports: true
+		copy: {
+			fonts: {
+				expand: true,
+				flatten: true,
+				src: '<%= basePath.bower %>/font-awesome/fonts/*',
+				dest: '<%= basePath.dist.fonts %>/font-awesome/'
 			},
-			dist:{
-				files: {
-					'<%= basePath.tmp.styles %>/main.css': '<%= basePath.dev.styles %>/source/main.less'
-				}
+			ui_images: {
+				expand: true,
+				flatten: true,
+				src: [
+					'<%= basePath.bower %>/jquery-ui/themes/base/images/*',
+					'<%= basePath.bower %>/jquery-ui/themes/<%= pkg.ui_theme %>/images/*'
+				],
+				dest: '<%= basePath.dist.styles %>/images/'
 			}
 		},
 
@@ -52,32 +55,50 @@ module.exports = function(grunt) {
 					sourcemap: false
 				},
 				src: [
-					'<%= basePath.dev.scripts %>/source/500px.js',
-					'<%= basePath.dev.scripts %>/source/social.js',
 					'<%= basePath.bower %>/jquery/dist/jquery.min.js',
-					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.core.min.js',
-					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.widget.min.js',
-					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.mouse.min.js',
-					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.progressbar.min.js',
-					'<%= basePath.bower %>/jquery-ui/ui/minified/jquery.ui.slider.min.js',
-					'<%= basePath.dev.scripts %>/source/main.js'
+					'<%= basePath.bower %>/jquery-ui/ui/minified/core.min.js',
+					'<%= basePath.bower %>/jquery-ui/ui/minified/widget.min.js',
+					'<%= basePath.bower %>/jquery-ui/ui/minified/mouse.min.js',
+					'<%= basePath.bower %>/jquery-ui/ui/minified/progressbar.min.js',
+					'<%= basePath.bower %>/jquery-ui/ui/minified/slider.min.js',
+					'<%= basePath.bower %>/500px/500px.js',
+					'<%= basePath.dev.scripts %>/social.js',
+					'<%= basePath.dev.scripts %>/main.js'
 				],
 				dest: '<%= basePath.tmp.scripts %>/main.js'
 			}
 		},
 
-		copy: {
-			fonts: {
-				expand: true,
-				flatten: true,
-				src: '<%= basePath.bower %>/font-awesome/fonts/*',
-				dest: '<%= basePath.dist.fonts %>/font-awesome/'
+		//https://github.com/gruntjs/grunt-contrib-uglify
+		uglify: {
+			options: {
+				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
+				preserveComments: false
+				//, beautify: true
 			},
-			ui_images: {
-				expand: true,
-				flatten: true,
-				src: '<%= basePath.bower %>/jquery-ui/themes/<%= pkg.ui_theme %>/images/*',
-				dest: '<%= basePath.dist.styles %>/images/'
+			dist:{
+				files: {
+					'<%= basePath.dist.scripts %>/main.min.js': ['<%= basePath.tmp.scripts %>/main.js']
+				}
+			}
+		},
+
+		// https://github.com/gruntjs/grunt-contrib-less
+		less: {
+			options: {
+				modifyVars: {
+					"bower_url": '<%= basePath.bower %>/',
+					"bower_path": '../<%= basePath.bower %>'
+				},
+				compress: true,
+				cleancss: true,
+				optimization: 1,
+				strictImports: true
+			},
+			dist:{
+				files: {
+					'<%= basePath.tmp.styles %>/main.css': '<%= basePath.dev.styles %>/main.less'
+				}
 			}
 		},
 
@@ -85,10 +106,10 @@ module.exports = function(grunt) {
 			"jquery-ui": {
 				files: {
 					'<%= basePath.tmp.styles %>/ui.css': [
-						'<%= basePath.bower %>/jquery-ui/themes/base/minified/jquery.ui.progressbar.min.css',
-						'<%= basePath.bower %>/jquery-ui/themes/base/minified/jquery.ui.slider.min.css',
-						'<%= basePath.bower %>/jquery-ui/themes/<%= pkg.ui_theme %>/jquery-ui.min.css',
-						'<%= basePath.bower %>/jquery-ui/themes/<%= pkg.ui_theme %>/jquery-ui.theme.css'
+						'<%= basePath.bower %>/jquery-ui/themes/base/theme.css',
+						'<%= basePath.bower %>/jquery-ui/themes/base/progressbar.css',
+						'<%= basePath.bower %>/jquery-ui/themes/base/slider.css',
+						'<%= basePath.bower %>/jquery-ui/themes/<%= pkg.ui_theme %>/theme.css'
 					]
 				}
 			},
@@ -112,22 +133,9 @@ module.exports = function(grunt) {
 			styles: ['<%= basePath.tmp.styles %>']
 		},
 
-		//https://github.com/gruntjs/grunt-contrib-uglify
-		uglify: {
-			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n',
-				preserveComments: false
-			},
-			dist:{
-				files: {
-					'<%= basePath.dist.scripts %>/main.min.js': ['<%= basePath.dev.scripts %>/main.concat.js']
-				}
-			}
-		},
-
 		// https://github.com/gruntjs/grunt-contrib-jshint
 		jshint: {
-			files: ['<%= basePath.dev.scripts %>/source/**/*.js', '!<%= basePath.dev.scripts %>/source/500px.js'],
+			files: ['<%= basePath.dev.scripts %>/**/*.js'],
 			options: {
 				// options here to override JSHint defaults
 				globals: {
@@ -142,20 +150,20 @@ module.exports = function(grunt) {
 		//https://github.com/gruntjs/grunt-contrib-watch
 		watch: {
 			less:{
-				files: ['<%= basePath.dev.styles %>/source/**/*.less'],
+				files: ['<%= basePath.dev.styles %>/**/*.less'],
 				tasks: ['build-css']
 			},
 			js:{
-				files: ['<%= basePath.dev.scripts %>/source/**/*.js'],
+				files: ['<%= basePath.dev.scripts %>/**/*.js'],
 				tasks: ['build-js']
 			}
 		}
 	});
 
-
-	grunt.registerTask('default', ['dist', 'watch']);
 	grunt.registerTask('build-js', ['concat:scripts', 'uglify:dist', 'clean:scripts']);
 	grunt.registerTask('build-css', ['less:dist', 'cssmin:jquery-ui', 'cssmin:dist', 'clean:styles']);
 	grunt.registerTask('dist', ['copy:fonts', 'clean:ui_images', 'copy:ui_images', 'build-js', 'build-css']);
+
+	grunt.registerTask('default', ['dist', 'watch']);
 
 };

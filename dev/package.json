@@ -4,23 +4,23 @@
   "description": "Automation of daily searches to earn Bing Rewards points",
   "main": "index.php",
   "ui_theme": "cupertino",
-  "scripts": {
-    "postinstall": "bower install && grunt dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@github.com:oomlaut/bingtastic.git"
-  },
+  "private": true,
+  "author": "Paul Gueller",
+  "license": "ISC",
   "keywords": [
     "bing",
     "php",
     "bootstrap"
   ],
-  "author": "Paul Gueller",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:oomlaut/bingtastic.git"
+  },
+  "scripts": {
+    "postinstall": "bower install && grunt dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "devDependencies": {
-    "grunt": "~0.4.2",
     "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-concat": "~0.5.0",
     "grunt-contrib-copy": "~0.7.0",

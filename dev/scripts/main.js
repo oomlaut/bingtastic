@@ -1,11 +1,9 @@
 (function($, $500px, window, _void){
 	'use strict';
 
-	// load '500px' background image bing-style
-	// https://github.com/500px/500px-js-sdk
-	// https://github.com/500px/api-documentation
+	var self = this;
 
-	if(arguments.length > 1 && typeof $500px === 'object'){
+	if(arguments.length > 1){
 		$500px.init({
 			sdk_key: 'bb90d1c6f1b501447a9a4c2ed000fcf9ecc464a7'
 		});
@@ -37,12 +35,13 @@
 	// https://jqueryui.com/slider/
 	var $range = $('#delay');
 
-	var $slider = $( '#slider-range' ).slider({
+	var $slider = $('#slider-range');
+	$slider.slider({
 		range: true,
 		animate: true,
-		min: $range.attr('data-min') * 1,
-		max: $range.attr('data-max') * 1,
-		values: [ 5, 15 ],
+		min: $range.data('min') * 1,
+		max: $range.data('max') * 1,
+		values: [ $slider.data('min-default'), $slider.data('max-default') ],
 		slide: function( event, ui ) {
 			$range.val( ui.values[ 0 ] + ' - ' + ui.values[ 1 ] ).data({
 				min: ui.values[ 0 ],
@@ -59,29 +58,18 @@
 	// Enable jQuery UI "progressbar" element
 	// https://jqueryui.com/progressbar/
 	var status = false;
-	var $statusbar = $('<div>', {id: 'statusbar'})
-		.append($('<div>', {'class': 'progress-label'}))
-		.on('update', function(e, data){
-			var elapsed = 0;
-			var interval = 50;
-			$('.progress-label', $(this)).text((data.time / 1000) + ' seconds until the next Bing. ' + data.count + ' remaining.');
-			status = window.setInterval(function(){
-				elapsed += interval;
-				$statusbar.progressbar({ value: Math.floor(((elapsed/(data.time*0.9)) * 100)) });
-			}, interval);
-		})
+	var $progressbar = $('<div>', {id: 'progressbar'}).hide()
+		.insertBefore('#standard.control-group')
 		.on('reset', function(){
-			window.clearInterval(status);
-			$(this).progressbar({ value: 0 });
+			var $this = $(this);
+			$this.progressbar({ value: 0 }); //.hide()
+			$('.progress-label', $this).text('');
 		})
-		.progressbar({ max: 100 })
-		.insertBefore('#standard').hide();
-
-
+		.progressbar({ max: 100 });
+	var $progresslabel = $('<div>', {'class': 'progress-label'}).appendTo($progressbar);
 
 	// Behaviors for overlay "modal"
 	var $overlay = $('#overlay').on('modal', function(e, args){
-		// console.log(arguments);
 		$overlay.addClass('active');
 		$(args.selector).show().siblings('.form-panel').hide();
 	}).on('close', function(){
@@ -128,7 +116,7 @@
 	}).on('load', function(e, callback, undefined){
 		var $context = $(this);
 
-		var timer = false;
+		var interval = false;
 		var $bings = $('#phrases a');
 		var $count = $('#bings');
 		var $delay = $('#delay');
@@ -153,42 +141,75 @@
 			return parseInt(str, 10) * 1;
 		}
 
+		var $title = $('title#app-title');
+		var exp = /^\([0-9]{1,2}\) /i;
+
+		function updateTitle(int){
+			var prepend = '(' + int + ') ';
+
+			if($title.text().match(exp) != null){
+				$title.text( $title.text().replace(exp, prepend) );
+			} else {
+				$title.text( prepend + $title.text() );
+			}
+		}
+
+		function resetTitle(){
+			$title.text($title.text().replace(exp, ''));
+		}
+
 		function bingMe() {
+			window.clearInterval(interval);
+
 			var count = getInt($count.val()) - 1;
 
-			window.open($bings.eq(count).addClass('visited').attr('href'), '_newtab');
-
 			$count.val(count);
-			$statusbar.trigger('reset');
+
+			window.open($bings.eq(count).addClass('visited').attr('href'), '_newtab');
 
 			if(count === 0){
 				$stop.trigger('click');
 			} else {
+				$progressbar.trigger('reset');
+				updateTitle(count);
+
 				var min = getInt($delay.data('min'));
 				var max = getInt($delay.data('max'));
 				var seconds = ( getRandom(max - min)  + min );
-				var time = ( seconds * 1000 );
+				var started = Date.now();
+				var rate = 50;
 
-				$statusbar.trigger('update', {'count': count, 'time': time});
+				$progresslabel.text(seconds + ' seconds until the next Bing. ' + count + ' remaining.');
 
-				window.clearTimeout(timer);
-				timer = window.setTimeout(bingMe, time);
+				interval = window.setInterval(function(){
+					$progressbar.progressbar({
+						value: ((Date.now() - started) / (seconds * 1000)) * 100
+					});
+				}, rate);
+
 			}
 
-			return;
 		}
+
+		$progressbar.progressbar({
+			complete: function(){
+				bingMe();
+			}
+		});
 
 		var $start = $('#bingMe').on('click', function(e){
 			e.preventDefault();
-			$statusbar.add($stop).show();
+			$progressbar.add($stop).show();
 			$(this).hide().add('#automate input[type="number"], #modified button').attr({disabled: 'disabled'});
 			bingMe();
 		});
 
 		var $stop = $('#stop').hide().on('click', function(e){
 			e.preventDefault();
-			window.clearTimeout(timer);
-			$statusbar.trigger('reset').add($(this)).hide();
+			resetTitle();
+			window.clearInterval(interval);
+			$progressbar.trigger('reset');
+			$(this).add($progressbar).hide();
 			$start.show().add('#automate input[disabled], #modified button').removeAttr('disabled');
 		});
 

@@ -5,6 +5,11 @@ require_once('../vendor/autoload.php');
 require_once(__DIR__ . "/../config.php");
 require_once("BingMe.class.php");
 
+$delay = array(
+               'min-default' => 5,
+               'max-default' => 15
+               );
+
 $bingMe = new BingMe(DATA_FILE);
 
 if(isset($_GET['bings'])){
@@ -30,7 +35,7 @@ function version($urlString, $release = '4.1.13'){
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="robots" content="noindex, nofollow">
 
-		<title>it&rsquo;s bingtastic!</title>
+		<title id="app-title">it&rsquo;s bingtastic!</title>
 		<meta name="description" content="Automation of daily searches to earn the maximum Bing Rewards points">
 
 		<link rel="author" href="<?php version('/humans.txt'); ?>">
@@ -169,11 +174,11 @@ function version($urlString, $release = '4.1.13'){
 
 					<div id="intervals" class="control-group">
 						<div class="controls">
-							<div id="slider-range"></div>
+							<div id="slider-range" data-min-default="<?php echo $delay['min-default']; ?>" data-max-default="<?php echo $delay['max-default']; ?>"></div>
 						</div>
 						<div class="controls input-group">
 							<label for="delay" class="control-label input-group-addon" >Delay:</label>
-							<input id="delay" class="input-sm form-control" type="text" data-min="1" data-max="30" value="5 - 15" title="minimum delay" required readonly>
+							<input id="delay" class="input-sm form-control" type="text" data-min="1" data-max="30" value="<?php echo $delay['min-default']; ?> - <?php echo $delay['max-default']; ?>" title="minimum delay" required readonly>
 							<span class="input-group-addon">seconds</span>
 						</div>
 					</div>

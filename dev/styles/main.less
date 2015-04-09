@@ -1,5 +1,5 @@
-@bower_url:"/packages";
-@bower_path:"../..@{bower_url}";
+@bower_url:"packages";
+@bower_path:"../@{bower_url}";
 
 // Twitter Bootstrap
 @import "@{bower_path}/twitter/less/bootstrap";
@@ -9,7 +9,6 @@
 
 // Google fonts
 @import "fonts";
-@GoogleFont:"Droid Sans";
 
 @fbBlue:#3b5998;
 @bgFill:hsla(0, 100%, 100%, 0.5);
@@ -28,7 +27,7 @@ body{
 
 body,
 .their-name{
-	.weblyLight;
+	.weblyRegular;
 }
 
 h1, .h1,
@@ -403,24 +402,31 @@ iframe.mobile-frame{
 }
 
 // jQuery UI Elements
-#statusbar{
-	margin-left:0;
-}
+
 .ui-slider-horizontal{
 	margin-top:1em;
 }
 
-.ui-progressbar {
+#progressbar{
 	position:relative;
-	margin:0 1em 1em;
+	margin:0 1em 1em 0;
+
 	.progress-label {
 		position:absolute;
-		top:4px;
+		top:50%;
 		left:0;
+		height:1em;
+		margin-top:-0.5em;
+		line-height:1em;
 		width:100%;
 		text-align:center;
 		text-shadow:1px 1px 0 #fff;
-		font-weight:bold;
+		font-size:0.85em;
+		font-weight:700;
+	}
+
+	&, .ui-progressbar-value {
+		box-sizing: content-box;
 	}
 }
 
