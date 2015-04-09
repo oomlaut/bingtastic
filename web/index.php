@@ -5,11 +5,6 @@ require_once('../vendor/autoload.php');
 require_once(__DIR__ . "/../config.php");
 require_once("BingMe.class.php");
 
-$delay = array(
-               'min-default' => 5,
-               'max-default' => 15
-               );
-
 $bingMe = new BingMe(DATA_FILE);
 
 if(isset($_GET['bings'])){
@@ -174,11 +169,11 @@ function version($urlString, $release = '4.1.13'){
 
 					<div id="intervals" class="control-group">
 						<div class="controls">
-							<div id="slider-range" data-min-default="<?php echo $delay['min-default']; ?>" data-max-default="<?php echo $delay['max-default']; ?>"></div>
+							<div id="slider-range"></div>
 						</div>
 						<div class="controls input-group">
-							<label for="delay" class="control-label input-group-addon" >Delay:</label>
-							<input id="delay" class="input-sm form-control" type="text" data-min="1" data-max="30" value="<?php echo $delay['min-default']; ?> - <?php echo $delay['max-default']; ?>" title="minimum delay" required readonly>
+							<label for="delay" class="control-label input-group-addon">Delay:</label>
+							<input id="delay" data-min="1" data-max="30" data-min-default="5" data-max-default="15" class="input-sm form-control" type="text" title="minimum delay" required readonly value="5 - 15">
 							<span class="input-group-addon">seconds</span>
 						</div>
 					</div>
