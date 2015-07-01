@@ -1,6 +1,6 @@
 <?php
 
-require_once('../vendor/autoload.php');
+//require_once('../vendor/autoload.php');
 
 require_once(__DIR__ . "/../config.php");
 require_once("BingMe.class.php");
@@ -8,11 +8,11 @@ require_once("BingMe.class.php");
 $bingMe = new BingMe(DATA_FILE);
 
 if(isset($_GET['bings'])){
-	echo $_GET['bings'];
+	//echo $_GET['bings'];
 	$bingMe->setQ(intval($_GET['bings']))->setCookie();
 }
 
-function version($urlString, $release = '4.1.13'){
+function version($urlString, $release = '4.1.14'){
 	$separator = (strpos($urlString, '?')) ? '&' : '?';
 	echo $urlString . $separator . 'v=' . $release;
 	return false;
@@ -129,8 +129,8 @@ function version($urlString, $release = '4.1.13'){
 				<ul>
 					<li><a href="#search-phrases" title="View or change the phrases to be searched"><i class="fa fa-plus-square-o"></i>Phraselist (<?php echo $bingMe->q; ?>)</a></li>
 					<li><a href="#delay-interval" title="View or change the script interval"><i class="fa fa-plus-square-o"></i>Delay Interval</a></li>
-					<li><a href="//www.bing.com/rewards/dashboard" title="Check the dashboard daily for Bing bonus points">Rewards Dashboard</a></li>
-					<li><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" rel="external">Sign up for Bing Rewards</a></li>
+					<li><a href="//www.bing.com/rewards/dashboard" title="Check the dashboard daily for Bing bonus points" rel="external">Rewards Dashboard</a></li>
+					<li><a href="//go.microsoft.com/?linkid=9778718&rrid=_ad8ea4a6-b009-6b60-1c54-667a72de00e5" title="Connect your existing Microsoft account or create a new one to get started" rel="external">Sign up for Bing Rewards</a></li>
 				</ul>
 
 			</nav>
